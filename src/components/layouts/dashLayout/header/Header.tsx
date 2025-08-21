@@ -3,7 +3,6 @@ import HeaderButton from './HeaderButton';
 import { CaretDownIcon, HeadsetIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 import SelectLanguage from './SelectLanguage';
 import ThemeSwitch from './ThemeSwitch';
-// const { Header: AntHeader } = Layout;
 
 const iconStyle = {
   size: 16,
@@ -13,18 +12,6 @@ const iconStyle = {
 
 const Header = () => {
   return (
-    // <AntHeader
-    //   style={{
-    //     position: 'sticky',
-    //     top: 0,
-    //     zIndex: 1,
-    //     width: '100%',
-    //     display: 'flex',
-    //     marginBlock: '1.5rem',
-    //     alignItems: 'center',
-    //     backgroundColor: 'var(--bg-background)',
-    //   }}>
-
     <div className="flex justify-between items-center">
       <div className="flex justify-between items-center my-6 px-4 w-full">
         <div className="flex justify-between items-center gap-5">
@@ -48,7 +35,6 @@ const Header = () => {
         </div>
       </div>
     </div>
-    // </AntHeader>
   );
 };
 

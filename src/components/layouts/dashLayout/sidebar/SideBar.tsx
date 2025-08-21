@@ -1,4 +1,3 @@
-import { useTheme } from '@/services/contexts';
 import {
   BankOutlined,
   GlobalOutlined,
@@ -6,8 +5,9 @@ import {
   MessageOutlined,
   TeamOutlined,
 } from '@ant-design/icons';
-import { Menu, type MenuProps, type MenuTheme } from 'antd';
+import { Menu, type MenuProps } from 'antd';
 import Sider from 'antd/es/layout/Sider';
+import { useState } from 'react';
 
 const siderStyle: React.CSSProperties = {
   overflowY: 'auto',
@@ -55,33 +55,31 @@ const downItems: MenuProps['items'] = [
   },
 ];
 const SideBar = () => {
-  const { theme } = useTheme();
+  const [selectedKey, setSelectedKey] = useState('dashboard');
   return (
-    <Sider
-      breakpoint="lg"
-      style={siderStyle}
-      theme={theme as MenuTheme}
-      className="*:flex *:flex-col *:justify-between">
+    <Sider breakpoint="lg" style={siderStyle} className="*:flex *:flex-col *:justify-between">
       <Menu
         style={{
-          backgroundColor: 'var(--c-background)',
+          backgroundColor: 'transparent',
           fontSize: '16px',
+          border: 'none',
         }}
         className="*:border *:border-border"
         mode="inline"
-        theme={theme as MenuTheme}
-        defaultSelectedKeys={['dashboard']}
+        onClick={(e) => setSelectedKey(e.key)}
+        selectedKeys={[selectedKey]}
         items={items}
       />
       <Menu
         style={{
-          backgroundColor: 'var(--c-background)',
+          backgroundColor: 'transparent',
           fontSize: '16px',
+          border: 'none',
         }}
         className="*:border *:border-border"
         mode="inline"
-        theme={theme as MenuTheme}
-        defaultSelectedKeys={['dashboard']}
+        onClick={(e) => setSelectedKey(e.key)}
+        selectedKeys={[selectedKey]}
         items={downItems}
       />
     </Sider>

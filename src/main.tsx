@@ -3,7 +3,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import '@/assets/style/globals.css';
 import { UIProvider } from '@/services/contexts';
-import { DashLayout } from '@/components/dashboard';
+import { DashLayout } from '@/components/layouts';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

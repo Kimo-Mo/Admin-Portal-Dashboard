@@ -17,7 +17,7 @@ export const ANTD_THEME: ThemeConfig = {
   algorithm: theme.defaultAlgorithm,
   token: {
     colorPrimary: MAIN_COLORS.light.primary,
-    // colorBgBase: MAIN_COLORS.light.background,
+    colorBgBase: MAIN_COLORS.light.background,
     colorTextBase: MAIN_COLORS.light.text + 'b6',
     colorBorder: MAIN_COLORS.light.border,
     colorBgElevated: MAIN_COLORS.light.elevated,

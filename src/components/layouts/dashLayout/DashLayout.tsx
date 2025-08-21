@@ -13,7 +13,13 @@ const DashLayout = ({ children }: { children: ReactNode }) => {
       <ProductsSidebar />
       <Layout>
         <Header />
-        <Layout hasSider style={{ padding: '.75rem 1rem 0', borderTop: '1px solid var(--c-border)' }}>
+        <Layout
+          hasSider
+          style={{
+            padding: '.75rem 1rem 0',
+            borderTop: '1px solid var(--c-border)',
+            minHeight: 'calc(100vh - 104px)',
+          }}>
           <SideBar />
           <Content
             style={{

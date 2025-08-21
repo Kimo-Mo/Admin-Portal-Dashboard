@@ -8,7 +8,7 @@ const ProductsSidebar = () => {
   const handleClick = (product: SidebarProduct) => setActive(product);
 
   return (
-    <nav className="h-screen pt-6 px-4 w-20 flex flex-col justify-start items-center text-center bg-background-dark overflow-auto scrollbar-thin scrollbar-gutter-stable sticky top-0 ">
+    <nav className="h-screen pt-6 px-4 w-20 flex flex-col justify-start items-center text-center text-text bg-background-dark overflow-auto scrollbar-thin scrollbar-gutter-stable sticky top-0">
       <div className="logo mb-6">
         <img src="/Full Logo.png" alt="dark atlas logo" />
       </div>

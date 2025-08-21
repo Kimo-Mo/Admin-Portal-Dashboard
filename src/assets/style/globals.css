@@ -15,7 +15,6 @@
   --color-success: var(--c-success);
   --color-warning: var(--c-warning);
   --color-info: var(--c-info);
-  --color-primary-opac: var(--c-primary-opac)
   --color-elevated: var(--c-elevated);
   --color-icon: var(--c-icon);
 }
@@ -25,7 +24,7 @@ html {
 }
 
 .ant-menu-item-selected {
-  background-color: var(--color-elevated) !important;
-  color: var(--color-primary) !important;
+  background-color: var(--c-elevated) !important;
+  color: var(--c-primary) !important;
   overflow: visible !important;
 }
