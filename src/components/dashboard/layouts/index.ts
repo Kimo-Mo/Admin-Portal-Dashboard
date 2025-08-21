@@ -1,2 +1,2 @@
 export * from './dashLayout';
-export * from './authLayout';
+export * from '../../authLayout';

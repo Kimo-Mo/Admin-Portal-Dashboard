@@ -10,13 +10,14 @@ const MAIN_THEME_TOKEN: ThemeConfig['token'] = {
   fontSizeXL: 16,
   controlHeight: 34,
   controlHeightLG: 51,
+  borderRadiusXS: 0,
 };
 
 export const ANTD_THEME: ThemeConfig = {
   algorithm: theme.defaultAlgorithm,
   token: {
     colorPrimary: MAIN_COLORS.light.primary,
-    colorBgBase: MAIN_COLORS.light.background,
+    // colorBgBase: MAIN_COLORS.light.background,
     colorTextBase: MAIN_COLORS.light.text + 'b6',
     colorBorder: MAIN_COLORS.light.border,
     colorBgElevated: MAIN_COLORS.light.elevated,
@@ -26,6 +27,10 @@ export const ANTD_THEME: ThemeConfig = {
   components: {
     Segmented: {
       trackBg: MAIN_COLORS.light.card,
+    },
+    Menu: {
+      itemHeight: 38,
+      itemMarginBlock: 12,
     },
   },
 };

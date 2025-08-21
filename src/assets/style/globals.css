@@ -15,7 +15,9 @@
   --color-success: var(--c-success);
   --color-warning: var(--c-warning);
   --color-info: var(--c-info);
+  --color-primary-opac: var(--c-primary-opac)
   --color-elevated: var(--c-elevated);
+  --color-icon: var(--c-icon);
 }
 
 html {

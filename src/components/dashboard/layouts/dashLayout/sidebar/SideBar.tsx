@@ -19,7 +19,7 @@ const siderStyle: React.CSSProperties = {
   bottom: 0,
   scrollbarWidth: 'thin',
   scrollbarGutter: 'stable',
-  backgroundColor: 'var(--bg-background)',
+  backgroundColor: 'transparent',
 };
 const items: MenuProps['items'] = [
   {
@@ -64,14 +64,14 @@ const SideBar = () => {
       theme={theme as MenuTheme}
       className="*:flex *:flex-col *:justify-between">
       <Menu
-        style={{ backgroundColor: 'var(--bg-background)' }}
+        style={{ backgroundColor: 'transparent' }}
         mode="inline"
         theme={theme as MenuTheme}
         defaultSelectedKeys={['dashboard']}
         items={items}
       />
       <Menu
-        style={{ backgroundColor: 'var(--bg-background)' }}
+        style={{ backgroundColor: 'transparent' }}
         mode="inline"
         theme={theme as MenuTheme}
         defaultSelectedKeys={['dashboard']}
