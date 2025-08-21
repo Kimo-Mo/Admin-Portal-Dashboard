@@ -1,5 +1,4 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 @theme inline {
   --color-primary: var(--c-primary);
@@ -20,5 +19,11 @@
 }
 
 html {
-  @apply bg-background text-text;
+  @apply bg-background text-text/80;
+}
+
+.ant-menu-item-selected {
+  background-color: var(--color-elevated) !important;
+  color: var(--color-primary) !important;
+  overflow: visible !important;
 }
