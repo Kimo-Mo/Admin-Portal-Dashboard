@@ -13,11 +13,11 @@ const DashLayout = ({ children }: { children: ReactNode }) => {
       <ProductsSidebar />
       <Layout>
         <Header />
-        <Layout hasSider style={{ padding: '1rem 1rem 0', borderTop: '1px solid var(--c-border)' }}>
+        <Layout hasSider style={{ padding: '.75rem 1rem 0', borderTop: '1px solid var(--c-border)' }}>
           <SideBar />
           <Content
             style={{
-              margin: '24px 16px 0',
+              margin: '1rem 1rem 0',
               overflow: 'initial',
             }}>
             {children}

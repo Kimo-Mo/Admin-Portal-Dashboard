@@ -19,40 +19,39 @@ const siderStyle: React.CSSProperties = {
   bottom: 0,
   scrollbarWidth: 'thin',
   scrollbarGutter: 'stable',
-  backgroundColor: 'transparent',
 };
 const items: MenuProps['items'] = [
   {
     key: 'dashboard',
     label: 'Dashboard',
-    icon: <HomeOutlined className="*:size-6" />,
+    icon: <HomeOutlined />,
   },
   {
     key: 'users',
     label: 'Users',
-    icon: <TeamOutlined className="*:size-6" />,
+    icon: <TeamOutlined />,
   },
   {
     key: 'organizations',
     label: 'Organizations',
-    icon: <BankOutlined className="*:size-6" />,
+    icon: <BankOutlined />,
   },
   {
     key: 'global',
     label: 'Global',
-    icon: <GlobalOutlined className="*:size-6" />,
+    icon: <GlobalOutlined />,
   },
 ];
 const downItems: MenuProps['items'] = [
   {
     key: 'organizations',
     label: 'Organizations',
-    icon: <BankOutlined className="*:size-6" />,
+    icon: <BankOutlined />,
   },
   {
     key: 'support',
     label: 'Support',
-    icon: <MessageOutlined className="*:size-6" />,
+    icon: <MessageOutlined />,
   },
 ];
 const SideBar = () => {
@@ -64,14 +63,22 @@ const SideBar = () => {
       theme={theme as MenuTheme}
       className="*:flex *:flex-col *:justify-between">
       <Menu
-        style={{ backgroundColor: 'transparent' }}
+        style={{
+          backgroundColor: 'var(--c-background)',
+          fontSize: '16px',
+        }}
+        className="*:border *:border-border"
         mode="inline"
         theme={theme as MenuTheme}
         defaultSelectedKeys={['dashboard']}
         items={items}
       />
       <Menu
-        style={{ backgroundColor: 'transparent' }}
+        style={{
+          backgroundColor: 'var(--c-background)',
+          fontSize: '16px',
+        }}
+        className="*:border *:border-border"
         mode="inline"
         theme={theme as MenuTheme}
         defaultSelectedKeys={['dashboard']}

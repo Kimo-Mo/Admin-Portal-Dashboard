@@ -25,12 +25,19 @@ export const ANTD_THEME: ThemeConfig = {
     ...MAIN_THEME_TOKEN,
   },
   components: {
+    Layout: {
+      bodyBg: MAIN_COLORS.light.background,
+      headerBg: MAIN_COLORS.light.background,
+      siderBg: MAIN_COLORS.light.background,
+    },
     Segmented: {
       trackBg: MAIN_COLORS.light.card,
     },
     Menu: {
-      itemHeight: 38,
+      itemHeight: 36,
       itemMarginBlock: 12,
+      iconSize: 24,
+      collapsedIconSize: 24,
     },
   },
 };
@@ -47,12 +54,19 @@ export const ANTD_THEME_DARK: ThemeConfig = {
     ...MAIN_THEME_TOKEN,
   },
   components: {
+    Layout: {
+      bodyBg: MAIN_COLORS.dark.background,
+      headerBg: MAIN_COLORS.dark.background,
+      siderBg: MAIN_COLORS.dark.background,
+    },
     Segmented: {
       trackBg: MAIN_COLORS.dark.card,
     },
     Menu: {
-      itemHeight: 38,
+      itemHeight: 36,
       itemMarginBlock: 12,
+      iconSize: 24,
+      collapsedIconSize: 24,
     },
   },
 };
