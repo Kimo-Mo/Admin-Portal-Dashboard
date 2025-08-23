@@ -10,7 +10,7 @@ function ThemeSwitch() {
   return (
     <Segmented
       style={{ padding: '0' }}
-      defaultValue="dark"
+      defaultValue={theme}
       onChange={handleThemeChange}
       options={[
         {
