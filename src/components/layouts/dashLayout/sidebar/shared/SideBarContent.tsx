@@ -4,12 +4,8 @@ import { downItems, mainItems } from './menuItems';
 const SideBarContent = () => {
   return (
     <>
-      <RenderMenuSection
-        items={mainItems}
-      />
-      <RenderMenuSection
-        items={downItems}
-      />
+      <RenderMenuSection items={mainItems} />
+      <RenderMenuSection items={downItems} />
     </>
   );
 };
