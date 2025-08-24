@@ -11,8 +11,11 @@ const DashLayout = () => {
   const screens = Grid.useBreakpoint();
 
   return (
-    <Layout hasSider>
+    <Layout hasSider className="relative">
       {screens.md && <ProductsSidebar />}
+      <div className="absolute bottom-0 start-0 -z-1">
+        <img src="src/assets/images/Art Work.png" alt="art work" />
+      </div>
       <Layout>
         <Header />
         <Layout
