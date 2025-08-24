@@ -26,9 +26,9 @@ export const ANTD_THEME: ThemeConfig = {
   },
   components: {
     Layout: {
-      bodyBg: MAIN_COLORS.light.background,
-      headerBg: MAIN_COLORS.light.background,
-      siderBg: MAIN_COLORS.light.background,
+      bodyBg: 'transparent',
+      headerBg: 'transparent',
+      siderBg: 'transparent',
     },
     Segmented: {
       trackBg: MAIN_COLORS.light.card,
@@ -55,9 +55,9 @@ export const ANTD_THEME_DARK: ThemeConfig = {
   },
   components: {
     Layout: {
-      bodyBg: MAIN_COLORS.dark.background,
-      headerBg: MAIN_COLORS.dark.background,
-      siderBg: MAIN_COLORS.dark.background,
+      bodyBg: 'transparent',
+      headerBg: 'transparent',
+      siderBg: 'transparent',
     },
     Segmented: {
       trackBg: MAIN_COLORS.dark.card,

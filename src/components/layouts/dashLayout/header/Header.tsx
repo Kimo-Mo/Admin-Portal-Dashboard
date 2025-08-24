@@ -20,7 +20,7 @@ const Header = () => {
         <div className="flex justify-between items-center gap-5">
           {screens.md ? (
             <img
-              src="/arrow-square-left.svg"
+              src="src/assets/customIcons/arrow-square-left.svg"
               sizes="24px"
               className={`cursor-pointer translation-all duration-150 ${
                 collapsedSideBar ? '-rotate-180' : ''
@@ -29,7 +29,7 @@ const Header = () => {
             />
           ) : (
             <img
-              src="/menu.svg"
+              src="src/assets/customIcons/menu.svg"
               sizes="24px"
               className="cursor-pointer"
               onClick={() => setDrawerOpened(!drawerOpened)}
@@ -51,7 +51,11 @@ const Header = () => {
           {screens.md && <SelectLanguage />}
           <HeaderButton icon={<Headphone {...iconStyle} />} />
           <div className="flex justify-between items-center gap-2.5 bg-background-dark px-1 rounded-lg py-1 cursor-pointer text-icon">
-            <img src="/user-square.svg" alt="avatar" style={{ width: '32px' }} />
+            <img
+              src="src/assets/customIcons/user-square.svg"
+              alt="avatar"
+              style={{ width: '32px' }}
+            />
             <span>Ahmed</span>
             <ArrowDown2 size={16} />
           </div>
