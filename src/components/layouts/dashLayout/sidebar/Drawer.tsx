@@ -10,7 +10,7 @@ const Drawer = () => {
   return (
     <AntdDrawer
       destroyOnHidden
-      title={<img src="/Full Logo.png" alt="dark atlas logo" />}
+      title={<img src="src/assets/images/Full Logo.png" alt="dark atlas logo" />}
       placement="left"
       classNames={{
         header: '*:flex-row-reverse bg-background',
