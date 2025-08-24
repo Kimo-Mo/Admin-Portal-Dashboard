@@ -3,14 +3,12 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import '@/assets/style/globals.css';
 import { UIProvider } from '@/services/contexts';
-import { DashLayout } from '@/components/layouts';
+import App from './App';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <UIProvider>
-      <DashLayout>
-        <h1 className="text-2xl font-bold">Admin Portal</h1>
-      </DashLayout>
+      <App />
     </UIProvider>
   </StrictMode>
 );
