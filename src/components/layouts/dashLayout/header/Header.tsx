@@ -3,7 +3,13 @@ import HeaderButton from './HeaderButton';
 import SelectLanguage from './SelectLanguage';
 import ThemeSwitch from './ThemeSwitch';
 import { useSideBar } from '@/services/contexts';
-import { ArrowDown2, Headphone, SearchNormal1 } from 'iconsax-reactjs';
+import {
+  ArrowDown2,
+  Headphone,
+  SearchNormal1,
+  ArrowSquareLeft,
+  HamburgerMenu,
+} from 'iconsax-reactjs';
 
 const iconStyle = {
   size: 16,
@@ -19,18 +25,17 @@ const Header = () => {
       <div className="flex justify-between items-center my-6 px-4 w-full">
         <div className="flex justify-between items-center gap-5">
           {screens.md ? (
-            <img
-              src="src/assets/customIcons/arrow-square-left.svg"
-              sizes="24px"
+            <ArrowSquareLeft
+              variant="Bulk"
+              size="24px"
               className={`cursor-pointer translation-all duration-150 ${
                 collapsedSideBar ? '-rotate-180' : ''
               }`}
               onClick={() => setCollapsedSideBar(!collapsedSideBar)}
             />
           ) : (
-            <img
-              src="src/assets/customIcons/menu.svg"
-              sizes="24px"
+            <HamburgerMenu
+              size="24px"
               className="cursor-pointer"
               onClick={() => setDrawerOpened(!drawerOpened)}
             />
@@ -42,7 +47,7 @@ const Header = () => {
               size="large"
             />
           ) : (
-            <img src="/Full Logo.png" alt="dark atlas logo" />
+            <img src="src/assets/images/Full Logo.png" alt="dark atlas logo" />
           )}
         </div>
         <div className="flex justify-between gap-3">

@@ -13,7 +13,7 @@ const ProductsSidebar = () => {
     <nav
       className={` ${
         !screens.md
-          ? 'w-full'
+          ? 'w-full flex justify-center items-center'
           : 'h-screen pt-6 px-4 w-20 flex flex-col justify-start items-center text-center text-text bg-background-dark overflow-auto scrollbar-thin scrollbar-gutter-stable sticky top-0'
       }`}>
       {screens.md && (

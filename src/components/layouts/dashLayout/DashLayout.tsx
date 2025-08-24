@@ -13,7 +13,7 @@ const DashLayout = () => {
   return (
     <Layout hasSider className="relative">
       {screens.md && <ProductsSidebar />}
-      <div className="absolute bottom-0 start-0 -z-1">
+      <div className="absolute -top-20 md:top-auto bottom-auto md:bottom-0 start-1/2 md:start-0 -translate-x-1/2 md:translate-x-0 -z-1">
         <img src="src/assets/images/Art Work.png" alt="art work" />
       </div>
       <Layout>

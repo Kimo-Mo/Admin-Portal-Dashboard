@@ -38,6 +38,9 @@ export const ANTD_THEME: ThemeConfig = {
       itemMarginBlock: 12,
       iconSize: 24,
       collapsedIconSize: 24,
+      itemMarginInline: 0,
+      itemPaddingInline: 12,
+      iconMarginInlineEnd: 10,
     },
   },
 };
@@ -50,7 +53,6 @@ export const ANTD_THEME_DARK: ThemeConfig = {
     colorBorder: MAIN_COLORS.dark.border,
     colorBgElevated: MAIN_COLORS.dark.elevated,
     colorBgContainer: MAIN_COLORS.dark.card,
-
     ...MAIN_THEME_TOKEN,
   },
   components: {
@@ -67,6 +69,9 @@ export const ANTD_THEME_DARK: ThemeConfig = {
       itemMarginBlock: 12,
       iconSize: 24,
       collapsedIconSize: 24,
+      itemMarginInline: 0,
+      itemPaddingInline: 12,
+      iconMarginInlineEnd: 10,
     },
   },
 };

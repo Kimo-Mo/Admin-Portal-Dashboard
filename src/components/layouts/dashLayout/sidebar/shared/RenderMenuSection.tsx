@@ -4,6 +4,7 @@ const RenderMenuSection = ({ items }: { items: MenuProps['items'] }) => {
   const { selectedKey, setSelectedKey } = useSideBar();
   return (
     <Menu
+      inlineIndent={12}
       style={{
         backgroundColor: 'transparent',
         fontSize: '16px',
