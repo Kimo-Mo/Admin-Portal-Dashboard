@@ -11,7 +11,7 @@ function HeaderButton({
   return (
     <Button
       style={{
-        height: '2.45rem',
+        height: '2.4rem',
         width: '2.45rem',
         margin: 0,
         padding: 0,
