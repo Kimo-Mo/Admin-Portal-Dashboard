@@ -1,6 +1,8 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @theme inline {
+  --font-inter: 'Inter', sans-serif;
   --color-primary: var(--c-primary);
   --color-primary-dark: var(--c-primary-dark);
   --color-secondary: var(--c-secondary);
@@ -21,6 +23,7 @@
 
 html {
   @apply bg-background text-text/80;
+  font-family: 'Inter', sans-serif;
 }
 
 .ant-menu-item-selected {

@@ -1,13 +1,13 @@
 import SideBar from './sidebar/SideBar';
 
 import { Grid, Layout } from 'antd';
-import { type ReactNode } from 'react';
 import ProductsSidebar from './sidebar/ProductsSidebar';
 import Header from './header/Header';
 import Drawer from './sidebar/Drawer';
+import { Outlet } from 'react-router-dom';
 
 const { Content } = Layout;
-const DashLayout = ({ children }: { children: ReactNode }) => {
+const DashLayout = () => {
   const screens = Grid.useBreakpoint();
 
   return (
@@ -28,7 +28,7 @@ const DashLayout = ({ children }: { children: ReactNode }) => {
               margin: '1rem 1rem 0',
               overflow: 'initial',
             }}>
-            {children}
+            <Outlet />
           </Content>
         </Layout>
       </Layout>
