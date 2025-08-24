@@ -1,9 +1,9 @@
 import { Grid, Select } from 'antd';
 import HeaderButton from './HeaderButton';
-import { CaretDownIcon, HeadsetIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 import SelectLanguage from './SelectLanguage';
 import ThemeSwitch from './ThemeSwitch';
 import { useSideBar } from '@/services/contexts';
+import { ArrowDown2, Headphone, SearchNormal1 } from 'iconsax-reactjs';
 
 const iconStyle = {
   size: 16,
@@ -45,15 +45,15 @@ const Header = () => {
             <img src="/Full Logo.png" alt="dark atlas logo" />
           )}
         </div>
-        <div className="flex justify-between items-base gap-3">
-          <HeaderButton icon={<MagnifyingGlassIcon {...iconStyle} />} />
+        <div className="flex justify-between gap-3">
+          <HeaderButton icon={<SearchNormal1 {...iconStyle} />} />
           {screens.md && <ThemeSwitch />}
           {screens.md && <SelectLanguage />}
-          <HeaderButton icon={<HeadsetIcon {...iconStyle} />} />
-          <div className="flex justify-between items-center gap-2.5 min-w-30 bg-background-dark px-1 rounded-lg py-1 cursor-pointer text-icon">
+          <HeaderButton icon={<Headphone {...iconStyle} />} />
+          <div className="flex justify-between items-center gap-2.5 bg-background-dark px-1 rounded-lg py-1 cursor-pointer text-icon">
             <img src="/user-square.svg" alt="avatar" style={{ width: '32px' }} />
             <span>Ahmed</span>
-            <CaretDownIcon size={16} />
+            <ArrowDown2 size={16} />
           </div>
         </div>
       </div>

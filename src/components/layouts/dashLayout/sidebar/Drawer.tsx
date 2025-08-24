@@ -25,10 +25,14 @@ const Drawer = () => {
       <div className="flex-1 flex flex-col justify-between">
         <SideBarContent />
       </div>
-      <div className="flex flex-col items-start gap-4">
-        <ProductsSidebar />
-        <ThemeSwitch />
-        <SelectLanguage />
+      <div className="flex flex-col items-center gap-4 mt-4 mr-0.5">
+        <div>
+          <ProductsSidebar />
+        </div>
+        <div className="flex gap-4">
+          <ThemeSwitch />
+          <SelectLanguage />
+        </div>
       </div>
     </AntdDrawer>
   );
