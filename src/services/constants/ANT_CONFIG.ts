@@ -107,5 +107,9 @@ export const ANTD_THEME_DARK: ThemeConfig = {
       paddingInlineLG: 12,
       borderRadiusLG: 8,
     },
+    Form: {
+      itemMarginBottom: 16,
+      verticalLabelPadding: '0 0 12px',
+    },
   },
 };

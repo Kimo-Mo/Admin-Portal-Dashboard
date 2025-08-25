@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Table, Input, Button, Dropdown, Space, type MenuProps } from 'antd';
+import { Table, Button, Dropdown, Space, type MenuProps } from 'antd';
 import { MoreOutlined, ExportOutlined, SyncOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
-import { ArrowDown2, Edit, SearchNormal1, Setting5 } from 'iconsax-reactjs';
+import { Edit } from 'iconsax-reactjs';
 import StatusTag from './Tags/StatusTag';
 import ProductTag from './Tags/ProductTag';
 
@@ -204,41 +204,7 @@ const ProductsTable: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen p-6" style={{ backgroundColor: 'var(--c-background)' }}>
-      <div
-        className="flex justify-between items-center gap-3 px-6 py-4 rounded-t-lg"
-        style={{
-          // backgroundColor: 'var(--c-card)',
-          // opacity: 0.6,
-          backgroundColor: '#17172799',
-        }}>
-        <Input
-          size="large"
-          placeholder="Search"
-          prefix={<SearchNormal1 style={{ color: 'var(--c-text)', opacity: 0.4 }} />}
-          className="w-full rounded-lg"
-          style={{
-            backgroundColor: 'var(--c-elevated)',
-            borderColor: 'var(--c-border)',
-            color: 'var(--c-text)',
-          }}
-        />
-        <Button
-          size="large"
-          className="rounded-lg flex items-center gap-1.5 opacity-80 hover:opacity-100"
-          style={{
-            backgroundColor: 'var(--c-card-dark)',
-            borderColor: 'var(--c-border)',
-            color: 'var(--c-text)',
-            width: '13.5rem',
-            padding: '0 12px',
-          }}>
-          <Setting5 size="12" />
-          Add filter
-          <ArrowDown2 size="12" />
-        </Button>
-      </div>
-
+    <div className="" style={{ backgroundColor: 'var(--c-background)' }}>
       <div className="rounded-b-lg overflow-hidden">
         <Table
           columns={columns}

@@ -19,7 +19,6 @@ function StatusTag({
   status: 'Rejected' | 'In Negotiation' | 'Under Review' | 'Accepted' | 'Prospective';
 }) {
   const clr = getStatusColor(status);
-  console.log(clr);
   return (
     <div className="flex justify-center w-full items-center">
       <div
