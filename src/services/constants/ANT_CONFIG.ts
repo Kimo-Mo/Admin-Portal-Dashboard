@@ -9,7 +9,7 @@ const MAIN_THEME_TOKEN: ThemeConfig['token'] = {
   fontSize: 14,
   fontSizeXL: 16,
   controlHeight: 34,
-  controlHeightLG: 51,
+  controlHeightLG: 48,
   borderRadiusXS: 0,
 };
 
@@ -41,6 +41,23 @@ export const ANTD_THEME: ThemeConfig = {
       itemMarginInline: 0,
       itemPaddingInline: 12,
       iconMarginInlineEnd: 10,
+      borderRadiusLG: 8,
+    },
+    Breadcrumb: {
+      iconFontSize: 16,
+      separatorMargin: 6,
+    },
+    Button: {
+      iconGap: 4,
+      paddingInlineLG: 16,
+      contentFontSizeLG: 14,
+      borderRadiusLG: 12,
+    },
+    Input: {
+      inputFontSizeLG: 16,
+      paddingBlockLG: 12,
+      paddingInlineLG: 12,
+      borderRadiusLG: 8,
     },
   },
 };
@@ -72,6 +89,23 @@ export const ANTD_THEME_DARK: ThemeConfig = {
       itemMarginInline: 0,
       itemPaddingInline: 12,
       iconMarginInlineEnd: 10,
+      borderRadiusLG: 8,
+    },
+    Breadcrumb: {
+      iconFontSize: 16,
+      separatorMargin: 6,
+    },
+    Button: {
+      iconGap: 4,
+      paddingInlineLG: 16,
+      contentFontSizeLG: 14,
+      borderRadiusLG: 12,
+    },
+    Input: {
+      inputFontSizeLG: 16,
+      paddingBlockLG: 12,
+      paddingInlineLG: 12,
+      borderRadiusLG: 8,
     },
   },
 };

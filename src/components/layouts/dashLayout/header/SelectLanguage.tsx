@@ -13,7 +13,7 @@ const options = [
   {
     label: (
       <span>
-        <img src="src/assets/flags/us.png" alt="EN" style={flagStyle} />
+        <img src="/flags/us.png" alt="EN" style={flagStyle} />
       </span>
     ),
     value: 'en',
@@ -21,7 +21,7 @@ const options = [
   {
     label: (
       <span>
-        <img src="src/assets/flags/fr.png" alt="FR" style={flagStyle} />
+        <img src="/flags/fr.png" alt="FR" style={flagStyle} />
       </span>
     ),
     value: 'fr',

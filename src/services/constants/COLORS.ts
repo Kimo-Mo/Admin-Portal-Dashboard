@@ -2,7 +2,7 @@ export const MAIN_COLORS = {
   light: {
     primary: '#8A2BE2',
     'primary-dark': '#9d4de7',
-    secondary: '#3887e7',
+    secondary: '#9147FF1A',
     background: '#FAFAFA',
     'background-dark': '#F3F3F4',
     text: '#220F34',
@@ -19,7 +19,7 @@ export const MAIN_COLORS = {
   dark: {
     primary: '#8A2BE2',
     'primary-dark': '#4D1D80',
-    secondary: '#3887e7',
+    secondary: '#9147FF1A',
     background: '#0F0F1B',
     'background-dark': '#171727',
     text: '#ffffff',

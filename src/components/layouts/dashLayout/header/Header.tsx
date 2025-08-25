@@ -47,7 +47,7 @@ const Header = () => {
               size="large"
             />
           ) : (
-            <img src="src/assets/images/Full Logo.png" alt="dark atlas logo" />
+            <img src="/images/Full Logo.png" alt="dark atlas logo" />
           )}
         </div>
         <div className="flex justify-between gap-3">
@@ -57,7 +57,7 @@ const Header = () => {
           <HeaderButton icon={<Headphone {...iconStyle} />} />
           <div className="flex justify-between items-center gap-2.5 bg-background-dark px-1 rounded-lg py-1 cursor-pointer text-icon">
             <img
-              src="src/assets/customIcons/user-square.svg"
+              src="/customIcons/user-square.svg"
               alt="avatar"
               style={{ width: '32px' }}
             />
