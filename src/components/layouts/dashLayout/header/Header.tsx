@@ -47,7 +47,7 @@ const Header = () => {
               size="large"
             />
           ) : (
-            <img src="src/assets/images/Full Logo.png" alt="dark atlas logo" />
+            <img src="/src/assets/images/Full Logo.png" alt="dark atlas logo" />
           )}
         </div>
         <div className="flex justify-between gap-3">

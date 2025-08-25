@@ -30,6 +30,7 @@ export const MAIN_COLORS = {
     danger: '#FF383B',
     success: '#6abe39',
     warning: '#FFB200',
+    prospective: '#CCCBCB',
     info: '#05B2DC',
     elevated: '#291A43',
   },

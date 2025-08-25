@@ -1,0 +1,255 @@
+import React, { useState } from 'react';
+import { Table, Input, Button, Dropdown, Space, type MenuProps } from 'antd';
+import { MoreOutlined, ExportOutlined, SyncOutlined } from '@ant-design/icons';
+import type { ColumnsType } from 'antd/es/table';
+import { ArrowDown2, Edit, SearchNormal1, Setting5 } from 'iconsax-reactjs';
+import StatusTag from './Tags/StatusTag';
+import ProductTag from './Tags/ProductTag';
+
+interface DataRecord {
+  key: string;
+  organization: string;
+  owner: string;
+  products: string[];
+  status: 'Rejected' | 'In Negotiation' | 'Under Review' | 'Accepted' | 'Prospective';
+  creationDate: string;
+}
+
+const data: DataRecord[] = [
+  {
+    key: '1',
+    organization: 'CBRE',
+    owner: 'Morgan Bianchi',
+    products: ['DWM', 'CTI', 'DRP'],
+    status: 'Rejected',
+    creationDate: 'Jan 24, 2020',
+  },
+  {
+    key: '2',
+    organization: 'CBRE',
+    owner: 'Jamie Nilsson',
+    products: ['DWM', 'CTI', 'DRP'],
+    status: 'In Negotiation',
+    creationDate: 'Jan 19, 2020',
+  },
+  {
+    key: '3',
+    organization: 'Google',
+    owner: 'Sasha Schmidt',
+    products: ['DWM', 'CTI', 'DRP'],
+    status: 'Under Review',
+    creationDate: 'Jan 19, 2020',
+  },
+  {
+    key: '4',
+    organization: 'CW',
+    owner: 'Alexei Varga',
+    products: ['DWM', 'CTI', 'DRP'],
+    status: 'Accepted',
+    creationDate: 'Jan 19, 2020',
+  },
+  {
+    key: '5',
+    organization: 'OWP',
+    owner: 'Adrian Martinez',
+    products: ['DWM', 'CTI', 'DRP'],
+    status: 'Accepted',
+    creationDate: 'Jan 20, 2020',
+  },
+  {
+    key: '6',
+    organization: 'CW',
+    owner: 'Alex Novak',
+    products: ['DWM', 'CTI', 'DRP'],
+    status: 'Prospective',
+    creationDate: 'Jan 24, 2020',
+  },
+  {
+    key: '7',
+    organization: 'Google',
+    owner: 'Casey Wagner',
+    products: ['DWM', 'CTI', 'DRP'],
+    status: 'In Negotiation',
+    creationDate: 'Jan 20, 2020',
+  },
+  {
+    key: '8',
+    organization: 'CW',
+    owner: 'Casey Wagner',
+    products: ['DWM', 'CTI', 'DRP'],
+    status: 'Rejected',
+    creationDate: 'Jan 20, 2020',
+  },
+  {
+    key: '9',
+    organization: 'OWP',
+    owner: 'Alex Reyes',
+    products: ['DWM', 'CTI', 'DRP'],
+    status: 'Accepted',
+    creationDate: 'Jan 19, 2020',
+  },
+  {
+    key: '10',
+    organization: 'CBRE',
+    owner: 'Jordan Kovacs',
+    products: ['DWM', 'CTI', 'DRP'],
+    status: 'Prospective',
+    creationDate: 'Feb 1, 2020',
+  },
+];
+
+const ProductsTable: React.FC = () => {
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
+
+  const actionItems: MenuProps['items'] = [
+    {
+      key: '1',
+      icon: <ExportOutlined />,
+      label: 'Export',
+    },
+    {
+      key: '2',
+      icon: <SyncOutlined />,
+      label: 'Refresh',
+    },
+  ];
+
+  const columns: ColumnsType<DataRecord> = [
+    {
+      title: 'Organization',
+      dataIndex: 'organization',
+      key: 'organization',
+      sorter: true,
+      render: (text: string) => (
+        <span className="font-medium text-sm" style={{ color: 'var(--c-text)' }}>
+          {text}
+        </span>
+      ),
+    },
+    {
+      title: 'Owner',
+      dataIndex: 'owner',
+      key: 'owner',
+      sorter: true,
+      render: (text: string) => (
+        <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
+          {text}
+        </span>
+      ),
+    },
+    {
+      title: 'Products',
+      dataIndex: 'products',
+      key: 'products',
+      sorter: true,
+      render: (products: string[]) => (
+        <Space size={4}>
+          {products.map((product, index) => (
+            <ProductTag key={index} product={product} />
+          ))}
+        </Space>
+      ),
+    },
+    {
+      title: 'Statuses',
+      dataIndex: 'status',
+      key: 'status',
+      width: 180,
+      sorter: true,
+      render: (status: string) => <StatusTag status={status as DataRecord['status']} />,
+    },
+    {
+      title: 'Creation Date',
+      dataIndex: 'creationDate',
+      key: 'creationDate',
+      sorter: true,
+      render: (text: string) => (
+        <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
+          {text}
+        </span>
+      ),
+    },
+    {
+      title: '',
+      key: 'actions',
+      width: 100,
+      render: () => (
+        <Space>
+          <Button
+            type="text"
+            icon={<Edit />}
+            className="border-none bg-transparent opacity-60 hover:opacity-80"
+            style={{ color: 'var(--c-text)' }}
+            size="small"
+          />
+          <Dropdown menu={{ items: actionItems }} trigger={['click']}>
+            <Button
+              type="text"
+              icon={<MoreOutlined />}
+              className="border-none bg-transparent opacity-60 hover:opacity-80"
+              style={{ color: 'var(--c-text)' }}
+              size="small"
+            />
+          </Dropdown>
+        </Space>
+      ),
+    },
+  ];
+
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: (newSelectedRowKeys: React.Key[]) => {
+      setSelectedRowKeys(newSelectedRowKeys);
+    },
+  };
+
+  return (
+    <div className="min-h-screen p-6" style={{ backgroundColor: 'var(--c-background)' }}>
+      <div
+        className="flex justify-between items-center gap-3 px-6 py-4 rounded-t-lg"
+        style={{
+          // backgroundColor: 'var(--c-card)',
+          // opacity: 0.6,
+          backgroundColor: '#17172799',
+        }}>
+        <Input
+          size="large"
+          placeholder="Search"
+          prefix={<SearchNormal1 style={{ color: 'var(--c-text)', opacity: 0.4 }} />}
+          className="w-full rounded-lg"
+          style={{
+            backgroundColor: 'var(--c-elevated)',
+            borderColor: 'var(--c-border)',
+            color: 'var(--c-text)',
+          }}
+        />
+        <Button
+          size="large"
+          className="rounded-lg flex items-center gap-1.5 opacity-80 hover:opacity-100"
+          style={{
+            backgroundColor: 'var(--c-card-dark)',
+            borderColor: 'var(--c-border)',
+            color: 'var(--c-text)',
+            width: '13.5rem',
+            padding: '0 12px',
+          }}>
+          <Setting5 size="12" />
+          Add filter
+          <ArrowDown2 size="12" />
+        </Button>
+      </div>
+
+      <div className="rounded-b-lg overflow-hidden">
+        <Table
+          columns={columns}
+          dataSource={data}
+          rowSelection={rowSelection}
+          className="rounded-none"
+          rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default ProductsTable;
