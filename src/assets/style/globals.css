@@ -16,6 +16,7 @@
   --color-danger: var(--c-danger);
   --color-success: var(--c-success);
   --color-warning: var(--c-warning);
+  --color-prospective: var(--c-prospective);
   --color-info: var(--c-info);
   --color-elevated: var(--c-elevated);
   --color-icon: var(--c-icon);
@@ -30,4 +31,108 @@ html {
   background-color: var(--c-elevated) !important;
   color: var(--c-primary) !important;
   overflow: visible !important;
+}
+.ant-table {
+  background-color: var(--c-background) !important;
+  border-radius: 0 !important;
+}
+
+.ant-table-container {
+  border-radius: 0 !important;
+}
+
+.ant-table-thead > tr > th {
+  background-color: var(--c-card) !important;
+  border-bottom: 1px solid var(--c-border) !important;
+  border-top: none !important;
+  color: var(--c-text) !important;
+  opacity: 0.6;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 24px !important;
+}
+
+.ant-table-thead > tr > th:first-child {
+  border-radius: 0 !important;
+}
+
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  border-left: 36px solid transparent !important;
+}
+
+.ant-table-thead > tr > th:first-child,
+.ant-table-tbody > tr > td:first-child {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.ant-table-thead > tr > th:last-child,
+.ant-table-tbody > tr > td:last-child {
+  border-right: none !important;
+}
+
+.ant-table-row > .ant-table-cell {
+  padding: 4px 8px !important;
+}
+.ant-table-thead > tr > th:last-child {
+  border-radius: 0 !important;
+}
+
+.even-row > td {
+  background-color: var(--c-background) !important;
+  padding: 16px 24px;
+}
+
+.odd-row > td {
+  background-color: var(--c-background-dark) !important;
+  padding: 16px 24px;
+}
+.ant-table-tbody > tr > td {
+  border-bottom: none !important;
+  border-right: none !important;
+}
+.ant-table-tbody > tr:hover > td {
+  background-color: var(--c-card) !important;
+}
+
+.ant-menu-item-selected {
+  background-color: var(--c-elevated) !important;
+  color: var(--c-primary) !important;
+  overflow: visible !important;
+}
+
+.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--c-primary) !important;
+  border-color: var(--c-primary) !important;
+}
+
+.ant-checkbox-wrapper .ant-checkbox-inner {
+  border-color: var(--c-border) !important;
+  background-color: transparent !important;
+  border-radius: 4px !important;
+}
+
+.ant-checkbox-wrapper .ant-checkbox-inner:hover {
+  border-color: var(--c-primary) !important;
+}
+
+.ant-dropdown {
+  background-color: var(--c-card) !important;
+}
+
+.ant-dropdown .ant-dropdown-menu {
+  background-color: var(--c-card) !important;
+  border: 1px solid var(--c-border) !important;
+  border-radius: 8px !important;
+}
+
+.ant-dropdown .ant-dropdown-menu-item {
+  color: var(--c-text) !important;
+  opacity: 0.8;
+}
+
+.ant-dropdown .ant-dropdown-menu-item:hover {
+  background-color: var(--c-card-dark) !important;
+  opacity: 1;
 }
