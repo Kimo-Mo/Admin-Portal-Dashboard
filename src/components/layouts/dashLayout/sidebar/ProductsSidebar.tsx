@@ -18,7 +18,7 @@ const ProductsSidebar = () => {
       }`}>
       {screens.md && (
         <div className="logo mb-6">
-          <img src="src/assets/images/Full Logo.png" alt="dark atlas logo" />
+          <img src="/images/Full Logo.png" alt="dark atlas logo" />
         </div>
       )}
       <ul className={`flex ${screens.md ? 'flex-col' : 'flex-row'} gap-3.5`}>
