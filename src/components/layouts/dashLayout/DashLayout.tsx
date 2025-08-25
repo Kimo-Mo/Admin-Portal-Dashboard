@@ -11,9 +11,9 @@ const DashLayout = () => {
   const screens = Grid.useBreakpoint();
 
   return (
-    <Layout hasSider className="relative">
+    <Layout hasSider>
       {screens.md && <ProductsSidebar />}
-      <div className="absolute -top-20 md:top-auto bottom-auto md:bottom-0 start-1/2 md:start-0 -translate-x-1/2 md:translate-x-0 -z-1">
+      <div className="fixed -top-20 md:top-auto bottom-auto md:bottom-0 start-1/2 md:start-0 -translate-x-1/2 md:translate-x-0 -z-1">
         <img src="src/assets/images/Art Work.png" alt="art work" />
       </div>
       <Layout>
@@ -22,7 +22,6 @@ const DashLayout = () => {
           hasSider
           style={{
             padding: '.75rem 1rem 0',
-            borderTop: '1px solid var(--c-border)',
           }}>
           {screens.md && <SideBar />}
           {!screens.md && <Drawer />}

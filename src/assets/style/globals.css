@@ -25,9 +25,34 @@ html {
   @apply bg-background text-text/80;
   font-family: 'Inter', sans-serif;
 }
-
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background-dark;
+}
+::-webkit-scrollbar {
+  @apply w-2;
+}
+.ant-menu-item {
+  line-height: 1 !important;
+  height: fit-content !important;
+  padding-block: 6px !important;
+}
 .ant-menu-item-selected {
   background-color: var(--c-elevated) !important;
   color: var(--c-primary) !important;
   overflow: visible !important;
+}
+.ant-menu-inline-collapsed > .ant-menu-item {
+  width: fit-content !important;
+  padding-block: 6px !important;
+  padding-inline: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+.ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon + span {
+  display: none !important;
 }

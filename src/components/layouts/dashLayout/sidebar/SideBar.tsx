@@ -6,11 +6,10 @@ const siderStyle: React.CSSProperties = {
   overflowY: 'auto',
   overflowX: 'hidden',
   position: 'sticky',
+  top: '117px',
   insetInlineStart: 0,
-  top: 0,
   bottom: 0,
-  scrollbarWidth: 'thin',
-  scrollbarGutter: 'stable',
+  height: 'calc(100vh - 117px)',
 };
 
 const SideBar = () => {
