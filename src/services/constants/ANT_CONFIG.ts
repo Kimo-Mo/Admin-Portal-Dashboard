@@ -111,5 +111,8 @@ export const ANTD_THEME_DARK: ThemeConfig = {
       itemMarginBottom: 16,
       verticalLabelPadding: '0 0 12px',
     },
+    Modal: {
+      contentBg: MAIN_COLORS.dark.card,
+    },
   },
 };

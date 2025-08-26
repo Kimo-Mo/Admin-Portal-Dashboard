@@ -4,3 +4,5 @@ export * from './ThemeProvider';
 export * from './ColorsProvider';
 export * from './UIProvider';
 export * from './SideBarProvider';
+export * from './ConfirmPopupProvider';
+export * from './SuccessPopupProvider';

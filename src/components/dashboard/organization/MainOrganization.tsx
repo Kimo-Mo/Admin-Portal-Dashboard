@@ -1,12 +1,24 @@
 import { Button } from 'antd';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
-import { AddSquare, ArrowDown2, Setting5 } from 'iconsax-reactjs';
+import { AddSquare, ArrowDown2, DocumentText1, Setting5 } from 'iconsax-reactjs';
 import ProductsTable from './Table';
 import { useState } from 'react';
 import CreateOrgDrawer from './CreateOrgDrawer';
+import { useConfirmPopup } from '@/services/contexts';
+import { useSuccessPopup } from '@/services/contexts';
 
 const MainOrganization = () => {
   const [createOrgDrawer, setCreateOrgDrawer] = useState(false);
+  const { setOpenConfirm, setContent } = useConfirmPopup();
+  const { setSuccessContent } = useSuccessPopup();
+  const onExportClick = () => {
+    setContent({
+      icon: <DocumentText1 size={36} color="var(--c-success)" />,
+      text: 'Are You Sure You Want To Export the selected organizations?',
+    });
+    setOpenConfirm(true);
+    setSuccessContent('organizations exported successfully');
+  };
   const openCreateOrgDrawer = () => {
     setCreateOrgDrawer(true);
   };
@@ -20,7 +32,7 @@ const MainOrganization = () => {
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-xl font-medium">Organizations</h1>
         <div className="flex items-center gap-3">
-          <ExportButton />
+          <ExportButton onClick={onExportClick} />
           <Button
             size="large"
             style={{

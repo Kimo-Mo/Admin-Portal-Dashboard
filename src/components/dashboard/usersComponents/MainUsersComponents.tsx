@@ -1,16 +1,29 @@
 import { Button } from 'antd';
 import UsersTable from './UsersTable';
-import { AddSquare, ArrowDown2, Setting5, Sort } from 'iconsax-reactjs';
+import { AddSquare, ArrowDown2, TickSquare, Setting5, Sort } from 'iconsax-reactjs';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
+import { useConfirmPopup } from '@/services/contexts';
+import { useSuccessPopup } from '@/services/contexts';
 
 const MainUsersComponents = () => {
+  const { setOpenConfirm, setContent } = useConfirmPopup();
+  const { setSuccessContent } = useSuccessPopup();
+  const onExportClick = () => {
+    setContent({
+      icon: <TickSquare variant="Bulk" size={36} color="var(--c-success)" />,
+      text: 'Are You Sure You Want To Export the selected users?',
+    });
+    setOpenConfirm(true);
+    setSuccessContent('users exported successfully');
+  };
+  
   return (
     <section>
       <IBreadCrumb title="Users" />
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-xl font-medium">Users</h1>
         <div className="flex items-center gap-3">
-          <ExportButton title="Users" />
+          <ExportButton title="Users" onClick={onExportClick} />
           <Button type="primary" size="large" icon={<AddSquare variant="Bulk" />}>
             Add New Users
           </Button>

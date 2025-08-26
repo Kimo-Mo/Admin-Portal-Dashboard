@@ -4,6 +4,7 @@ import type { ColumnsType } from 'antd/es/table';
 import { Edit, Eye, More, Refresh, Trash } from 'iconsax-reactjs';
 
 interface UserRecord {
+  key: string;
   id: string;
   name: string;
   email: string;
@@ -15,6 +16,7 @@ interface UserRecord {
 
 const data: UserRecord[] = [
   {
+    key: '1',
     id: '54.231.232.197',
     name: 'Ahmed',
     email: 'AhmedAhmed@gmail.com',
@@ -24,6 +26,7 @@ const data: UserRecord[] = [
     creationDate: 'Jan 15, 2024',
   },
   {
+    key: '2',
     id: '192.168.1.45',
     name: 'Sarah Johnson',
     email: 'sarah.johnson@company.com',
@@ -33,6 +36,7 @@ const data: UserRecord[] = [
     creationDate: 'Mar 10, 2024',
   },
   {
+    key: '3',
     id: '10.0.0.123',
     name: 'Marcus Chen',
     email: 'marcus.chen@company.com',
@@ -42,6 +46,7 @@ const data: UserRecord[] = [
     creationDate: 'Feb 28, 2024',
   },
   {
+    key: '4',
     id: '172.16.254.1',
     name: 'Elena Rodriguez',
     email: 'elena.rodriguez@company.com',
@@ -51,6 +56,7 @@ const data: UserRecord[] = [
     creationDate: 'Jan 5, 2024',
   },
   {
+    key: '5',
     id: '203.0.113.42',
     name: 'David Kim',
     email: 'david.kim@company.com',
@@ -60,6 +66,7 @@ const data: UserRecord[] = [
     creationDate: 'Aug 23, 2025',
   },
   {
+    key: '6',
     id: '198.51.100.88',
     name: 'Lisa Thompson',
     email: 'lisa.thompson@company.com',
@@ -69,6 +76,7 @@ const data: UserRecord[] = [
     creationDate: 'Dec 12, 2023',
   },
   {
+    key: '7',
     id: '192.0.2.146',
     name: 'Michael Brown',
     email: 'michael.brown@company.com',
@@ -78,6 +86,7 @@ const data: UserRecord[] = [
     creationDate: 'May 18, 2024',
   },
   {
+    key: '8',
     id: '10.1.1.200',
     name: 'Anna Kowalski',
     email: 'anna.kowalski@company.com',
@@ -87,6 +96,7 @@ const data: UserRecord[] = [
     creationDate: 'Apr 7, 2024',
   },
   {
+    key: '9',
     id: '172.31.0.55',
     name: 'James Wilson',
     email: 'james.wilson@company.com',
@@ -96,6 +106,7 @@ const data: UserRecord[] = [
     creationDate: 'Jun 22, 2024',
   },
   {
+    key: '10',
     id: '192.168.100.77',
     name: 'Priya Patel',
     email: 'priya.patel@company.com',

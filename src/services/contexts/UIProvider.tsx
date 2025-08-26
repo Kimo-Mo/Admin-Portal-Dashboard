@@ -4,6 +4,8 @@ import { ThemeProvider } from './ThemeProvider';
 import { ColorsProvider } from './ColorsProvider';
 import { QueryProvider } from './QueryProvider';
 import { SideBarProvider } from './SideBarProvider';
+import { ConfirmPopupProvider } from './ConfirmPopupProvider';
+import { SuccessPopupProvider } from './SuccessPopupProvider';
 
 export const UIProvider = ({ children }: { children: ReactNode }) => {
   return (
@@ -11,7 +13,11 @@ export const UIProvider = ({ children }: { children: ReactNode }) => {
       <ThemeProvider>
         <ColorsProvider>
           <AntDProvider>
-            <SideBarProvider>{children}</SideBarProvider>
+            <SideBarProvider>
+              <SuccessPopupProvider>
+                <ConfirmPopupProvider>{children}</ConfirmPopupProvider>
+              </SuccessPopupProvider>
+            </SideBarProvider>
           </AntDProvider>
         </ColorsProvider>
       </ThemeProvider>

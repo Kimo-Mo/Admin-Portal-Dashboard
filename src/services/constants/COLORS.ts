@@ -28,7 +28,7 @@ export const MAIN_COLORS = {
     border: '#232332',
     input: '#1C1531',
     danger: '#FF383B',
-    success: '#6abe39',
+    success: '#136741',
     warning: '#FFB200',
     prospective: '#CCCBCB',
     info: '#05B2DC',
