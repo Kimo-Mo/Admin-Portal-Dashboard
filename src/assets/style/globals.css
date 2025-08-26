@@ -87,6 +87,7 @@ html {
   background-color: var(--c-card) !important;
   padding: 16px 24px;
 }
+
 .ant-table-tbody > tr > td {
   border-bottom: none !important;
   border-right: none !important;
@@ -167,6 +168,6 @@ html {
   font-weight: bold !important;
 }
 
-.ant-form-item-label>label {
+.ant-form-item-label > label {
   height: auto !important;
 }

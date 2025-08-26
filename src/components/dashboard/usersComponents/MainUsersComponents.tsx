@@ -17,7 +17,7 @@ const MainUsersComponents = () => {
         </div>
       </div>
       <div className="bg-card rounded-xl border border-border">
-        <div className="pt-6 pb-8.5 px-5">
+        <div className="p-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2.5">
               <h2 className="text-lg font-extrabold">Users</h2>
