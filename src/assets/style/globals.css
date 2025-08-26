@@ -159,14 +159,18 @@ html {
 }
 
 .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
-  background-color: var(--c-primary) !important;
+  /* background-color: var(--c-primary) !important; */
   border-color: var(--c-primary) !important;
 }
 
 .ant-checkbox-wrapper .ant-checkbox-inner {
-  border-color: var(--c-border) !important;
+  border: solid 2px color-mix(in srgb, var(--c-text) 50%, transparent) !important;
   background-color: transparent !important;
   border-radius: 4px !important;
+}
+.ant-checkbox-checked .ant-checkbox-inner::after {
+  font-size: '1px';
+  border-color: var(--c-primary) !important; /* Color of the checkmark itself */
 }
 
 .ant-checkbox-wrapper .ant-checkbox-inner:hover {
