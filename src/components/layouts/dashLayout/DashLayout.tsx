@@ -14,8 +14,8 @@ const DashLayout = () => {
     <Layout hasSider>
       {screens.md && <ProductsSidebar />}
 
-      <div className="fixed -top-20 md:top-auto bottom-auto md:bottom-0 start-1/2 md:start-0 -translate-x-1/2 md:translate-x-0 -z-1">
-        <img src="src/assets/images/Art Work.png" alt="art work" />
+      <div className="fixed -top-20 md:top-auto bottom-auto md:bottom-0 start-1/2 md:start-0 -translate-x-1/2 md:translate-x-0 pointer-events-none">
+        <img src="/images/Art Work.png" alt="art work" />
       </div>
       <Layout>
         <Header />

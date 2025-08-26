@@ -22,7 +22,7 @@ function StatusTag({
   return (
     <div className="flex justify-center w-full items-center">
       <div
-        className="py-1 px-3 rounded-xl border w-full leading-[1.4] flex justify-center items-center"
+        className="py-1 px-3 rounded-lg border w-full leading-[1.4] flex justify-center items-center"
         style={{
           color: `${clr}`,
           backgroundColor: `color-mix(in srgb, ${clr} 20%, transparent)`,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table, Button, Dropdown, Space, type MenuProps, Switch } from 'antd';
+import { Table, Dropdown, Space, type MenuProps, Switch } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { Edit, Eye, More, Refresh, Trash } from 'iconsax-reactjs';
 
@@ -172,7 +172,7 @@ const UsersTable: React.FC = () => {
       width: 140,
       sorter: true,
       render: (status: boolean) => (
-        <div className={`users-table-switch ${status ? 'active' : 'inactive'} flex gap-2`}>
+        <div className={`users-table-switch ${status ? 'active' : 'inactive'} flex gap-2 my-2.5`}>
           <Switch checked={status} /> <span>{status ? 'Active' : 'Inactive'}</span>
         </div>
       ),
@@ -183,21 +183,15 @@ const UsersTable: React.FC = () => {
       key: 'actions',
       width: 130,
       render: () => (
-        <Space>
-          <Button
-            type="text"
-            icon={<Edit size={20} />}
-            className="border-none bg-transparent opacity-60 hover:opacity-80"
-            style={{ color: 'var(--c-text)' }}
-            size="small"
+        <Space className="pt-2">
+          <Edit
+            size={20}
+            className="border-none bg-transparent opacity-60 hover:opacity-80 cursor-pointer"
           />
           <Dropdown menu={{ items: actionItems }} trigger={['click']}>
-            <Button
-              type="text"
-              icon={<More size={20} className="rotate-90" />}
-              className="border-none bg-transparent opacity-60 hover:opacity-80 p-0 m-0"
-              style={{ color: 'var(--c-text)' }}
-              size="small"
+            <More
+              size={20}
+              className="rotate-90 border-none bg-transparent opacity-60 hover:opacity-80 p-0 m-0 cursor-pointer"
             />
           </Dropdown>
         </Space>

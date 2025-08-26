@@ -135,12 +135,13 @@ html {
 }
 
 .even-row > td {
-  background-color: var(--c-background) !important;
+  /* background-color: var(--c-background) !important; */
+  background-color: color-mix(in srgb, var(--c-background) 40%, transparent) !important;
   padding: 16px 24px;
 }
 
 .odd-row > td {
-  background-color: var(--c-card) !important;
+  background-color: color-mix(in srgb, var(--c-card) 40%, transparent) !important;
   padding: 16px 24px;
 }
 
@@ -158,17 +159,17 @@ html {
   color: var(--c-primary) !important;
   overflow: visible !important;
 }
-
 .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
   /* background-color: var(--c-primary) !important; */
   border-color: var(--c-primary) !important;
 }
 
 .ant-checkbox-wrapper .ant-checkbox-inner {
-  border: solid 2px color-mix(in srgb, var(--c-text) 50%, transparent) !important;
+  border: solid 2px color-mix(in srgb, var(--c-text) 30%, transparent) !important;
   background-color: transparent !important;
   border-radius: 4px !important;
 }
+
 .ant-checkbox-checked .ant-checkbox-inner::after {
   font-size: '1px';
   border-color: var(--c-primary) !important; /* Color of the checkmark itself */
@@ -199,6 +200,7 @@ html {
 .ant-steps {
   margin-top: 3rem;
 }
+
 .ant-steps-item-container {
   text-align: center !important;
   display: flex !important;
@@ -207,30 +209,33 @@ html {
   flex-direction: column !important;
   gap: 6px !important;
 }
+
 .ant-steps-item:last-child {
   flex: 1 !important;
 }
+
 .ant-steps-item-tail {
   display: none !important;
 }
+
 .ant-steps-item-icon {
   padding: 16px !important;
   border-radius: 12px !important;
   background-color: var(--c-card) !important;
   margin: 0 !important;
 }
+
 .ant-steps-item-content {
   margin-top: 0 !important;
 }
+
 .ant-steps-item-title {
   font-size: 12px !important;
   font-weight: bold !important;
 }
-
 .ant-form-item-label > label {
   height: auto !important;
 }
-
 .ant-menu-inline-collapsed > .ant-menu-item {
   width: fit-content !important;
   padding-block: 6px !important;

@@ -220,6 +220,7 @@ const FormStep = ({ fields, form }: { fields: FormFieldConfig[]; form: FormInsta
       size="large"
       layout="vertical"
       form={form}
+      requiredMark={false}
       style={{ backgroundColor: 'var(--c-background)', maxWidth: 'none', border: 'none' }}>
       {nonDateFields.map(renderField)}
       {dateFields.length > 0 && (
@@ -318,7 +319,14 @@ const CreateOrgDrawer = ({ createOrgDrawer, onClose }: CreateOrgDrawerProps) => 
       <div>{currentStepContent}</div>
       <div className="flex items-center justify-end gap-2">
         {current > 0 && (
-          <Button size="large" onClick={handlePrev} disabled={loading}>
+          <Button
+            size="large"
+            onClick={handlePrev}
+            style={{
+              background: 'linear-gradient(90deg, #281543 , #0E2248 )',
+              color: '#fff',
+            }}
+            disabled={loading}>
             Previous
           </Button>
         )}
