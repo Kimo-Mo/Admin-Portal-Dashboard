@@ -3,7 +3,7 @@ import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import { AddSquare, ArrowDown2, DocumentText1, Setting5 } from 'iconsax-reactjs';
 import ProductsTable from './Table';
 import { useState } from 'react';
-import CreateOrgDrawer from './CreateOrgDrawer';
+import { CreateOrgDrawer } from './createOrgDrawer';
 import { useConfirmPopup } from '@/services/contexts';
 import { useSuccessPopup } from '@/services/contexts';
 
