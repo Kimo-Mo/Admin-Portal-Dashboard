@@ -21,7 +21,7 @@ const Header = () => {
   const { collapsedSideBar, setCollapsedSideBar, drawerOpened, setDrawerOpened } = useSideBar();
   const screens = Grid.useBreakpoint();
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center sticky top-0 z-50 bg-background border-b border-border">
       <div className="flex justify-between items-center my-6 px-4 w-full">
         <div className="flex justify-between items-center gap-5">
           {screens.md ? (
