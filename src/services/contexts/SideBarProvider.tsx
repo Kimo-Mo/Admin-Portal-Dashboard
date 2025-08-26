@@ -20,17 +20,21 @@ export const SideBarProvider = ({ children }: { children: ReactNode }) => {
   const [drawerOpened, setDrawerOpened] = useState(false);
   const [selectedKey, setSelectedKey] = useState('dashboard');
   const [selectedProduct, setSelectedProduct] = useState<SidebarProduct>('ASM');
-  const value = {
-    collapsedSideBar,
-    setCollapsedSideBar,
-    drawerOpened,
-    setDrawerOpened,
-    selectedKey,
-    setSelectedKey,
-    selectedProduct,
-    setSelectedProduct,
-  };
-  return <SideBarContext.Provider value={value}>{children}</SideBarContext.Provider>;
+  return (
+    <SideBarContext.Provider
+      value={{
+        collapsedSideBar,
+        setCollapsedSideBar,
+        drawerOpened,
+        setDrawerOpened,
+        selectedKey,
+        setSelectedKey,
+        selectedProduct,
+        setSelectedProduct,
+      }}>
+      {children}
+    </SideBarContext.Provider>
+  );
 };
 
 export const useSideBar = () => {

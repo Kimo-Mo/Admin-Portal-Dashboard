@@ -26,16 +26,29 @@ html {
   @apply bg-background text-text/80;
   font-family: 'Inter', sans-serif;
 }
-
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background-dark;
+}
+::-webkit-scrollbar {
+  @apply w-2;
+}
+.ant-menu-item {
+  line-height: 1 !important;
+  height: fit-content !important;
+  padding-block: 6px !important;
+}
 .ant-menu-item-selected {
   background-color: var(--c-elevated) !important;
   color: var(--c-primary) !important;
   overflow: visible !important;
 }
+
 .ant-table {
   border-radius: 0 !important;
 }
-
 .ant-table-container {
   border-radius: 0 !important;
 }
@@ -43,9 +56,9 @@ html {
 .ant-table-thead > tr > th {
   background-color: var(--c-card) !important;
   border-bottom: 1px solid var(--c-border) !important;
-  border-top: none !important;
+  border-right: none !important;
   color: var(--c-text) !important;
-  opacity: 0.6;
+  opacity: 1;
   font-weight: 600;
   font-size: 14px;
   padding: 8px 24px !important;
@@ -55,15 +68,46 @@ html {
   border-radius: 0 !important;
 }
 
-.ant-table-thead > tr > th,
-.ant-table-tbody > tr > td {
-  border-left: 36px solid transparent !important;
-}
-
 .ant-table-thead > tr > th:first-child,
 .ant-table-tbody > tr > td:first-child {
   border-left: none !important;
+}
+/* زي الخرا طبعا بس اعمل ايه */
+.ant-table-thead > tr > th:nth-child(3) {
+  border-left: none !important;
+}
+.ant-table-tbody > tr > td:nth-child(3) {
+  border-left: 28px solid transparent !important;
+}
+/* Title of columns */
+.ant-table-column-title {
+  flex: none !important;
+  font-weight: 400;
+}
+.ant-table-column-sorters {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.ant-table-thead > tr > .ant-table-cell:nth-child(2) > .ant-table-column-sorters {
+  justify-content: left !important;
+}
+
+/* columns spaces */
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  border-left: 20px solid transparent !important;
   border-right: none !important;
+}
+
+.ant-table-thead > tr > th:nth-child(2) {
+  border-left: none !important;
+}
+.ant-table-tbody > tr > td:last-child {
+  border-left: none !important;
+}
+.ant-table-thead > tr > th:last-child {
+  border-left: 25px solid transparent !important;
 }
 
 .ant-table-thead > tr > th:last-child,
@@ -72,10 +116,22 @@ html {
 }
 
 .ant-table-row > .ant-table-cell {
+  text-align: center !important;
   padding: 4px 8px !important;
 }
+
+.ant-table-row > .ant-table-cell:nth-child(2) {
+  text-align: left !important;
+  padding: 4px 8px !important;
+}
+
 .ant-table-thead > tr > th:last-child {
   border-radius: 0 !important;
+}
+
+.ant-table-thead .ant-table-cell::before {
+  background-color: transparent !important;
+  border: 0 !important;
 }
 
 .even-row > td {
@@ -92,8 +148,9 @@ html {
   border-bottom: none !important;
   border-right: none !important;
 }
-.ant-table-tbody > tr:hover > td {
-  background-color: var(--c-card) !important;
+.ant-table-tbody > tr:hover > td,
+.ant-table-row.ant-table-row-selected > td {
+  background-color: color-mix(in srgb, var(--c-primary) 15%, transparent) !important;
 }
 
 .ant-menu-item-selected {
@@ -103,33 +160,35 @@ html {
 }
 
 .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
-  background-color: var(--c-primary) !important;
+  /* background-color: var(--c-primary) !important; */
   border-color: var(--c-primary) !important;
 }
 
 .ant-checkbox-wrapper .ant-checkbox-inner {
-  border-color: var(--c-border) !important;
+  border: solid 2px color-mix(in srgb, var(--c-text) 50%, transparent) !important;
   background-color: transparent !important;
   border-radius: 4px !important;
+}
+.ant-checkbox-checked .ant-checkbox-inner::after {
+  font-size: '1px';
+  border-color: var(--c-primary) !important; /* Color of the checkmark itself */
 }
 
 .ant-checkbox-wrapper .ant-checkbox-inner:hover {
   border-color: var(--c-primary) !important;
 }
 
-.ant-dropdown {
-  background-color: var(--c-card) !important;
-}
-
 .ant-dropdown .ant-dropdown-menu {
-  background-color: var(--c-card) !important;
+  background-color: var(--c-background-dark) !important;
   border: 1px solid var(--c-border) !important;
   border-radius: 8px !important;
 }
 
 .ant-dropdown .ant-dropdown-menu-item {
   color: var(--c-text) !important;
-  opacity: 0.8;
+  padding-block: 6px;
+  padding-inline: 8px;
+  opacity: 0.6;
 }
 
 .ant-dropdown .ant-dropdown-menu-item:hover {
@@ -170,4 +229,50 @@ html {
 
 .ant-form-item-label > label {
   height: auto !important;
+}
+
+.ant-menu-inline-collapsed > .ant-menu-item {
+  width: fit-content !important;
+  padding-block: 6px !important;
+  padding-inline: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+.ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon + span {
+  display: none !important;
+}
+
+.users-table-switch.active > .ant-switch {
+  background-color: #0d583e !important;
+}
+.users-table-switch.active {
+  color: #0d583e !important;
+}
+.users-table-switch > .ant-switch-checked > .ant-switch-handle::before {
+  background-color: #6ad18e !important;
+}
+
+.ant-menu-inline-collapsed > .ant-menu-item {
+  width: fit-content !important;
+  padding-block: 6px !important;
+  padding-inline: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+.ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon + span {
+  display: none !important;
+}
+
+.users-table-switch.active > .ant-switch {
+  background-color: #0d583e !important;
+}
+.users-table-switch.active {
+  color: #0d583e !important;
+}
+.users-table-switch > .ant-switch-checked > .ant-switch-handle::before {
+  background-color: #6ad18e !important;
 }

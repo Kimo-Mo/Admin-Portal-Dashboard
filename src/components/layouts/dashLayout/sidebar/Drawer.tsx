@@ -18,11 +18,11 @@ const Drawer = () => {
       }}
       styles={{
         header: { borderBottom: '1px solid var(--c-border)' },
-        body: { scrollbarWidth: 'thin', scrollbarGutter: 'stable', paddingInline: '20px' },
+        body: { paddingInline: '20px' },
       }}
       open={drawerOpened}
       onClose={() => setDrawerOpened(false)}>
-      <div className="flex-1 flex flex-col justify-between">
+      <div className="flex-1">
         <SideBarContent />
       </div>
       <div className="flex flex-col items-center gap-4 mt-4 mr-0.5">

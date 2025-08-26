@@ -1,6 +1,6 @@
 import { Button } from 'antd';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
-import { AddSquare, ArrowDown2, Setting5, Sort } from 'iconsax-reactjs';
+import { AddSquare, ArrowDown2, Setting5 } from 'iconsax-reactjs';
 import ProductsTable from './Table';
 import { useState } from 'react';
 import CreateOrgDrawer from './CreateOrgDrawer';
@@ -39,17 +39,7 @@ const MainOrganization = () => {
         </div>
       </div>
       <div className="bg-card rounded-xl border border-border">
-        <div className="pt-6 pb-8.5 px-5">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2.5">
-              <h2 className="text-lg font-extrabold">Organizations</h2>
-              <span className="text-text/50">(120)</span>
-            </div>
-            <div className="flex justify-center items-center gap-2 p-2 cursor-pointer">
-              <Sort className="text-primary" />
-              <span className="text-base">Newest First</span>
-            </div>
-          </div>
+        <div className="p-4">
           <div className="flex items-center gap-3">
             <SearchInput />
             <Button
@@ -65,12 +55,14 @@ const MainOrganization = () => {
               }}
               icon={<Setting5 />}>
               Add Filter
-              <ArrowDown2 className="ms-7.5" />
+              <ArrowDown2 className="ms-4.5" size={24} />
             </Button>
           </div>
         </div>
         <ProductsTable />
       </div>
+
+      <div className="w-full mt-4 flex items-center flex-col">1 2 3</div>
     </section>
   );
 };
