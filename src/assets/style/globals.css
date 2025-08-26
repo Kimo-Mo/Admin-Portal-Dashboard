@@ -49,7 +49,6 @@ html {
 .ant-table {
   border-radius: 0 !important;
 }
-
 .ant-table-container {
   border-radius: 0 !important;
 }
@@ -57,9 +56,9 @@ html {
 .ant-table-thead > tr > th {
   background-color: var(--c-card) !important;
   border-bottom: 1px solid var(--c-border) !important;
-  border-top: none !important;
+  border-right: none !important;
   color: var(--c-text) !important;
-  opacity: 0.6;
+  opacity: 1;
   font-weight: 600;
   font-size: 14px;
   padding: 8px 24px !important;
@@ -69,15 +68,46 @@ html {
   border-radius: 0 !important;
 }
 
-.ant-table-thead > tr > th,
-.ant-table-tbody > tr > td {
-  border-left: 36px solid transparent !important;
-}
-
 .ant-table-thead > tr > th:first-child,
 .ant-table-tbody > tr > td:first-child {
   border-left: none !important;
+}
+/* زي الخرا طبعا بس اعمل ايه */
+.ant-table-thead > tr > th:nth-child(3) {
+  border-left: none !important;
+}
+.ant-table-tbody > tr > td:nth-child(3) {
+  border-left: 28px solid transparent !important;
+}
+/* Title of columns */
+.ant-table-column-title {
+  flex: none !important;
+  font-weight: 400;
+}
+.ant-table-column-sorters {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.ant-table-thead > tr > .ant-table-cell:nth-child(2) > .ant-table-column-sorters {
+  justify-content: left !important;
+}
+
+/* columns spaces */
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  border-left: 20px solid transparent !important;
   border-right: none !important;
+}
+
+.ant-table-thead > tr > th:nth-child(2) {
+  border-left: none !important;
+}
+.ant-table-tbody > tr > td:last-child {
+  border-left: none !important;
+}
+.ant-table-thead > tr > th:last-child {
+  border-left: 25px solid transparent !important;
 }
 
 .ant-table-thead > tr > th:last-child,
@@ -86,10 +116,22 @@ html {
 }
 
 .ant-table-row > .ant-table-cell {
+  text-align: center !important;
   padding: 4px 8px !important;
 }
+
+.ant-table-row > .ant-table-cell:nth-child(2) {
+  text-align: left !important;
+  padding: 4px 8px !important;
+}
+
 .ant-table-thead > tr > th:last-child {
   border-radius: 0 !important;
+}
+
+.ant-table-thead .ant-table-cell::before {
+  background-color: transparent !important;
+  border: 0 !important;
 }
 
 .even-row > td {
@@ -105,8 +147,9 @@ html {
   border-bottom: none !important;
   border-right: none !important;
 }
-.ant-table-tbody > tr:hover > td {
-  background-color: var(--c-card) !important;
+.ant-table-tbody > tr:hover > td,
+.ant-table-row.ant-table-row-selected > td {
+  background-color: color-mix(in srgb, var(--c-primary) 15%, transparent) !important;
 }
 
 .ant-menu-item-selected {
@@ -130,19 +173,17 @@ html {
   border-color: var(--c-primary) !important;
 }
 
-.ant-dropdown {
-  background-color: var(--c-card) !important;
-}
-
 .ant-dropdown .ant-dropdown-menu {
-  background-color: var(--c-card) !important;
+  background-color: var(--c-background-dark) !important;
   border: 1px solid var(--c-border) !important;
   border-radius: 8px !important;
 }
 
 .ant-dropdown .ant-dropdown-menu-item {
   color: var(--c-text) !important;
-  opacity: 0.8;
+  padding-block: 6px;
+  padding-inline: 8px;
+  opacity: 0.6;
 }
 
 .ant-dropdown .ant-dropdown-menu-item:hover {
@@ -184,6 +225,7 @@ html {
 .ant-form-item-label > label {
   height: auto !important;
 }
+
 .ant-menu-inline-collapsed > .ant-menu-item {
   width: fit-content !important;
   padding-block: 6px !important;

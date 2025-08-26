@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Button, Dropdown, Space, type MenuProps } from 'antd';
-import { MoreOutlined, ExportOutlined, SyncOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
-import { Edit } from 'iconsax-reactjs';
+import { Edit, Eye, More, Refresh, Trash } from 'iconsax-reactjs';
 import StatusTag from './Tags/StatusTag';
 import ProductTag from './Tags/ProductTag';
 
@@ -104,12 +103,12 @@ const ProductsTable: React.FC = () => {
   const actionItems: MenuProps['items'] = [
     {
       key: '1',
-      icon: <ExportOutlined />,
-      label: 'Export',
+      icon: <Eye size={24} />,
+      label: <span className="mr-20">Impersonate</span>,
     },
     {
       key: '2',
-      icon: <SyncOutlined />,
+      icon: <Trash size={24} />,
       label: 'Refresh',
     },
   ];
@@ -121,7 +120,7 @@ const ProductsTable: React.FC = () => {
       key: 'organization',
       sorter: true,
       render: (text: string) => (
-        <span className="font-medium text-sm" style={{ color: 'var(--c-text)' }}>
+        <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
           {text}
         </span>
       ),
@@ -130,9 +129,12 @@ const ProductsTable: React.FC = () => {
       title: 'Owner',
       dataIndex: 'owner',
       key: 'owner',
+      width: 150,
       sorter: true,
       render: (text: string) => (
-        <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
+        <span
+          className="text-sm opacity-60 flex items-center justify-baseline"
+          style={{ color: 'var(--c-text)' }}>
           {text}
         </span>
       ),
@@ -170,14 +172,15 @@ const ProductsTable: React.FC = () => {
       ),
     },
     {
-      title: '',
+      title: <Refresh className="text-primary rotate-20" size={32} />,
+
       key: 'actions',
-      width: 100,
+      width: 130,
       render: () => (
         <Space>
           <Button
             type="text"
-            icon={<Edit />}
+            icon={<Edit size={20} />}
             className="border-none bg-transparent opacity-60 hover:opacity-80"
             style={{ color: 'var(--c-text)' }}
             size="small"
@@ -185,8 +188,8 @@ const ProductsTable: React.FC = () => {
           <Dropdown menu={{ items: actionItems }} trigger={['click']}>
             <Button
               type="text"
-              icon={<MoreOutlined />}
-              className="border-none bg-transparent opacity-60 hover:opacity-80"
+              icon={<More size={20} className="rotate-90" />}
+              className="border-none bg-transparent opacity-60 hover:opacity-80 p-0 m-0"
               style={{ color: 'var(--c-text)' }}
               size="small"
             />
