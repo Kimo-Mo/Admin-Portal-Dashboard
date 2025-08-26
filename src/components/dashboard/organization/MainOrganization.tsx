@@ -61,6 +61,8 @@ const MainOrganization = () => {
         </div>
         <ProductsTable />
       </div>
+
+      <div className="w-full mt-4 flex items-center flex-col">1 2 3</div>
     </section>
   );
 };

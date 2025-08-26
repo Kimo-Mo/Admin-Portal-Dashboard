@@ -99,7 +99,6 @@ const data: DataRecord[] = [
 
 const ProductsTable: React.FC = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-
   const actionItems: MenuProps['items'] = [
     {
       key: '1',
@@ -207,17 +206,15 @@ const ProductsTable: React.FC = () => {
   };
 
   return (
-    <div className="" style={{ backgroundColor: 'var(--c-background)' }}>
-      <div className="rounded-b-lg overflow-auto">
-        <Table
-          columns={columns}
-          dataSource={data}
-          rowSelection={rowSelection}
-          pagination={false}
-          className="rounded-none"
-          rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
-        />
-      </div>
+    <div className="rounded-b-lg overflow-auto w-full">
+      <Table
+        columns={columns}
+        dataSource={data}
+        rowSelection={rowSelection}
+        pagination={false}
+        className="rounded-none w-full"
+        rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
+      />
     </div>
   );
 };
