@@ -18,7 +18,7 @@ const SideBar = () => {
     <Sider
       collapsed={collapsedSideBar}
       breakpoint="lg"
-      width={'15.25rem'}
+      width={226}
       style={siderStyle}
       className="*:flex *:flex-col *:justify-between">
       <SideBarContent />

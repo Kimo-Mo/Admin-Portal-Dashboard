@@ -16,6 +16,7 @@
   --color-danger: var(--c-danger);
   --color-success: var(--c-success);
   --color-warning: var(--c-warning);
+  --color-prospective: var(--c-prospective);
   --color-info: var(--c-info);
   --color-elevated: var(--c-elevated);
   --color-icon: var(--c-icon);
@@ -44,6 +45,197 @@ html {
   color: var(--c-primary) !important;
   overflow: visible !important;
 }
+
+.ant-table {
+  border-radius: 0 !important;
+}
+.ant-table-container {
+  border-radius: 0 !important;
+}
+
+.ant-table-thead > tr > th {
+  background-color: var(--c-card) !important;
+  border-bottom: 1px solid var(--c-border) !important;
+  border-right: none !important;
+  color: var(--c-text) !important;
+  opacity: 1;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 24px !important;
+}
+
+.ant-table-thead > tr > th:first-child {
+  border-radius: 0 !important;
+}
+
+.ant-table-thead > tr > th:first-child,
+.ant-table-tbody > tr > td:first-child {
+  border-left: none !important;
+}
+/* زي الخرا طبعا بس اعمل ايه */
+.ant-table-thead > tr > th:nth-child(3) {
+  border-left: none !important;
+}
+.ant-table-tbody > tr > td:nth-child(3) {
+  border-left: 28px solid transparent !important;
+}
+/* Title of columns */
+.ant-table-column-title {
+  flex: none !important;
+  font-weight: 400;
+}
+.ant-table-column-sorters {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.ant-table-thead > tr > .ant-table-cell:nth-child(2) > .ant-table-column-sorters {
+  justify-content: left !important;
+}
+
+/* columns spaces */
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  border-left: 20px solid transparent !important;
+  border-right: none !important;
+}
+
+.ant-table-thead > tr > th:nth-child(2) {
+  border-left: none !important;
+}
+.ant-table-tbody > tr > td:last-child {
+  border-left: none !important;
+}
+.ant-table-thead > tr > th:last-child {
+  border-left: 25px solid transparent !important;
+}
+
+.ant-table-thead > tr > th:last-child,
+.ant-table-tbody > tr > td:last-child {
+  border-right: none !important;
+}
+
+.ant-table-row > .ant-table-cell {
+  text-align: center !important;
+  padding: 4px 8px !important;
+}
+
+.ant-table-row > .ant-table-cell:nth-child(2) {
+  text-align: left !important;
+  padding: 4px 8px !important;
+}
+
+.ant-table-thead > tr > th:last-child {
+  border-radius: 0 !important;
+}
+
+.ant-table-thead .ant-table-cell::before {
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+.even-row > td {
+  /* background-color: var(--c-background) !important; */
+  background-color: color-mix(in srgb, var(--c-background) 40%, transparent) !important;
+  padding: 16px 24px;
+}
+
+.odd-row > td {
+  background-color: color-mix(in srgb, var(--c-card) 40%, transparent) !important;
+  padding: 16px 24px;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: none !important;
+  border-right: none !important;
+}
+.ant-table-tbody > tr:hover > td,
+.ant-table-row.ant-table-row-selected > td {
+  background-color: color-mix(in srgb, var(--c-primary) 15%, transparent) !important;
+}
+
+.ant-menu-item-selected {
+  background-color: var(--c-elevated) !important;
+  color: var(--c-primary) !important;
+  overflow: visible !important;
+}
+.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
+  /* background-color: var(--c-primary) !important; */
+  border-color: var(--c-primary) !important;
+}
+
+.ant-checkbox-wrapper .ant-checkbox-inner {
+  border: solid 2px color-mix(in srgb, var(--c-text) 30%, transparent) !important;
+  background-color: transparent !important;
+  border-radius: 4px !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner::after {
+  font-size: '1px';
+  border-color: var(--c-primary) !important; /* Color of the checkmark itself */
+}
+
+.ant-checkbox-wrapper .ant-checkbox-inner:hover {
+  border-color: var(--c-primary) !important;
+}
+
+.ant-dropdown .ant-dropdown-menu {
+  background-color: var(--c-background-dark) !important;
+  border: 1px solid var(--c-border) !important;
+  border-radius: 8px !important;
+}
+
+.ant-dropdown .ant-dropdown-menu-item {
+  color: var(--c-text) !important;
+  padding-block: 6px;
+  padding-inline: 8px;
+  opacity: 0.6;
+}
+
+.ant-dropdown .ant-dropdown-menu-item:hover {
+  background-color: var(--c-card-dark) !important;
+  opacity: 1;
+}
+
+.ant-steps {
+  margin-top: 3rem;
+}
+
+.ant-steps-item-container {
+  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.ant-steps-item:last-child {
+  flex: 1 !important;
+}
+
+.ant-steps-item-tail {
+  display: none !important;
+}
+
+.ant-steps-item-icon {
+  padding: 16px !important;
+  border-radius: 12px !important;
+  background-color: var(--c-card) !important;
+  margin: 0 !important;
+}
+
+.ant-steps-item-content {
+  margin-top: 0 !important;
+}
+
+.ant-steps-item-title {
+  font-size: 12px !important;
+  font-weight: bold !important;
+}
+.ant-form-item-label > label {
+  height: auto !important;
+}
 .ant-menu-inline-collapsed > .ant-menu-item {
   width: fit-content !important;
   padding-block: 6px !important;
@@ -55,4 +247,102 @@ html {
 }
 .ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon + span {
   display: none !important;
+}
+
+.users-table-switch.active > .ant-switch {
+  background-color: #0d583e !important;
+}
+.users-table-switch.active {
+  color: #0d583e !important;
+}
+.users-table-switch > .ant-switch-checked > .ant-switch-handle::before {
+  background-color: #6ad18e !important;
+}
+
+.ant-menu-inline-collapsed > .ant-menu-item {
+  width: fit-content !important;
+  padding-block: 6px !important;
+  padding-inline: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+}
+.ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon + span {
+  display: none !important;
+}
+
+.users-table-switch.active > .ant-switch {
+  background-color: #0d583e !important;
+}
+.users-table-switch.active {
+  color: #0d583e !important;
+}
+.users-table-switch > .ant-switch-checked > .ant-switch-handle::before {
+  background-color: #6ad18e !important;
+}
+
+/* Table Users */
+
+.users-table .ant-table-thead > tr > th .ant-table-column-sorters {
+  justify-content: flex-start !important;
+}
+
+.users-table .ant-table-row > .ant-table-cell {
+  padding: 4px 8px !important;
+}
+.users-table .ant-table-thead > tr > th,
+.users-table .ant-table-tbody > tr > td {
+  border-left: none !important;
+}
+
+/* Pagination */
+.ant-pagination-item-link {
+  border-radius: 100% !important;
+  color: color-mix(in srgb, var(--c-text) 60%, transparent) !important;
+}
+.ant-pagination-item-link:hover {
+  border-radius: 100% !important;
+}
+
+.ant-pagination {
+  display: flex !important;
+  margin-bottom: 10px !important;
+  align-items: center !important;
+}
+.ant-pagination li {
+  display: flex !important;
+  margin-bottom: 10px !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.ant-pagination li.ant-pagination-jump-next,
+.ant-pagination li.ant-pagination-jump-prev {
+  display: inline !important;
+}
+.ant-pagination li.ant-pagination-item {
+  border-radius: 100% !important;
+  background-color: var(--c-background) !important;
+  color: color-mix(in srgb, var(--c-text) 15%, transparent) !important;
+  border: 2px solid var(--c-border) !important;
+}
+
+.ant-pagination li.ant-pagination-item-active {
+  background-color: color-mix(in srgb, var(--c-primary) 15%, transparent) !important;
+  color: var(--c-primary) !important;
+}
+.ant-pagination li a {
+  margin-top: 2px;
+  color: color-mix(in srgb, var(--c-text) 60%, transparent) !important;
+}
+
+.ant-pagination li.ant-pagination-item-active a {
+  color: var(--c-primary) !important;
+}
+.ant-pagination li.ant-pagination-item-active {
+  border: none !important;
+}
+.ant-pagination-disabled {
+  border-radius: 100% !important;
+  background-color: color-mix(in srgb, var(--c-card-dark), transparent) !important;
 }
