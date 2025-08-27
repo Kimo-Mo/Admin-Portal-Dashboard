@@ -114,5 +114,8 @@ export const ANTD_THEME_DARK: ThemeConfig = {
     Modal: {
       contentBg: MAIN_COLORS.dark.card,
     },
+    Pagination: {
+      itemSize: 28,
+    },
   },
 };

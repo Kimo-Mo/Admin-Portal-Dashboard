@@ -295,3 +295,54 @@ html {
 .users-table .ant-table-tbody > tr > td {
   border-left: none !important;
 }
+
+/* Pagination */
+.ant-pagination-item-link {
+  border-radius: 100% !important;
+  color: color-mix(in srgb, var(--c-text) 60%, transparent) !important;
+}
+.ant-pagination-item-link:hover {
+  border-radius: 100% !important;
+}
+
+.ant-pagination {
+  display: flex !important;
+  margin-bottom: 10px !important;
+  align-items: center !important;
+}
+.ant-pagination li {
+  display: flex !important;
+  margin-bottom: 10px !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.ant-pagination li.ant-pagination-jump-next,
+.ant-pagination li.ant-pagination-jump-prev {
+  display: inline !important;
+}
+.ant-pagination li.ant-pagination-item {
+  border-radius: 100% !important;
+  background-color: var(--c-background) !important;
+  color: color-mix(in srgb, var(--c-text) 15%, transparent) !important;
+  border: 2px solid var(--c-border) !important;
+}
+
+.ant-pagination li.ant-pagination-item-active {
+  background-color: color-mix(in srgb, var(--c-primary) 15%, transparent) !important;
+  color: var(--c-primary) !important;
+}
+.ant-pagination li a {
+  margin-top: 2px;
+  color: color-mix(in srgb, var(--c-text) 60%, transparent) !important;
+}
+
+.ant-pagination li.ant-pagination-item-active a {
+  color: var(--c-primary) !important;
+}
+.ant-pagination li.ant-pagination-item-active {
+  border: none !important;
+}
+.ant-pagination-disabled {
+  border-radius: 100% !important;
+  background-color: color-mix(in srgb, var(--c-card-dark), transparent) !important;
+}

@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, Pagination } from 'antd';
 import UsersTable from './UsersTable';
 import { AddSquare, ArrowDown2, TickSquare, Setting5, Sort, Forbidden2 } from 'iconsax-reactjs';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
@@ -73,6 +73,10 @@ const MainUsersComponents = () => {
           </div>
         </div>
         <UsersTable setSelectedRows={setSelectedRows} />
+      </div>
+
+      <div className="w-full my-4 flex items-center flex-col">
+        <Pagination total={120} showSizeChanger={false} />
       </div>
     </section>
   );

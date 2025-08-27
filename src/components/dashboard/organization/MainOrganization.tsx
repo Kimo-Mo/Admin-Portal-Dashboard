@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, Pagination } from 'antd';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import { AddSquare, ArrowDown2, DocumentText1, Forbidden2, Setting5 } from 'iconsax-reactjs';
 import ProductsTable from './Table';
@@ -86,7 +86,9 @@ const MainOrganization = () => {
         <ProductsTable setSelectedRows={setSelectedRows} />
       </div>
 
-      <div className="w-full mt-4 flex items-center flex-col">1 2 3</div>
+      <div className="w-full mt-4 flex items-center flex-col">
+        <Pagination total={120} showSizeChanger={false} />
+      </div>
     </section>
   );
 };
