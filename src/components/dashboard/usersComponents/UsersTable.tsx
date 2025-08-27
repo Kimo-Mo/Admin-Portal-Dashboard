@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Dropdown, Space, type MenuProps, Switch } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { Edit, Eye, More, Refresh, Trash } from 'iconsax-reactjs';
+import { Edit, Eye, More, Trash } from 'iconsax-reactjs';
 
 interface UserRecord {
   key: string;
@@ -117,7 +117,11 @@ const data: UserRecord[] = [
   },
 ];
 
-const UsersTable: React.FC = () => {
+const UsersTable = ({
+  setSelectedRows,
+}: {
+  setSelectedRows: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const actionItems: MenuProps['items'] = [
     {
@@ -136,13 +140,10 @@ const UsersTable: React.FC = () => {
     {
       title: 'ID',
       dataIndex: 'id',
+      width: 300,
       key: 'id',
       sorter: true,
-      render: (text: string) => (
-        <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
-          {text}
-        </span>
-      ),
+      render: (text: string) => <span className="text-sm opacity-60 ps-4 text-text">{text}</span>,
     },
     {
       title: 'Name',
@@ -151,7 +152,7 @@ const UsersTable: React.FC = () => {
       width: 250,
       sorter: true,
       render: (text: string) => (
-        <span className="text-sm opacity-60 flex items-center justify-baseline text-text">
+        <span className="text-sm opacity-60 flex items-center justify-baseline text-text ps-4">
           {text}
         </span>
       ),
@@ -163,7 +164,7 @@ const UsersTable: React.FC = () => {
       width: 250,
       sorter: true,
       render: (email: string) => (
-        <div className="flex justify-start text-text opacity-60">{email}</div>
+        <div className="flex justify-start text-text opacity-60 ps-4">{email}</div>
       ),
     },
     {
@@ -173,7 +174,7 @@ const UsersTable: React.FC = () => {
       width: 180,
       sorter: true,
       render: (role: string) => (
-        <div className="flex justify-start ps-10 text-text opacity-60">{role}</div>
+        <div className="flex justify-start text-text opacity-60 ps-4">{role}</div>
       ),
     },
     {
@@ -183,18 +184,20 @@ const UsersTable: React.FC = () => {
       width: 140,
       sorter: true,
       render: (status: boolean) => (
-        <div className={`users-table-switch ${status ? 'active' : 'inactive'} flex gap-2 my-2.5`}>
+        <div
+          className={`users-table-switch ${status ? 'active' : 'inactive'} flex gap-2 my-2.5 ps-4`}>
           <Switch checked={status} /> <span>{status ? 'Active' : 'Inactive'}</span>
         </div>
       ),
     },
     {
-      title: <Refresh className="text-primary rotate-20" size={32} />,
-
+      title: 'Actions',
+      dataIndex: 'actions',
+      sorter: true,
       key: 'actions',
-      width: 130,
+      width: 100,
       render: () => (
-        <Space className="pt-2">
+        <Space className="pt-2 pe-5">
           <Edit
             size={20}
             className="border-none bg-transparent opacity-60 hover:opacity-80 cursor-pointer"
@@ -214,6 +217,12 @@ const UsersTable: React.FC = () => {
     selectedRowKeys,
     onChange: (newSelectedRowKeys: React.Key[]) => {
       setSelectedRowKeys(newSelectedRowKeys);
+      if (newSelectedRowKeys.length > 0) {
+        setSelectedRows(true);
+        console.log(newSelectedRowKeys);
+      } else {
+        setSelectedRows(false);
+      }
     },
   };
 
@@ -224,7 +233,7 @@ const UsersTable: React.FC = () => {
         dataSource={data}
         rowSelection={rowSelection}
         pagination={false}
-        className="rounded-none w-full"
+        className="rounded-none w-full users-table"
         rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
       />
     </div>

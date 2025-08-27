@@ -1,6 +1,6 @@
 import { Button } from 'antd';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
-import { AddSquare, ArrowDown2, DocumentText1, Setting5 } from 'iconsax-reactjs';
+import { AddSquare, ArrowDown2, DocumentText1, Forbidden2, Setting5 } from 'iconsax-reactjs';
 import ProductsTable from './Table';
 import { useState } from 'react';
 import { CreateOrgDrawer } from './createOrgDrawer';
@@ -9,15 +9,27 @@ import { useSuccessPopup } from '@/services/contexts';
 
 const MainOrganization = () => {
   const [createOrgDrawer, setCreateOrgDrawer] = useState(false);
-  const { setOpenConfirm, setContent } = useConfirmPopup();
+  const [selectedRows, setSelectedRows] = useState(false);
+  const { setOpenConfirm, setContent, setSuccess } = useConfirmPopup();
   const { setSuccessContent } = useSuccessPopup();
   const onExportClick = () => {
-    setContent({
-      icon: <DocumentText1 size={36} color="var(--c-success)" />,
-      text: 'Are You Sure You Want To Export the selected organizations?',
-    });
-    setOpenConfirm(true);
-    setSuccessContent('organizations exported successfully');
+    if (selectedRows) {
+      setContent({
+        icon: <DocumentText1 size={36} color="var(--c-success)" />,
+        text: 'Are You Sure You Want To Export the selected organizations?',
+      });
+      setSuccess(true);
+      setOpenConfirm(true);
+      setSuccessContent('Organizations Exported Successfully');
+    } else {
+      setContent({
+        icon: <Forbidden2 size={36} color="var(--c-danger)" />,
+        text: 'No Organizations Selected',
+      });
+      setSuccess(false);
+
+      setOpenConfirm(true);
+    }
   };
   const openCreateOrgDrawer = () => {
     setCreateOrgDrawer(true);
@@ -71,7 +83,7 @@ const MainOrganization = () => {
             </Button>
           </div>
         </div>
-        <ProductsTable />
+        <ProductsTable setSelectedRows={setSelectedRows} />
       </div>
 
       <div className="w-full mt-4 flex items-center flex-col">1 2 3</div>

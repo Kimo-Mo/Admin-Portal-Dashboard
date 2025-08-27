@@ -8,12 +8,11 @@ type ConfirmPopupContextType = {
     icon: React.ReactNode;
     text: string;
   };
-  setContent: (content: {
-    icon: React.ReactNode;
-    text: string;
-  }) => void;
+  setContent: (content: { icon: React.ReactNode; text: string }) => void;
   onOk: () => void;
   onCancel: () => void;
+  success: boolean;
+  setSuccess: (success: boolean) => void;
 };
 
 export const ConfirmPopupContext = createContext<ConfirmPopupContextType | undefined>(undefined);
@@ -24,6 +23,9 @@ type ConfirmPopupProviderProps = {
 
 export const ConfirmPopupProvider = ({ children }: ConfirmPopupProviderProps) => {
   const [openConfirm, setOpenConfirm] = useState(false);
+  // wether it's success or failure
+  const [success, setSuccess] = useState(false);
+
   const [content, setContent] = useState<{ icon: React.ReactNode; text: string }>({
     icon: null,
     text: '',
@@ -48,6 +50,8 @@ export const ConfirmPopupProvider = ({ children }: ConfirmPopupProviderProps) =>
         setContent,
         onOk,
         onCancel,
+        success,
+        setSuccess,
       }}>
       {children}
     </ConfirmPopupContext.Provider>

@@ -97,7 +97,11 @@ const data: DataRecord[] = [
   },
 ];
 
-const ProductsTable: React.FC = () => {
+const ProductsTable = ({
+  setSelectedRows,
+}: {
+  setSelectedRows: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const actionItems: MenuProps['items'] = [
     {
@@ -202,6 +206,11 @@ const ProductsTable: React.FC = () => {
     selectedRowKeys,
     onChange: (newSelectedRowKeys: React.Key[]) => {
       setSelectedRowKeys(newSelectedRowKeys);
+      if (newSelectedRowKeys.length > 0) {
+        setSelectedRows(true);
+      } else {
+        setSelectedRows(false);
+      }
     },
   };
 

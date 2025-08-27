@@ -1,22 +1,34 @@
 import { Button } from 'antd';
 import UsersTable from './UsersTable';
-import { AddSquare, ArrowDown2, TickSquare, Setting5, Sort } from 'iconsax-reactjs';
+import { AddSquare, ArrowDown2, TickSquare, Setting5, Sort, Forbidden2 } from 'iconsax-reactjs';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import { useConfirmPopup } from '@/services/contexts';
 import { useSuccessPopup } from '@/services/contexts';
+import { useState } from 'react';
 
 const MainUsersComponents = () => {
-  const { setOpenConfirm, setContent } = useConfirmPopup();
+  const [selectedRows, setSelectedRows] = useState(false);
+  const { setOpenConfirm, setContent, setSuccess } = useConfirmPopup();
   const { setSuccessContent } = useSuccessPopup();
   const onExportClick = () => {
-    setContent({
-      icon: <TickSquare variant="Bulk" size={36} color="var(--c-success)" />,
-      text: 'Are You Sure You Want To Export the selected users?',
-    });
-    setOpenConfirm(true);
-    setSuccessContent('users exported successfully');
+    if (selectedRows) {
+      setContent({
+        icon: <TickSquare variant="Bulk" size={36} className="text-success/60" />,
+        text: 'Are You Sure You Want To Export the selected users?',
+      });
+      setSuccess(true);
+      setOpenConfirm(true);
+      setSuccessContent('Users Exported Successfully');
+    } else {
+      setContent({
+        icon: <Forbidden2 size={36} color="var(--c-danger)" />,
+        text: 'No Users Were Selected',
+      });
+      setSuccess(false);
+      setOpenConfirm(true);
+    }
   };
-  
+
   return (
     <section>
       <IBreadCrumb title="Users" />
@@ -60,7 +72,7 @@ const MainUsersComponents = () => {
             </Button>
           </div>
         </div>
-        <UsersTable />
+        <UsersTable setSelectedRows={setSelectedRows} />
       </div>
     </section>
   );

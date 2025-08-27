@@ -281,3 +281,17 @@ html {
 .users-table-switch > .ant-switch-checked > .ant-switch-handle::before {
   background-color: #6ad18e !important;
 }
+
+/* Table Users */
+
+.users-table .ant-table-thead > tr > th .ant-table-column-sorters {
+  justify-content: flex-start !important;
+}
+
+.users-table .ant-table-row > .ant-table-cell {
+  padding: 4px 8px !important;
+}
+.users-table .ant-table-thead > tr > th,
+.users-table .ant-table-tbody > tr > td {
+  border-left: none !important;
+}
