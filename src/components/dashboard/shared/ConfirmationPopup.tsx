@@ -3,7 +3,7 @@ import { Button, Modal, ConfigProvider } from 'antd';
 import { useConfirmPopup } from '@/services/contexts';
 
 const ConfirmationPopup: React.FC = () => {
-  const { content, onOk, onCancel, openConfirm, success } = useConfirmPopup();
+  const { content, onOk, onCancel, openConfirm, success, modalType, loading } = useConfirmPopup();
   return (
     <ConfigProvider
       theme={{
@@ -31,47 +31,34 @@ const ConfirmationPopup: React.FC = () => {
             padding: '36px',
           },
         }}>
-        {success && (
-          <>
-            <div className="flex flex-col justify-center items-center gap-6">
-              <div className="size-15 bg-success/10 rounded-xl p-3">{content?.icon}</div>
-              <p className="text-base leading-5 text-center">{content?.text}</p>
+        <>
+          <div className="flex flex-col justify-center items-center gap-6">
+            <div
+              className={`size-15 rounded-xl p-3 ${
+                modalType === 'success' ? 'bg-success/10' : 'bg-danger/10'
+              }`}>
+              {content?.icon}
             </div>
-            <div className="flex items-center justify-center gap-2.5 mt-6">
-              <Button
-                size="large"
-                onClick={onCancel}
-                style={{
-                  background: 'var(--c-text)',
-                  color: 'var(--c-background)',
-                }}>
-                Cancel
-              </Button>
-              <Button size="large" type="primary" onClick={onOk}>
+            <p className="text-base leading-5 text-center">{content?.text}</p>
+          </div>
+          <div className="flex items-center justify-center gap-2.5 mt-6">
+            <Button
+              size="large"
+              onClick={onCancel}
+              disabled={loading}
+              style={{
+                background: 'var(--c-text)',
+                color: 'var(--c-background)',
+              }}>
+              Cancel
+            </Button>
+            {success && (
+              <Button size="large" type="primary" onClick={onOk} loading={loading}>
                 Yes
               </Button>
-            </div>
-          </>
-        )}
-        {!success && (
-          <>
-            <div className="flex flex-col justify-center items-center gap-6">
-              <div className="size-15 bg-success/10 rounded-xl p-3">{content?.icon}</div>
-              <p className="text-base leading-5 text-center">{content?.text}</p>
-            </div>
-            <div className="flex items-center justify-center mt-6">
-              <Button
-                size="large"
-                onClick={onCancel}
-                style={{
-                  background: 'var(--c-text)',
-                  color: 'var(--c-background)',
-                }}>
-                Ok
-              </Button>
-            </div>
-          </>
-        )}
+            )}
+          </div>
+        </>
       </Modal>
     </ConfigProvider>
   );

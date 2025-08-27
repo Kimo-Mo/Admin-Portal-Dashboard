@@ -72,7 +72,7 @@ html {
 .ant-table-tbody > tr > td:first-child {
   border-left: none !important;
 }
-/* زي الخرا طبعا بس اعمل ايه */
+
 .ant-table-thead > tr > th:nth-child(3) {
   border-left: none !important;
 }
@@ -135,7 +135,6 @@ html {
 }
 
 .even-row > td {
-  /* background-color: var(--c-background) !important; */
   background-color: color-mix(in srgb, var(--c-background) 40%, transparent) !important;
   padding: 16px 24px;
 }
@@ -160,7 +159,6 @@ html {
   overflow: visible !important;
 }
 .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
-  /* background-color: var(--c-primary) !important; */
   border-color: var(--c-primary) !important;
 }
 
@@ -345,4 +343,26 @@ html {
 .ant-pagination-disabled {
   border-radius: 100% !important;
   background-color: color-mix(in srgb, var(--c-card-dark), transparent) !important;
+}
+
+.ant-select-dropdown {
+  background-color: var(--c-background) !important;
+  border: 1px solid var(--c-border) !important;
+}
+
+.ant-picker-panel-layout {
+  background-color: var(--c-background) !important;
+  border: 1px solid var(--c-border) !important;
+}
+
+.ant-picker-header {
+  border-bottom: 1px solid var(--c-border) !important;
+}
+
+.ant-picker-footer {
+  border-top: 1px solid var(--c-border) !important;
+}
+
+.ant-picker-now-btn {
+  color: var(--c-text) !important;
 }

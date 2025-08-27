@@ -10,7 +10,7 @@ import { useSuccessPopup } from '@/services/contexts';
 const MainOrganization = () => {
   const [createOrgDrawer, setCreateOrgDrawer] = useState(false);
   const [selectedRows, setSelectedRows] = useState(false);
-  const { setOpenConfirm, setContent, setSuccess } = useConfirmPopup();
+  const { setOpenConfirm, setContent, setSuccess, setModalType } = useConfirmPopup();
   const { setSuccessContent } = useSuccessPopup();
   const onExportClick = () => {
     if (selectedRows) {
@@ -18,6 +18,7 @@ const MainOrganization = () => {
         icon: <DocumentText1 size={36} color="var(--c-success)" />,
         text: 'Are You Sure You Want To Export the selected organizations?',
       });
+      setModalType('success');
       setSuccess(true);
       setOpenConfirm(true);
       setSuccessContent('Organizations Exported Successfully');
@@ -26,8 +27,8 @@ const MainOrganization = () => {
         icon: <Forbidden2 size={36} color="var(--c-danger)" />,
         text: 'No Organizations Selected',
       });
+      setModalType('error');
       setSuccess(false);
-
       setOpenConfirm(true);
     }
   };
