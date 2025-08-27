@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Table, Dropdown, Space, type MenuProps, Switch } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { Edit, Eye, More, Trash } from 'iconsax-reactjs';
+import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
 
 interface UserRecord {
   key: string;
@@ -123,6 +124,7 @@ const UsersTable = ({
   setSelectedRows: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
+  const { renderOrSkeleton } = useSkeletonLoader(2000, true);
   const actionItems: MenuProps['items'] = [
     {
       key: '1',
@@ -140,10 +142,11 @@ const UsersTable = ({
     {
       title: 'ID',
       dataIndex: 'id',
-      width: 300,
+      width: 250,
       key: 'id',
       sorter: true,
-      render: (text: string) => <span className="text-sm opacity-60 ps-4 text-text">{text}</span>,
+      render: (text: string) =>
+        renderOrSkeleton(() => <span className="text-sm opacity-60 ps-4 text-text">{text}</span>),
     },
     {
       title: 'Name',
@@ -151,11 +154,12 @@ const UsersTable = ({
       key: 'name',
       width: 250,
       sorter: true,
-      render: (text: string) => (
-        <span className="text-sm opacity-60 flex items-center justify-baseline text-text ps-4">
-          {text}
-        </span>
-      ),
+      render: (text: string) =>
+        renderOrSkeleton(() => (
+          <span className="text-sm opacity-60 flex items-center justify-baseline text-text ps-4">
+            {text}
+          </span>
+        )),
     },
     {
       title: 'Email',
@@ -163,32 +167,38 @@ const UsersTable = ({
       key: 'email',
       width: 250,
       sorter: true,
-      render: (email: string) => (
-        <div className="flex justify-start text-text opacity-60 ps-4">{email}</div>
-      ),
+      render: (email: string) =>
+        renderOrSkeleton(
+          () => <div className="flex justify-start text-text opacity-60 ps-4">{email}</div>,
+          150
+        ),
     },
     {
       title: 'Role',
       dataIndex: 'role',
       key: 'role',
-      width: 180,
+      width: 200,
       sorter: true,
-      render: (role: string) => (
-        <div className="flex justify-start text-text opacity-60 ps-4">{role}</div>
-      ),
+      render: (role: string) =>
+        renderOrSkeleton(() => (
+          <div className="flex justify-start text-text opacity-60 ps-4">{role}</div>
+        )),
     },
     {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
-      width: 140,
+      width: 180,
       sorter: true,
-      render: (status: boolean) => (
-        <div
-          className={`users-table-switch ${status ? 'active' : 'inactive'} flex gap-2 my-2.5 ps-4`}>
-          <Switch checked={status} /> <span>{status ? 'Active' : 'Inactive'}</span>
-        </div>
-      ),
+      render: (status: boolean) =>
+        renderOrSkeleton(() => (
+          <div
+            className={`users-table-switch ${
+              status ? 'active' : 'inactive'
+            } flex gap-2 my-2.5 ps-4`}>
+            <Switch checked={status} /> <span>{status ? 'Active' : 'Inactive'}</span>
+          </div>
+        )),
     },
     {
       title: 'Actions',
@@ -196,20 +206,24 @@ const UsersTable = ({
       sorter: true,
       key: 'actions',
       width: 100,
-      render: () => (
-        <Space className="pt-2 pe-5">
-          <Edit
-            size={20}
-            className="border-none bg-transparent opacity-60 hover:opacity-80 cursor-pointer"
-          />
-          <Dropdown menu={{ items: actionItems }} trigger={['click']}>
-            <More
-              size={20}
-              className="rotate-90 border-none bg-transparent opacity-60 hover:opacity-80 p-0 m-0 cursor-pointer"
-            />
-          </Dropdown>
-        </Space>
-      ),
+      render: () =>
+        renderOrSkeleton(
+          () => (
+            <Space className="pt-2 pe-5">
+              <Edit
+                size={20}
+                className="border-none bg-transparent opacity-60 hover:opacity-80 cursor-pointer"
+              />
+              <Dropdown menu={{ items: actionItems }} trigger={['click']}>
+                <More
+                  size={20}
+                  className="rotate-90 border-none bg-transparent opacity-60 hover:opacity-80 p-0 m-0 cursor-pointer"
+                />
+              </Dropdown>
+            </Space>
+          ),
+          90
+        ),
     },
   ];
 

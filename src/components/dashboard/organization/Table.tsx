@@ -4,6 +4,7 @@ import type { ColumnsType } from 'antd/es/table';
 import { Edit, Eye, More, Refresh, Trash } from 'iconsax-reactjs';
 import StatusTag from './Tags/StatusTag';
 import ProductTag from './Tags/ProductTag';
+import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
 
 interface DataRecord {
   key: string;
@@ -103,6 +104,7 @@ const ProductsTable = ({
   setSelectedRows: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
+  const { renderOrSkeleton } = useSkeletonLoader();
   const actionItems: MenuProps['items'] = [
     {
       key: '1',
@@ -122,11 +124,12 @@ const ProductsTable = ({
       dataIndex: 'organization',
       key: 'organization',
       sorter: true,
-      render: (text: string) => (
-        <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
-          {text}
-        </span>
-      ),
+      render: (text: string) =>
+        renderOrSkeleton(() => (
+          <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
+            {text}
+          </span>
+        )),
     },
     {
       title: 'Owner',
@@ -134,26 +137,28 @@ const ProductsTable = ({
       key: 'owner',
       width: 150,
       sorter: true,
-      render: (text: string) => (
-        <span
-          className="text-sm opacity-60 flex items-center justify-baseline"
-          style={{ color: 'var(--c-text)' }}>
-          {text}
-        </span>
-      ),
+      render: (text: string) =>
+        renderOrSkeleton(() => (
+          <span
+            className="text-sm opacity-60 flex items-center justify-baseline"
+            style={{ color: 'var(--c-text)' }}>
+            {text}
+          </span>
+        )),
     },
     {
       title: 'Products',
       dataIndex: 'products',
       key: 'products',
       sorter: true,
-      render: (products: string[]) => (
-        <Space size={4}>
-          {products.map((product, index) => (
-            <ProductTag key={index} product={product} />
-          ))}
-        </Space>
-      ),
+      render: (products: string[]) =>
+        renderOrSkeleton(() => (
+          <Space size={4}>
+            {products.map((product, index) => (
+              <ProductTag key={index} product={product} />
+            ))}
+          </Space>
+        )),
     },
     {
       title: 'Statuses',
@@ -161,44 +166,50 @@ const ProductsTable = ({
       key: 'status',
       width: 180,
       sorter: true,
-      render: (status: string) => <StatusTag status={status as DataRecord['status']} />,
+      render: (status: string) =>
+        renderOrSkeleton(() => <StatusTag status={status as DataRecord['status']} />),
     },
     {
       title: 'Creation Date',
       dataIndex: 'creationDate',
       key: 'creationDate',
       sorter: true,
-      render: (text: string) => (
-        <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
-          {text}
-        </span>
-      ),
+      render: (text: string) =>
+        renderOrSkeleton(() => (
+          <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
+            {text}
+          </span>
+        )),
     },
     {
       title: <Refresh className="text-primary rotate-20" size={32} />,
 
       key: 'actions',
       width: 130,
-      render: () => (
-        <Space>
-          <Button
-            type="text"
-            icon={<Edit size={20} />}
-            className="border-none bg-transparent opacity-60 hover:opacity-80"
-            style={{ color: 'var(--c-text)' }}
-            size="small"
-          />
-          <Dropdown menu={{ items: actionItems }} trigger={['click']}>
-            <Button
-              type="text"
-              icon={<More size={20} className="rotate-90" />}
-              className="border-none bg-transparent opacity-60 hover:opacity-80 p-0 m-0"
-              style={{ color: 'var(--c-text)' }}
-              size="small"
-            />
-          </Dropdown>
-        </Space>
-      ),
+      render: () =>
+        renderOrSkeleton(
+          () => (
+            <Space>
+              <Button
+                type="text"
+                icon={<Edit size={20} />}
+                className="border-none bg-transparent opacity-60 hover:opacity-80"
+                style={{ color: 'var(--c-text)' }}
+                size="small"
+              />
+              <Dropdown menu={{ items: actionItems }} trigger={['click']}>
+                <Button
+                  type="text"
+                  icon={<More size={20} className="rotate-90" />}
+                  className="border-none bg-transparent opacity-60 hover:opacity-80 p-0 m-0"
+                  style={{ color: 'var(--c-text)' }}
+                  size="small"
+                />
+              </Dropdown>
+            </Space>
+          ),
+          100
+        ),
     },
   ];
 
