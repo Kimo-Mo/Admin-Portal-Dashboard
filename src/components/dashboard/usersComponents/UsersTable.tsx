@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Table, Dropdown, Space, type MenuProps, Switch } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { Edit, Eye, More, Trash } from 'iconsax-reactjs';
+import { DocumentText1, Edit, Eye, Forbidden2, More, TickCircle, Trash } from 'iconsax-reactjs';
 import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
+import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 
 interface UserRecord {
   key: string;
@@ -125,6 +126,27 @@ const UsersTable = ({
 }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const { renderOrSkeleton } = useSkeletonLoader(2000, true);
+  const { setOpenConfirm, setContent, setSuccess } = useConfirmPopup();
+  const { setSuccessContent } = useSuccessPopup();
+  const onEditUserStatusClick = (status: boolean) => {
+    if (!status) {
+      setContent({
+        icon: <TickCircle size={36} color="var(--c-success)" />,
+        text: 'Are You Sure You Want To Activate This User?',
+      });
+      setSuccess(true);
+      setOpenConfirm(true);
+      setSuccessContent('User reactivated successfully');
+    } else {
+      setContent({
+        icon: <Forbidden2 size={36} color="var(--c-danger)" />,
+        text: 'Are You Sure You Want To Suspend This User?',
+      });
+      setSuccess(true);
+      setOpenConfirm(true);
+      setSuccessContent('User suspended successfully');
+    }
+  };
   const actionItems: MenuProps['items'] = [
     {
       key: '1',
@@ -196,7 +218,8 @@ const UsersTable = ({
             className={`users-table-switch ${
               status ? 'active' : 'inactive'
             } flex gap-2 my-2.5 ps-4`}>
-            <Switch checked={status} /> <span>{status ? 'Active' : 'Inactive'}</span>
+            <Switch checked={status} onChange={() => onEditUserStatusClick(status)} />{' '}
+            <span>{status ? 'Active' : 'Inactive'}</span>
           </div>
         )),
     },

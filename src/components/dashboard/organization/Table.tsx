@@ -105,6 +105,7 @@ const ProductsTable = ({
 }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const { renderOrSkeleton } = useSkeletonLoader();
+
   const actionItems: MenuProps['items'] = [
     {
       key: '1',
