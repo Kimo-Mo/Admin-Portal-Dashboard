@@ -26,6 +26,7 @@ const SuccessPopup = () => {
           <TickCircle variant="Bold" size={36} color="var(--c-primary)" />
         </div>
         <p className="text-xl font-semibold text-center">{successContent}</p>
+        <p className="text-text/80 text-center text-base">Thank you for the update</p>
       </div>
     </Modal>
   );

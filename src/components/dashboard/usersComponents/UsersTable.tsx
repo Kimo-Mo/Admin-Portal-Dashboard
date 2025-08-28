@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, Dropdown, Space, type MenuProps, Switch } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { Edit, Eye, More, Trash } from 'iconsax-reactjs';
+import { CloseSquare, Edit, More, TickSquare, Trash } from 'iconsax-reactjs';
 import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
+import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 
-interface UserRecord {
+export interface UserRecord {
   key: string;
   id: string;
   name: string;
@@ -15,7 +16,7 @@ interface UserRecord {
   creationDate: string;
 }
 
-const data: UserRecord[] = [
+const usersData: UserRecord[] = [
   {
     key: '1',
     id: '54.231.232.197',
@@ -118,25 +119,77 @@ const data: UserRecord[] = [
   },
 ];
 
-const UsersTable = ({
-  setSelectedRows,
-}: {
+interface UsersTableProps {
   setSelectedRows: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+  setOpenUserDrawer: React.Dispatch<React.SetStateAction<boolean>>;
+  setEditUser: React.Dispatch<React.SetStateAction<UserRecord | null>>;
+}
+
+const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTableProps) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
+  const [data, setData] = useState<UserRecord[]>([]);
+  useEffect(() => {
+    setData(usersData);
+  }, []);
+
+  const { setOpenConfirm, setContent, setSuccess, setModalType, setOnOk } = useConfirmPopup();
+  const { setSuccessContent } = useSuccessPopup();
   const { renderOrSkeleton } = useSkeletonLoader(2000, true);
+
+  const handleDeleteUser = () => {
+    setContent({
+      icon: <Trash size={36} color="var(--c-danger)" />,
+      text: 'Are You Sure You Want To Delete This User?',
+    });
+    setSuccessContent('User Deleted Successfully');
+    setSuccess(true);
+    setOpenConfirm(true);
+    setModalType('error');
+  };
+
   const actionItems: MenuProps['items'] = [
     {
       key: '1',
-      icon: <Eye size={24} />,
-      label: <span className="mr-20">Impersonate</span>,
-    },
-    {
-      key: '2',
       icon: <Trash size={24} />,
-      label: 'Refresh',
+      label: 'Delete',
+      onClick: handleDeleteUser,
     },
   ];
+
+  const handleStatusChange = (isActivating: boolean, record: UserRecord) => {
+    setTimeout(() => {
+      if (!isActivating) {
+        setContent({
+          icon: <CloseSquare variant="Bulk" size={36} color="var(--c-danger)" />,
+          text: 'Are you sure you want to suspend this user?',
+        });
+        setSuccessContent('User suspended successfully');
+        setSuccess(true);
+        setModalType('error');
+      } else {
+        setContent({
+          icon: <TickSquare variant="Bulk" size={36} color="var(--c-success)" />,
+          text: 'Are you sure you want to activate this user?',
+        });
+        setSuccessContent('User activated successfully');
+        setSuccess(true);
+        setModalType('success');
+      }
+      setOnOk(() => () => handleOkConfirm(record));
+      setOpenConfirm(true);
+    }, 0);
+  };
+
+  const handleOkConfirm = async (record: UserRecord) => {
+    const newData = data.map((item) => {
+      if (item.key === record.key) {
+        return { ...item, status: !item.status };
+      }
+      return item;
+    });
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    setData(newData);
+  };
 
   const columns: ColumnsType<UserRecord> = [
     {
@@ -190,13 +243,14 @@ const UsersTable = ({
       key: 'status',
       width: 180,
       sorter: true,
-      render: (status: boolean) =>
+      render: (status: boolean, record: UserRecord) =>
         renderOrSkeleton(() => (
           <div
             className={`users-table-switch ${
               status ? 'active' : 'inactive'
             } flex gap-2 my-2.5 ps-4`}>
-            <Switch checked={status} /> <span>{status ? 'Active' : 'Inactive'}</span>
+            <Switch checked={status} onChange={(status) => handleStatusChange(status, record)} />{' '}
+            <span>{status ? 'Active' : 'Inactive'}</span>
           </div>
         )),
     },
@@ -206,13 +260,14 @@ const UsersTable = ({
       sorter: true,
       key: 'actions',
       width: 100,
-      render: () =>
+      render: (_, record) =>
         renderOrSkeleton(
           () => (
             <Space className="pt-2 pe-5">
               <Edit
                 size={20}
                 className="border-none bg-transparent opacity-60 hover:opacity-80 cursor-pointer"
+                onClick={() => handleEditUser(record)}
               />
               <Dropdown menu={{ items: actionItems }} trigger={['click']}>
                 <More
@@ -226,6 +281,10 @@ const UsersTable = ({
         ),
     },
   ];
+  const handleEditUser = (record: UserRecord) => {
+    setEditUser(record);
+    setOpenUserDrawer(true);
+  };
 
   const rowSelection = {
     selectedRowKeys,
@@ -233,7 +292,6 @@ const UsersTable = ({
       setSelectedRowKeys(newSelectedRowKeys);
       if (newSelectedRowKeys.length > 0) {
         setSelectedRows(true);
-        console.log(newSelectedRowKeys);
       } else {
         setSelectedRows(false);
       }
