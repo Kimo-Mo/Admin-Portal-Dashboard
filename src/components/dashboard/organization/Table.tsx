@@ -186,6 +186,7 @@ const ProductsTable = ({
       title: <Refresh className="text-primary rotate-20" size={32} />,
 
       key: 'actions',
+      fixed: 'right',
       width: 130,
       render: () =>
         renderOrSkeleton(
@@ -227,7 +228,7 @@ const ProductsTable = ({
   };
 
   return (
-    <div className="rounded-b-lg overflow-auto w-full">
+    <div className="rounded-b-lg w-full overflow-y-hidden">
       <Table
         columns={columns}
         dataSource={data}

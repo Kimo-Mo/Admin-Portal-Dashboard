@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Dropdown, Space, type MenuProps, Switch } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { DocumentText1, Edit, Eye, Forbidden2, More, TickCircle, Trash } from 'iconsax-reactjs';
+import { Edit, Eye, Forbidden2, More, TickCircle, Trash } from 'iconsax-reactjs';
 import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 
@@ -227,12 +227,13 @@ const UsersTable = ({
       title: 'Actions',
       dataIndex: 'actions',
       sorter: true,
+      fixed: 'right',
       key: 'actions',
       width: 100,
       render: () =>
         renderOrSkeleton(
           () => (
-            <Space className="pt-2 pe-5">
+            <Space className="pt-2 pe-2">
               <Edit
                 size={20}
                 className="border-none bg-transparent opacity-60 hover:opacity-80 cursor-pointer"
@@ -264,7 +265,7 @@ const UsersTable = ({
   };
 
   return (
-    <div className="rounded-b-lg overflow-auto w-full">
+    <div className="rounded-b-lg overflow-x-auto w-full overflow-y-hidden">
       <Table
         columns={columns}
         dataSource={data}
