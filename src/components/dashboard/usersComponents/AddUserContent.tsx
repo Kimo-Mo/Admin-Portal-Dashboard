@@ -1,5 +1,6 @@
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 import { Button, Form, Input, Select } from 'antd';
+import { ArrowDown2 } from 'iconsax-reactjs';
 import { useMemo, useState } from 'react';
 
 const { Option } = Select;
@@ -58,7 +59,7 @@ const AddUserContent = ({ onClose }: { onClose: () => void }) => {
         name="role"
         label="Role"
         rules={[{ required: true, message: 'Please input your role' }]}>
-        <Select placeholder="Select Your Role">
+        <Select placeholder="Select Your Role" suffixIcon={<ArrowDown2 className="" />}>
           <Option value="admin">Admin</Option>
           <Option value="owner">Owner</Option>
           <Option value="member">Member</Option>

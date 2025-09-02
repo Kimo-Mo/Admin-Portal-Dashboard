@@ -6,9 +6,11 @@ import { useState } from 'react';
 import { CreateOrgDrawer } from './createOrgDrawer';
 import { useConfirmPopup } from '@/services/contexts';
 import { useSuccessPopup } from '@/services/contexts';
+import InviteOwnerDrawer from './inviteOwnerDrawer/InviteOwnerDrawer';
 
 const MainOrganization = () => {
   const [createOrgDrawer, setCreateOrgDrawer] = useState(false);
+  const [openOwnerDrawer, setOpenOwnerDrawer] = useState(false);
   const [selectedRows, setSelectedRows] = useState(false);
   const { setOpenConfirm, setContent, setSuccess, setModalType } = useConfirmPopup();
   const { setSuccessContent } = useSuccessPopup();
@@ -35,14 +37,21 @@ const MainOrganization = () => {
   const openCreateOrgDrawer = () => {
     setCreateOrgDrawer(true);
   };
-  const onClose = () => {
+  const closeCreateOrgDrawe = () => {
     setCreateOrgDrawer(false);
+  };
+
+  const onOpenOwnerDrawer = () => {
+    setOpenOwnerDrawer(true);
+  };
+  const onCloseOwnerDrawer = () => {
+    setOpenOwnerDrawer(false);
   };
   return (
     <section>
-      <CreateOrgDrawer createOrgDrawer={createOrgDrawer} onClose={onClose} />
+      <CreateOrgDrawer createOrgDrawer={createOrgDrawer} onClose={closeCreateOrgDrawe} />
       <IBreadCrumb title="Organization" />
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-8 flex-wrap gap-4 lg:gap-0">
         <h1 className="text-xl font-medium">Organizations</h1>
         <div className="flex items-center gap-3">
           <ExportButton onClick={onExportClick} />
@@ -51,7 +60,8 @@ const MainOrganization = () => {
             style={{
               background: 'linear-gradient(90deg, #281543 , #0E2248 )',
               color: '#fff',
-            }}>
+            }}
+            onClick={onOpenOwnerDrawer}>
             Invite Owner
           </Button>
           <Button
@@ -90,6 +100,7 @@ const MainOrganization = () => {
       <div className="w-full mt-4 flex items-center flex-col">
         <Pagination total={120} showSizeChanger={false} />
       </div>
+      <InviteOwnerDrawer open={openOwnerDrawer} onClose={onCloseOwnerDrawer} />
     </section>
   );
 };

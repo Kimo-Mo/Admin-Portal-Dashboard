@@ -1,6 +1,6 @@
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
-import { Button, Form, Input, Select, Switch } from 'antd';
-import { ArrowRight, Trash } from 'iconsax-reactjs';
+import { Button, Divider, Form, Input, Select, Switch } from 'antd';
+import { ArrowDown2, ArrowRight, Trash } from 'iconsax-reactjs';
 import { useEffect, useMemo, useState } from 'react';
 import type { UserRecord } from './UsersTable';
 
@@ -127,7 +127,7 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
           name="role"
           label="Role"
           rules={[{ required: true, message: 'Please select your role!' }]}>
-          <Select size="large" placeholder="Select Your Role">
+          <Select size="large" placeholder="Select Your Role" suffixIcon={<ArrowDown2 />}>
             <Option value="Admin">Admin</Option>
             <Option value="Owner">Owner</Option>
             <Option value="Member">Member</Option>
@@ -137,6 +137,7 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
       </Form>
       <div className="flex flex-col gap-4">
         <h2 className="text-base text-text font-semibold">Details</h2>
+        <Divider />
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-3">
             <p className="text-text/90">Organization Details</p>
