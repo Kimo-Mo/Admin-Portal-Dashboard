@@ -258,12 +258,13 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTa
       title: 'Actions',
       dataIndex: 'actions',
       sorter: true,
+      fixed:"right",
       key: 'actions',
       width: 100,
       render: (_, record) =>
         renderOrSkeleton(
           () => (
-            <Space className="pt-2 pe-5">
+            <Space className="pt-2 pe-0 2xl:pe-3">
               <Edit
                 size={20}
                 className="border-none bg-transparent opacity-60 hover:opacity-80 cursor-pointer"
@@ -307,6 +308,8 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTa
         pagination={false}
         className="rounded-none w-full users-table"
         rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
+        scroll={{ x: 'max-content' }}
+        size="small"
       />
     </div>
   );

@@ -185,11 +185,12 @@ const ProductsTable = ({
       title: <Refresh className="text-primary rotate-20" size={32} />,
 
       key: 'actions',
-      width: 130,
+      width: 100,
+      fixed: 'right',
       render: () =>
         renderOrSkeleton(
           () => (
-            <Space>
+            <Space className="2xl:ps-2">
               <Button
                 type="text"
                 icon={<Edit size={20} />}
@@ -234,6 +235,8 @@ const ProductsTable = ({
         pagination={false}
         className="rounded-none w-full"
         rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
+        scroll={{ x: 'max-content' }}
+        size="small"
       />
     </div>
   );

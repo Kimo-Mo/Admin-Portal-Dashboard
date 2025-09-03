@@ -43,9 +43,9 @@ const MainUsersComponents = () => {
   return (
     <section>
       <IBreadCrumb title="Users" />
-      <div className="flex items-center justify-between mb-8 flex-wrap gap-4 lg:gap-0">
+      <div className="flex items-center justify-between mb-8 flex-wrap gap-4 lg:gap-0 ">
         <h1 className="text-xl font-medium">Users</h1>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap">
           <ExportButton title="Users" onClick={onExportClick} />
           <Button
             type="primary"
@@ -81,9 +81,9 @@ const MainUsersComponents = () => {
                 gap: '0.5rem',
                 justifyContent: 'flex-start',
               }}
-              icon={<Setting5 />}>
-              Add Filter
-              <ArrowDown2 className="ms-7.5" />
+              icon={<Setting5 size={window.innerWidth < 1024 ? 16 : 24} />}>
+              <span className="text-sm lg:text-base">Add Filter</span>
+              <ArrowDown2 className="md:ms-4.5" size={window.innerWidth < 1024 ? 16 : 24} />
             </Button>
           </div>
         </div>
