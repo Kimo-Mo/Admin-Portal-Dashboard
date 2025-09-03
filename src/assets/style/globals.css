@@ -119,6 +119,13 @@ html {
   text-align: center !important;
   padding: 4px 8px !important;
 }
+@media (max-width: 1200px) {
+  .ant-table-row > .ant-table-cell:last-child {
+  background-color: var(--c-card) !important;
+  text-align: center !important;
+  padding: 0 !important;
+}
+}
 
 .ant-table-row > .ant-table-cell:nth-child(2) {
   text-align: left !important;
@@ -127,7 +134,11 @@ html {
 
 .ant-table-thead > tr > th:last-child {
   border-radius: 0 !important;
+  border-left: none !important;
+  display: flex !important;
+  justify-content: center !important;
 }
+
 
 .ant-table-thead .ant-table-cell::before {
   background-color: transparent !important;

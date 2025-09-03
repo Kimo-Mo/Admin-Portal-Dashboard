@@ -43,9 +43,9 @@ const MainUsersComponents = () => {
   return (
     <section>
       <IBreadCrumb title="Users" />
-      <div className="flex items-center justify-between mb-8 flex-wrap gap-4 lg:gap-0">
+      <div className="flex items-center justify-between mb-8 flex-wrap gap-4 lg:gap-0 ">
         <h1 className="text-xl font-medium">Users</h1>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap">
           <ExportButton title="Users" onClick={onExportClick} />
           <Button
             type="primary"
