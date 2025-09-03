@@ -37,7 +37,7 @@ const MainOrganization = () => {
   const openCreateOrgDrawer = () => {
     setCreateOrgDrawer(true);
   };
-  const closeCreateOrgDrawe = () => {
+  const closeCreateOrgDrawer = () => {
     setCreateOrgDrawer(false);
   };
 
@@ -49,11 +49,11 @@ const MainOrganization = () => {
   };
   return (
     <section>
-      <CreateOrgDrawer createOrgDrawer={createOrgDrawer} onClose={closeCreateOrgDrawe} />
+      <CreateOrgDrawer createOrgDrawer={createOrgDrawer} onClose={closeCreateOrgDrawer} />
       <IBreadCrumb title="Organization" />
       <div className="flex items-center justify-between mb-8 flex-wrap gap-4 lg:gap-0">
         <h1 className="text-xl font-medium">Organizations</h1>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center flex-wrap gap-3">
           <ExportButton onClick={onExportClick} />
           <Button
             size="large"

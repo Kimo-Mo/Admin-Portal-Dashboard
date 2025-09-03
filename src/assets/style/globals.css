@@ -33,12 +33,12 @@ html {
   @apply bg-background-dark;
 }
 ::-webkit-scrollbar {
-  @apply w-2;
+  @apply w-2 h-2;
 }
 .ant-menu-item {
   line-height: 1 !important;
   height: fit-content !important;
-  padding-block: 6px !important;
+  padding-block: 10px !important;
 }
 .ant-menu-item-selected {
   background-color: var(--c-elevated) !important;

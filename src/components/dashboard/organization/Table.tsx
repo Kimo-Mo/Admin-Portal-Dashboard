@@ -226,7 +226,7 @@ const ProductsTable = ({
   };
 
   return (
-    <div className="rounded-b-lg overflow-auto w-full scroll-thin">
+    <div className="rounded-b-lg overflow-auto w-full">
       <Table
         columns={columns}
         dataSource={data}

@@ -19,6 +19,11 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
   const { setOpenSuccess } = useSuccessPopup();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const [userStatus, setUserStatus] = useState(status);
+
+  const handleStatusChange = (isActivating: boolean) => {
+    setUserStatus(isActivating);
+  };
 
   useEffect(() => {
     if (editUser) {
@@ -102,9 +107,10 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
           />
           <div
             className={`users-table-switch ${
-              status ? 'active' : 'inactive'
+              userStatus ? 'active' : 'inactive'
             } flex gap-2 my-2.5 ps-4`}>
-            <Switch checked={status} /> <span>{status ? 'Active' : 'Inactive'}</span>
+            <Switch checked={userStatus} onChange={handleStatusChange} />{' '}
+            <span>{userStatus ? 'Active' : 'Inactive'}</span>
           </div>
         </div>
       </div>
@@ -137,7 +143,7 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
       </Form>
       <div className="flex flex-col gap-4">
         <h2 className="text-base text-text font-semibold">Details</h2>
-        <Divider />
+        <Divider className="!border-border" />
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-3">
             <p className="text-text/90">Organization Details</p>
