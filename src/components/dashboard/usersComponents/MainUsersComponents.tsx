@@ -81,9 +81,9 @@ const MainUsersComponents = () => {
                 gap: '0.5rem',
                 justifyContent: 'flex-start',
               }}
-              icon={<Setting5 />}>
-              Add Filter
-              <ArrowDown2 className="ms-7.5" />
+              icon={<Setting5 size={window.innerWidth < 1024 ? 16 : 24} />}>
+              <span className="text-sm lg:text-base">Add Filter</span>
+              <ArrowDown2 className="md:ms-4.5" size={window.innerWidth < 1024 ? 16 : 24} />
             </Button>
           </div>
         </div>
