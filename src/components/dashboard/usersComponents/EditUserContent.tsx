@@ -142,8 +142,8 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
         </Form.Item>
       </Form>
       <div className="flex flex-col gap-4">
-        <h2 className="text-base text-text font-semibold">Details</h2>
         <Divider className="!border-border" />
+        <h2 className="text-base text-text font-semibold">Details</h2>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-3">
             <p className="text-text/90">Organization Details</p>

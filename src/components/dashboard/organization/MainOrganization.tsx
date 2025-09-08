@@ -1,6 +1,6 @@
 import { Button, Pagination } from 'antd';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
-import { AddSquare, ArrowDown2, DocumentText1, Forbidden2, Setting5, Sort } from 'iconsax-reactjs';
+import { AddSquare, DocumentText1, Forbidden2, Setting5, Sort } from 'iconsax-reactjs';
 import ProductsTable from './Table';
 import { useState } from 'react';
 import { CreateOrgDrawer } from './createOrgDrawer';
@@ -92,16 +92,14 @@ const MainOrganization = () => {
               style={{
                 backgroundColor: 'var(--c-secondary)',
                 fontSize: '16px',
-                width: '11.25rem',
                 padding: '0.75rem',
                 borderRadius: '8px',
-                gap: '0.5rem',
-                justifyContent: 'flex-start',
               }}
-              icon={<Setting5 size={window.innerWidth < 1024 ? 16 : 24} />}>
-              <span className="text-sm lg:text-base">Add Filter</span>
-              <ArrowDown2 className="md:ms-4.5" size={window.innerWidth < 1024 ? 16 : 24} />
-            </Button>
+              classNames={{
+                icon: 'size-6',
+              }}
+              icon={<Setting5 size={24} />}
+            />
           </div>
         </div>
         <ProductsTable setSelectedRows={setSelectedRows} />

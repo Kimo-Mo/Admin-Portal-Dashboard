@@ -1,6 +1,6 @@
 import { Button, Pagination } from 'antd';
 import UsersTable from './UsersTable';
-import { AddSquare, ArrowDown2, TickSquare, Setting5, Sort, Forbidden2 } from 'iconsax-reactjs';
+import { AddSquare, TickSquare, Setting5, Sort, Forbidden2 } from 'iconsax-reactjs';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import { useConfirmPopup } from '@/services/contexts';
 import { useSuccessPopup } from '@/services/contexts';
@@ -75,16 +75,14 @@ const MainUsersComponents = () => {
               style={{
                 backgroundColor: 'var(--c-secondary)',
                 fontSize: '16px',
-                width: '11.25rem',
                 padding: '0.75rem',
                 borderRadius: '8px',
-                gap: '0.5rem',
-                justifyContent: 'flex-start',
               }}
-              icon={<Setting5 size={window.innerWidth < 1024 ? 16 : 24} />}>
-              <span className="text-sm lg:text-base">Add Filter</span>
-              <ArrowDown2 className="md:ms-4.5" size={window.innerWidth < 1024 ? 16 : 24} />
-            </Button>
+              classNames={{
+                icon: 'size-6',
+              }}
+              icon={<Setting5 size={24} />}
+            />
           </div>
         </div>
         <UsersTable

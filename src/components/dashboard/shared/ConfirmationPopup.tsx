@@ -46,6 +46,7 @@ const ConfirmationPopup: React.FC = () => {
               size="large"
               onClick={onCancel}
               disabled={loading}
+              className="w-32"
               style={{
                 background: 'var(--c-text)',
                 color: 'var(--c-background)',
@@ -53,7 +54,7 @@ const ConfirmationPopup: React.FC = () => {
               Cancel
             </Button>
             {success && (
-              <Button size="large" type="primary" onClick={onOk} loading={loading}>
+              <Button size="large" type="primary" className="w-32" onClick={onOk} loading={loading}>
                 Yes
               </Button>
             )}
