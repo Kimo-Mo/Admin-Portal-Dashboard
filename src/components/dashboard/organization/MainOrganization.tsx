@@ -93,11 +93,11 @@ const MainOrganization = () => {
               size="large"
               onClick={() => {
                 if (isFiltersOpen) {
-                  setTimeout(() => setIsFiltersOpen(!isFiltersOpen), 300);
+                  setTimeout(() => setIsFiltersOpen(!isFiltersOpen), 500);
                   setIsFiltersOpenAnimate(!isFiltersOpenAnimate);
                 } else {
                   setIsFiltersOpen(!isFiltersOpen);
-                  setTimeout(() => setIsFiltersOpenAnimate(!isFiltersOpenAnimate), 300);
+                  setTimeout(() => setIsFiltersOpenAnimate(!isFiltersOpenAnimate), 500);
                 }
               }}
               style={{
@@ -117,7 +117,7 @@ const MainOrganization = () => {
           <ProductsTable setSelectedRows={setSelectedRows} />
           {isFiltersOpen && (
             <div
-              className={`grid transition-all duration-300 ease-in-out ${
+              className={`grid transition-all duration-500 ease-in-out ${
                 isFiltersOpenAnimate ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
               }`}>
               <div className="overflow-hidden">

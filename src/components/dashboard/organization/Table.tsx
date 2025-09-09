@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Table, Button, Dropdown, Space, type MenuProps } from 'antd';
+import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
+import { Button, Dropdown, Space, Table, type MenuProps } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { Edit, Eye, More, Refresh, Trash } from 'iconsax-reactjs';
-import StatusTag from './Tags/StatusTag';
+import React, { useState } from 'react';
 import ProductTag from './Tags/ProductTag';
-import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
+import StatusTag from './Tags/StatusTag';
 
 interface DataRecord {
   key: string;
@@ -234,7 +234,7 @@ const ProductsTable = ({
         rowSelection={rowSelection}
         pagination={false}
         className="rounded-none w-full"
-        rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
+        rowClassName={(_: number, index: number) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
         scroll={{ x: 'max-content' }}
         size="small"
       />
