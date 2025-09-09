@@ -1,9 +1,11 @@
+import { useSideBar } from '@/services/contexts';
 import { Breadcrumb } from 'antd';
 import { ArrowRight2 } from 'iconsax-reactjs';
 import { useNavigate } from 'react-router-dom';
 
-const IBreadCrumb = ({ title }: { title: string }) => {
+const IBreadCrumb = ({ title, child }: { title: string; child?: string }) => {
   const navigate = useNavigate();
+  const { setSelectedKey } = useSideBar();
   return (
     <Breadcrumb
       style={{ marginBottom: '0.75rem' }}
@@ -14,6 +16,14 @@ const IBreadCrumb = ({ title }: { title: string }) => {
           title: 'Dashboard',
           className: 'cursor-pointer',
           onClick: () => navigate('/dashboard'),
+        },
+        {
+          title: child,
+          className: 'cursor-pointer',
+          onClick: () => {
+            setSelectedKey(child || '');
+            navigate(`/dashboard/${child}`);
+          },
         },
         {
           title: title,
