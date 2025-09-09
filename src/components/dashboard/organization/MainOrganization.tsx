@@ -1,14 +1,16 @@
+import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 import { Button, Pagination } from 'antd';
-import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import { AddSquare, DocumentText1, Forbidden2, Setting5, Sort } from 'iconsax-reactjs';
-import ProductsTable from './Table';
 import { useState } from 'react';
+import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import { CreateOrgDrawer } from './createOrgDrawer';
-import { useConfirmPopup } from '@/services/contexts';
-import { useSuccessPopup } from '@/services/contexts';
+import Filters from './filters/Filters';
 import InviteOwnerDrawer from './inviteOwnerDrawer/InviteOwnerDrawer';
+import ProductsTable from './Table';
 
 const MainOrganization = () => {
+  const [isFiltersOpen, setIsFiltersOpen] = useState(true);
+  const [isFiltersOpenAnimate, setIsFiltersOpenAnimate] = useState(true);
   const [createOrgDrawer, setCreateOrgDrawer] = useState(false);
   const [openOwnerDrawer, setOpenOwnerDrawer] = useState(false);
   const [selectedRows, setSelectedRows] = useState(false);
@@ -89,6 +91,15 @@ const MainOrganization = () => {
             <SearchInput />
             <Button
               size="large"
+              onClick={() => {
+                if (isFiltersOpen) {
+                  setTimeout(() => setIsFiltersOpen(!isFiltersOpen), 300);
+                  setIsFiltersOpenAnimate(!isFiltersOpenAnimate);
+                } else {
+                  setIsFiltersOpen(!isFiltersOpen);
+                  setTimeout(() => setIsFiltersOpenAnimate(!isFiltersOpenAnimate), 300);
+                }
+              }}
               style={{
                 backgroundColor: 'var(--c-secondary)',
                 fontSize: '16px',
@@ -102,7 +113,19 @@ const MainOrganization = () => {
             />
           </div>
         </div>
-        <ProductsTable setSelectedRows={setSelectedRows} />
+        <div className="flex">
+          <ProductsTable setSelectedRows={setSelectedRows} />
+          {isFiltersOpen && (
+            <div
+              className={`grid transition-all duration-300 ease-in-out ${
+                isFiltersOpenAnimate ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+              }`}>
+              <div className="overflow-hidden">
+                <Filters />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="w-full mt-4 flex items-center flex-col">

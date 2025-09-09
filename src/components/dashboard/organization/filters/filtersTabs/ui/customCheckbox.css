@@ -1,0 +1,28 @@
+.ant-checkbox-wrapper .ant-checkbox-inner {
+  width: 0.9rem; /* 20px */
+  height: 0.9rem; /* 20px */
+  border: solid 1px color-mix(in srgb, var(--c-text) 30%, transparent) !important;
+  background-color: transparent !important;
+  border-radius: 4px !important;
+  transition: border-color 0.3s ease;
+}
+
+/* 🟩 Checked state */
+.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
+  border-color: var(--c-primary) !important;
+  background-color: var(--c-primary) !important;
+}
+
+/* 🟨 Checkmark (tick) size and color */
+.ant-checkbox-checked .ant-checkbox-inner::after {
+  border-color: var(--c-background) !important;
+  inset-inline-start: 22.5%; /* Center tick if resized */
+  inset-block-start: 45%; /* Adjust vertical alignment */
+  width: 5px; /* Adjust tick width */
+  height: 9px; /* Adjust tick height */
+}
+
+/* 🟧 Hover state */
+.ant-checkbox-wrapper .ant-checkbox:hover .ant-checkbox-inner {
+  border-color: var(--c-primary) !important;
+}
