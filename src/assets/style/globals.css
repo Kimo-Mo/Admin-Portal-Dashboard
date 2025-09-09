@@ -119,12 +119,12 @@ html {
   text-align: center !important;
   padding: 4px 8px !important;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .ant-table-row > .ant-table-cell:last-child {
-  background-color: var(--c-card) !important;
-  text-align: center !important;
-  padding: 0 !important;
-}
+    background-color: var(--c-card) !important;
+    text-align: center !important;
+    padding: 0 !important;
+  }
 }
 
 .ant-table-row > .ant-table-cell:nth-child(2) {
@@ -138,7 +138,6 @@ html {
   display: flex !important;
   justify-content: center !important;
 }
-
 
 .ant-table-thead .ant-table-cell::before {
   background-color: transparent !important;
@@ -376,4 +375,13 @@ html {
 
 .ant-picker-now-btn {
   color: var(--c-text) !important;
+}
+
+.ant-tabs-nav {
+  padding: 16px 16px 0 16px !important;
+  text-transform: capitalize;
+}
+
+.ant-tabs-nav::before {
+  border-bottom: 1px solid var(--c-border) !important;
 }
