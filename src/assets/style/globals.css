@@ -494,3 +494,11 @@ html {
 .ant-tabs-nav::before {
   border-bottom: 1px solid var(--c-border) !important;
 }
+
+.ant-steps-item-active .ant-steps-item-title {
+  color: var(--color-primary) !important;
+}
+
+.ant-steps-item-finish * {
+  color: color-mix(in srgb, var(--color-primary) 70%, transparent) !important;
+}
