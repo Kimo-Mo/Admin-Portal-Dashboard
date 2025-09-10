@@ -1,7 +1,17 @@
 import type { DataRecord } from '@/types';
 import { Edit, TickCircle } from 'iconsax-reactjs';
+import { useState } from 'react';
+import { EditPackageDrawer } from '../editPackageDrawer';
 
 const ProductsTab = ({ OrgInfo }: { OrgInfo: DataRecord | null }) => {
+  const [openOwnerDrawer, setOpenOwnerDrawer] = useState(false);
+
+  const onOpenOwnerDrawer = () => {
+    setOpenOwnerDrawer(true);
+  };
+  const onCloseOwnerDrawer = () => {
+    setOpenOwnerDrawer(false);
+  };
   return (
     <article className="px-4 pb-4">
       <div className="bg-background p-4 border border-border rounded-lg my-4 relative capitalize">
@@ -18,7 +28,9 @@ const ProductsTab = ({ OrgInfo }: { OrgInfo: DataRecord | null }) => {
           end date <span className="text-text/50">{OrgInfo?.creationDate}</span>
         </p>
         <div className="flex justify-end absolute top-1 md:top-4 end-1 md:end-4">
-          <p className="cursor-pointer rounded-lg border border-border bg-primary/15 p-1">
+          <p
+            className="cursor-pointer rounded-lg border border-border bg-primary/15 p-1"
+            onClick={onOpenOwnerDrawer}>
             <Edit size={20} />
           </p>
         </div>
@@ -33,11 +45,14 @@ const ProductsTab = ({ OrgInfo }: { OrgInfo: DataRecord | null }) => {
           ))}
         </div>
         <div className="flex justify-end absolute top-1 md:top-4 end-1 md:end-4">
-          <p className="cursor-pointer rounded-lg border border-border bg-primary/15 p-1">
+          <p
+            className="cursor-pointer rounded-lg border border-border bg-primary/15 p-1"
+            onClick={onOpenOwnerDrawer}>
             <Edit size={20} />
           </p>
         </div>
       </div>
+      <EditPackageDrawer open={openOwnerDrawer} onClose={onCloseOwnerDrawer} />
     </article>
   );
 };

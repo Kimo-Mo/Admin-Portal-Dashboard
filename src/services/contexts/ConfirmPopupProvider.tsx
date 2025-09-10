@@ -42,16 +42,16 @@ export const ConfirmPopupProvider = ({ children }: ConfirmPopupProviderProps) =>
   const onOk = async () => {
     try {
       setLoading(true);
-      if (customOnOk) {
-        customOnOk();
-        setCustomOnOk(undefined);
-      }
       await new Promise((resolve) => setTimeout(resolve, 2000));
       setOpenSuccess(true);
       setOpenConfirm(false);
       setTimeout(() => {
         setOpenSuccess(false);
       }, 3000);
+      if (customOnOk) {
+        customOnOk();
+        setCustomOnOk(undefined);
+      }
     } catch (error) {
       console.log('Validation failed:', error);
     } finally {

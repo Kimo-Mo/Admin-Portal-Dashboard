@@ -1,30 +1,31 @@
 import { ConfigProvider, Drawer } from 'antd';
 import { CloseCircle, Export } from 'iconsax-reactjs';
-import EditUserContent from './EditUserContent';
-import AddUserContent from './AddUserContent';
-import type { UserRecord } from '@/types';
+import EditGeneralInfoDrawerContent from './EditGeneralInfoDrawerContent';
+import type { DataRecord } from '@/types';
 
 interface EditUserDrawerProps {
   open: boolean;
   onClose: () => void;
-  editUser: UserRecord | null;
+  OrgInfo: DataRecord | null;
 }
 
-const UserDrawer = ({ open, onClose, editUser }: EditUserDrawerProps) => {
+const EditGeneralInfoDrawer = ({ open, onClose, OrgInfo }: EditUserDrawerProps) => {
   return (
     <ConfigProvider
       theme={{
         components: {
           Button: {
-            controlHeightLG: 40,
-            paddingInlineLG: 30,
+            controlHeightLG: 48,
+            paddingInlineLG: 16,
             paddingBlockLG: 12,
             borderRadiusLG: 12,
+            fontSizeLG: 16,
           },
           Input: {
             borderRadiusLG: 12,
             paddingBlockLG: 16,
-            paddingInlineLG: 24,
+            paddingInlineLG: 18,
+            controlHeightLG: 56,
           },
           Select: {
             optionLineHeight: '38px',
@@ -40,7 +41,7 @@ const UserDrawer = ({ open, onClose, editUser }: EditUserDrawerProps) => {
         destroyOnHidden
         title={
           <h1 className="text-base font-semibold flex items-center justify-between">
-            {editUser ? 'User Profile' : 'Add New User'} <Export className="text-text/50" />
+            General Info <Export className="text-text/50" />
           </h1>
         }
         closeIcon={<CloseCircle />}
@@ -54,14 +55,13 @@ const UserDrawer = ({ open, onClose, editUser }: EditUserDrawerProps) => {
         styles={{
           header: { borderBottom: '1px solid var(--c-border)', padding: '1rem 2rem' },
           body: {
-            paddingInline: '2rem',
+            paddingInline: '1rem',
           },
         }}>
-        {editUser && <EditUserContent editUser={editUser} onClose={onClose} />}
-        {!editUser && <AddUserContent onClose={onClose} />}
+        <EditGeneralInfoDrawerContent OrgInfo={OrgInfo} onClose={onClose} />
       </Drawer>
     </ConfigProvider>
   );
 };
 
-export default UserDrawer;
+export default EditGeneralInfoDrawer;

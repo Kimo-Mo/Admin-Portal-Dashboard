@@ -1,18 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import type { DataRecord } from '@/types';
+import type { DataRecord, UserRecord } from '@/types';
 import { orgData } from '@/services/mockData';
 import { ExportButton, IBreadCrumb } from '../shared';
 
-import { Button, Tabs } from 'antd';
-import type { TabsProps } from 'antd';
-import OrgInfoTab from './OrgInfoTab';
-import UsersTab from './UsersTab';
+import { Button, Pagination, Tabs, type TabsProps } from 'antd';
 import { AddSquare, Forbidden2, TickSquare } from 'iconsax-reactjs';
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
-import type { UserRecord } from '../usersComponents/UsersTable';
-import UserDrawer from '../usersComponents/UserDrawer';
-import ProductsTab from './ProductsTab';
+import { OrgInfoTab, ProductsTab, UsersTab } from './orgProfileTabs';
+import { UserDrawer } from '../usersComponents';
 
 const OrganizationDetails = () => {
   const { key } = useParams();
@@ -59,7 +55,7 @@ const OrganizationDetails = () => {
     const org = orgData.find((org) => org.key === key);
     setOrgInfo(org || null);
   }, [key]);
-  
+
   const onExportClick = () => {
     if (selectedRows) {
       setContent({
@@ -106,6 +102,11 @@ const OrganizationDetails = () => {
       <div className="bg-card border border-border rounded-xl">
         <Tabs size="large" defaultActiveKey="generalInfo" items={items} onChange={onChange} />
       </div>
+      {selectedTab === 'users' && (
+        <div className="w-full my-4 flex items-center flex-col">
+          <Pagination total={120} showSizeChanger={false} />
+        </div>
+      )}
       <UserDrawer
         open={openUserDrawer}
         onClose={() => setOpenUserDrawer(false)}

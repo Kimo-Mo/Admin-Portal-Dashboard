@@ -2,7 +2,7 @@ import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 import { Button, Divider, Form, Input, Select, Switch } from 'antd';
 import { ArrowDown2, ArrowRight, Trash } from 'iconsax-reactjs';
 import { useEffect, useMemo, useState } from 'react';
-import type { UserRecord } from './UsersTable';
+import type { UserRecord } from '@/types';
 
 const { Option } = Select;
 
