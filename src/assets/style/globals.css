@@ -151,7 +151,7 @@ html {
   text-align: center !important;
   padding: 4px 8px !important;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .ant-table-row > .ant-table-cell:last-child {
     background-color: var(--c-card) !important;
     text-align: center !important;
@@ -485,4 +485,20 @@ html {
   body {
     @apply bg-background;
   }
+}
+.ant-tabs-nav {
+  padding: 16px 16px 0 16px !important;
+  text-transform: capitalize;
+}
+
+.ant-tabs-nav::before {
+  border-bottom: 1px solid var(--c-border) !important;
+}
+
+.ant-steps-item-active .ant-steps-item-title {
+  color: var(--color-primary) !important;
+}
+
+.ant-steps-item-finish * {
+  color: color-mix(in srgb, var(--color-primary) 70%, transparent) !important;
 }

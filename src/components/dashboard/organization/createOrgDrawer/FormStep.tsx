@@ -1,7 +1,7 @@
-import { DatePicker, Form, Input, Select, type FormInstance } from 'antd';
+import { DatePicker, Form, Input, Select } from 'antd';
 import type { FormFieldConfig } from './StepFields';
 
-const FormStep = ({ fields, form }: { fields: FormFieldConfig[]; form: FormInstance }) => {
+const FormStep = ({ fields }: { fields: FormFieldConfig[] }) => {
   const renderField = (field: FormFieldConfig) => {
     const { name, label, placeholder, type = 'input', rules, options } = field;
 
@@ -34,12 +34,7 @@ const FormStep = ({ fields, form }: { fields: FormFieldConfig[]; form: FormInsta
   const nonDateFields = fields.filter((field) => field.type !== 'date');
 
   return (
-    <Form
-      size="large"
-      layout="vertical"
-      form={form}
-      requiredMark={false}
-      style={{ backgroundColor: 'var(--c-background)', maxWidth: 'none', border: 'none' }}>
+    <div style={{ backgroundColor: 'var(--c-background)' }}>
       {nonDateFields.map(renderField)}
       {dateFields.length > 0 && (
         <div className="flex gap-3">
@@ -50,7 +45,7 @@ const FormStep = ({ fields, form }: { fields: FormFieldConfig[]; form: FormInsta
           ))}
         </div>
       )}
-    </Form>
+    </div>
   );
 };
 
