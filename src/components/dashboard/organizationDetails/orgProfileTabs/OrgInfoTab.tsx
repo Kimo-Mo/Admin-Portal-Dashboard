@@ -1,8 +1,16 @@
 import type { DataRecord } from '@/types';
 import { Edit } from 'iconsax-reactjs';
+import { useState } from 'react';
+import { EditGeneralInfoDrawer } from '../editGeneralInfoDrawer';
 
 const OrgInfoTab = ({ OrgInfo }: { OrgInfo: DataRecord | null }) => {
-
+  const [openGeneralInfoDrawer, setOpenGeneralInfoDrawer] = useState(false);
+  const onOpenGeneralInfoDrawer = () => {
+    setOpenGeneralInfoDrawer(true);
+  };
+  const onCloseGeneralInfoDrawer = () => {
+    setOpenGeneralInfoDrawer(false);
+  };
   return (
     <article className="px-4 pb-4">
       <h3>Organization Info</h3>
@@ -34,9 +42,11 @@ const OrgInfoTab = ({ OrgInfo }: { OrgInfo: DataRecord | null }) => {
           </table>
         </div>
         <div className="flex justify-end absolute top-1 md:top-4 end-1 md:end-4">
-          <p className="cursor-pointer rounded-lg border border-border bg-primary/15 p-1">
+          <span
+            className="cursor-pointer rounded-lg border border-border bg-primary/15 p-1"
+            onClick={onOpenGeneralInfoDrawer}>
             <Edit size={20} />
-          </p>
+          </span>
         </div>
       </div>
       <h3>Owner Info</h3>
@@ -68,11 +78,18 @@ const OrgInfoTab = ({ OrgInfo }: { OrgInfo: DataRecord | null }) => {
           </table>
         </div>
         <div className="flex justify-end absolute top-1 md:top-4 end-1 md:end-4">
-          <p className="cursor-pointer rounded-lg border border-border bg-primary/15 p-1">
+          <span
+            className="cursor-pointer rounded-lg border border-border bg-primary/15 p-1"
+            onClick={onOpenGeneralInfoDrawer}>
             <Edit size={20} />
-          </p>
+          </span>
         </div>
       </div>
+      <EditGeneralInfoDrawer
+        OrgInfo={OrgInfo}
+        open={openGeneralInfoDrawer}
+        onClose={onCloseGeneralInfoDrawer}
+      />
     </article>
   );
 };

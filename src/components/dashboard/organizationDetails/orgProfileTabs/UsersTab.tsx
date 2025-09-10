@@ -1,14 +1,15 @@
 import { Button } from 'antd';
-import { SearchInput } from '../shared';
-import { UsersTable } from '../usersComponents';
-import type { UserRecord } from '../usersComponents/UsersTable';
 import { Setting5 } from 'iconsax-reactjs';
+import { SearchInput } from '@/components/dashboard/shared';
+import UsersTable from '@/components/dashboard/usersComponents/UsersTable';
+import type { UserRecord } from '@/types';
 
 interface UsersTableProps {
   setSelectedRows: React.Dispatch<React.SetStateAction<boolean>>;
   setOpenUserDrawer: React.Dispatch<React.SetStateAction<boolean>>;
   setEditUser: React.Dispatch<React.SetStateAction<UserRecord | null>>;
 }
+
 const UsersTab = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTableProps) => {
   return (
     <>

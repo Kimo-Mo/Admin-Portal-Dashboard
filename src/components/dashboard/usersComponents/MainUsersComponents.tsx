@@ -2,11 +2,10 @@ import { Button, Pagination } from 'antd';
 import UsersTable from './UsersTable';
 import { AddSquare, TickSquare, Setting5, Sort, Forbidden2 } from 'iconsax-reactjs';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
-import { useConfirmPopup } from '@/services/contexts';
-import { useSuccessPopup } from '@/services/contexts';
+import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 import { useState } from 'react';
 import UserDrawer from './UserDrawer';
-import type { UserRecord } from './UsersTable';
+import type { UserRecord } from '@/types';
 
 const MainUsersComponents = () => {
   const [openUserDrawer, setOpenUserDrawer] = useState(false);
