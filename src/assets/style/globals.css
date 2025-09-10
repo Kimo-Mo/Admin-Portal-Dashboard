@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-inter: 'Inter', sans-serif;
@@ -20,6 +23,35 @@
   --color-info: var(--c-info);
   --color-elevated: var(--c-elevated);
   --color-icon: var(--c-icon);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-foreground: var(--foreground);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 html {
@@ -33,12 +65,12 @@ html {
   @apply bg-background-dark;
 }
 ::-webkit-scrollbar {
-  @apply w-2;
+  @apply w-2 h-2;
 }
 .ant-menu-item {
   line-height: 1 !important;
   height: fit-content !important;
-  padding-block: 6px !important;
+  padding-block: 10px !important;
 }
 .ant-menu-item-selected {
   background-color: var(--c-elevated) !important;
@@ -72,7 +104,7 @@ html {
 .ant-table-tbody > tr > td:first-child {
   border-left: none !important;
 }
-/* زي الخرا طبعا بس اعمل ايه */
+
 .ant-table-thead > tr > th:nth-child(3) {
   border-left: none !important;
 }
@@ -119,6 +151,13 @@ html {
   text-align: center !important;
   padding: 4px 8px !important;
 }
+@media (max-width: 1024px) {
+  .ant-table-row > .ant-table-cell:last-child {
+    background-color: var(--c-card) !important;
+    text-align: center !important;
+    padding: 0 !important;
+  }
+}
 
 .ant-table-row > .ant-table-cell:nth-child(2) {
   text-align: left !important;
@@ -127,6 +166,9 @@ html {
 
 .ant-table-thead > tr > th:last-child {
   border-radius: 0 !important;
+  border-left: none !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 .ant-table-thead .ant-table-cell::before {
@@ -135,7 +177,6 @@ html {
 }
 
 .even-row > td {
-  /* background-color: var(--c-background) !important; */
   background-color: color-mix(in srgb, var(--c-background) 40%, transparent) !important;
   padding: 16px 24px;
 }
@@ -160,7 +201,6 @@ html {
   overflow: visible !important;
 }
 .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
-  /* background-color: var(--c-primary) !important; */
   border-color: var(--c-primary) !important;
 }
 
@@ -280,4 +320,177 @@ html {
 }
 .users-table-switch > .ant-switch-checked > .ant-switch-handle::before {
   background-color: #6ad18e !important;
+}
+
+/* Table Users */
+
+.users-table .ant-table-thead > tr > th .ant-table-column-sorters {
+  justify-content: flex-start !important;
+}
+
+.users-table .ant-table-row > .ant-table-cell {
+  padding: 4px 8px !important;
+}
+.users-table .ant-table-thead > tr > th,
+.users-table .ant-table-tbody > tr > td {
+  border-left: none !important;
+}
+
+/* Pagination */
+.ant-pagination-item-link {
+  border-radius: 100% !important;
+  color: color-mix(in srgb, var(--c-text) 60%, transparent) !important;
+}
+.ant-pagination-item-link:hover {
+  border-radius: 100% !important;
+}
+
+.ant-pagination {
+  display: flex !important;
+  margin-bottom: 10px !important;
+  align-items: center !important;
+}
+.ant-pagination li {
+  display: flex !important;
+  margin-bottom: 10px !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.ant-pagination li.ant-pagination-jump-next,
+.ant-pagination li.ant-pagination-jump-prev {
+  display: inline !important;
+}
+.ant-pagination li.ant-pagination-item {
+  border-radius: 100% !important;
+  background-color: var(--c-background) !important;
+  color: color-mix(in srgb, var(--c-text) 15%, transparent) !important;
+  border: 2px solid var(--c-border) !important;
+}
+
+.ant-pagination li.ant-pagination-item-active {
+  background-color: color-mix(in srgb, var(--c-primary) 15%, transparent) !important;
+  color: var(--c-primary) !important;
+}
+.ant-pagination li a {
+  margin-top: 2px;
+  color: color-mix(in srgb, var(--c-text) 60%, transparent) !important;
+}
+
+.ant-pagination li.ant-pagination-item-active a {
+  color: var(--c-primary) !important;
+}
+.ant-pagination li.ant-pagination-item-active {
+  border: none !important;
+}
+.ant-pagination-disabled {
+  border-radius: 100% !important;
+  background-color: color-mix(in srgb, var(--c-card-dark), transparent) !important;
+}
+
+.ant-select-dropdown {
+  background-color: var(--c-background) !important;
+  border: 1px solid var(--c-border) !important;
+}
+
+.ant-picker-panel-layout {
+  background-color: var(--c-background) !important;
+  border: 1px solid var(--c-border) !important;
+}
+
+.ant-picker-header {
+  border-bottom: 1px solid var(--c-border) !important;
+}
+
+.ant-picker-footer {
+  border-top: 1px solid var(--c-border) !important;
+}
+
+.ant-picker-now-btn {
+  color: var(--c-text) !important;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background;
+  }
+}
+.ant-tabs-nav {
+  padding: 16px 16px 0 16px !important;
+  text-transform: capitalize;
+}
+
+.ant-tabs-nav::before {
+  border-bottom: 1px solid var(--c-border) !important;
 }

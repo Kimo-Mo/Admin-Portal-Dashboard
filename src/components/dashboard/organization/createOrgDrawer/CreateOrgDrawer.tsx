@@ -110,6 +110,7 @@ const CreateOrgDrawer = ({ createOrgDrawer, onClose }: CreateOrgDrawerProps) => 
           },
           Input: {
             borderRadiusLG: 12,
+            colorBgElevated: 'var(--c-card)',
           },
         },
       }}>

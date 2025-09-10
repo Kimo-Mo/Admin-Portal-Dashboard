@@ -1,9 +1,7 @@
-import { MainOrganization } from "@/components/dashboard/organization"
+import { MainOrganization } from '@/components/dashboard/organization';
 
 const OrganizationPage = () => {
-  return (
-    <MainOrganization />
-  )
-}
+  return <MainOrganization />;
+};
 
-export default OrganizationPage
+export default OrganizationPage;

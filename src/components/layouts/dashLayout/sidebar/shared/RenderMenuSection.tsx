@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const RenderMenuSection = ({ items }: { items: MenuProps['items'] }) => {
-  const { selectedKey, setSelectedKey } = useSideBar();
+  const { selectedKey, setSelectedKey, setDrawerOpened } = useSideBar();
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -17,6 +17,7 @@ const RenderMenuSection = ({ items }: { items: MenuProps['items'] }) => {
       setSelectedKey(key);
       navigate('/dashboard');
     }
+    setDrawerOpened(false);
   };
   useEffect(() => {
     if (pathname !== '/dashboard' && selectedKey === 'dashboard') {

@@ -82,7 +82,7 @@ export const ANTD_THEME_DARK: ThemeConfig = {
       trackBg: MAIN_COLORS.dark.card,
     },
     Menu: {
-      itemHeight: 36,
+      itemHeight: 44,
       itemMarginBlock: 12,
       iconSize: 24,
       collapsedIconSize: 24,
@@ -110,6 +110,16 @@ export const ANTD_THEME_DARK: ThemeConfig = {
     Form: {
       itemMarginBottom: 16,
       verticalLabelPadding: '0 0 12px',
+    },
+    Modal: {
+      contentBg: MAIN_COLORS.dark.card,
+    },
+    Pagination: {
+      itemSize: 28,
+    },
+    Tabs: {
+      horizontalItemGutter: 26,
+      horizontalItemPaddingLG: '0 0 10px',
     },
   },
 };

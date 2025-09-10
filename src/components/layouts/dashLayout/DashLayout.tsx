@@ -5,6 +5,7 @@ import ProductsSidebar from './sidebar/ProductsSidebar';
 import Header from './header/DashboardHeader';
 import Drawer from './sidebar/Drawer';
 import { Outlet } from 'react-router-dom';
+import { ConfirmationPopup, SuccessPopup } from '@/components/dashboard';
 
 const { Content } = Layout;
 const DashLayout = () => {
@@ -26,6 +27,8 @@ const DashLayout = () => {
           }}>
           {screens.md && <SideBar />}
           {!screens.md && <Drawer />}
+          <ConfirmationPopup />
+          <SuccessPopup />
           <Content
             style={{
               margin: '1rem 1rem 0',
