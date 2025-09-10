@@ -1,13 +1,13 @@
-import { Drawer, Button, Form, message, Steps, ConfigProvider } from 'antd';
+import { Button, ConfigProvider, Drawer, Form, message, Steps } from 'antd';
 import { Box, Building, CloseCircle, Export, User } from 'iconsax-reactjs';
-import { useState, useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
+import FormStep from './FormStep';
 import {
   ORGANIZATION_INFO_FIELDS,
   OWNER_INFO_FIELDS,
   PACKAGE_INFO_FIELDS,
   type FormFieldConfig,
 } from './StepFields';
-import FormStep from './FormStep';
 
 interface CreateOrgDrawerProps {
   createOrgDrawer: boolean;
@@ -43,15 +43,9 @@ const CreateOrgDrawer = ({ createOrgDrawer, onClose }: CreateOrgDrawerProps) => 
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
-  const handleNext = useCallback(async () => {
-    try {
-      const currentStepFields = STEPS_CONFIG[current].fields.map((field) => field.name);
-      await form.validateFields(currentStepFields);
-      setCurrent((prev) => prev + 1);
-    } catch {
-      message.error('Please fill in all required fields correctly');
-    }
-  }, [current, form]);
+  const handleNext = useCallback(() => {
+    setCurrent((prev) => prev + 1);
+  }, []);
 
   const handlePrev = useCallback(() => {
     setCurrent((prev) => prev - 1);
@@ -71,7 +65,7 @@ const CreateOrgDrawer = ({ createOrgDrawer, onClose }: CreateOrgDrawerProps) => 
       setCurrent(0);
       onClose();
     } catch {
-      message.error('Failed to create organization. Please try again.');
+      message.error('Please fill in all required fields correctly');
     } finally {
       setLoading(false);
     }
@@ -86,8 +80,22 @@ const CreateOrgDrawer = ({ createOrgDrawer, onClose }: CreateOrgDrawerProps) => 
     []
   );
 
-  const currentStepContent = useMemo(
-    () => <FormStep fields={STEPS_CONFIG[current].fields} form={form} />,
+  // Render all steps but only show the current one
+  const allStepsContent = useMemo(
+    () => (
+      <Form
+        form={form}
+        layout="vertical"
+        size="large"
+        requiredMark={false}
+        style={{ backgroundColor: 'var(--c-background)', maxWidth: 'none', border: 'none' }}>
+        {STEPS_CONFIG.map((step, index) => (
+          <div key={index} style={{ display: index === current ? 'block' : 'none' }}>
+            <FormStep fields={step.fields} />
+          </div>
+        ))}
+      </Form>
+    ),
     [current, form]
   );
 
@@ -128,8 +136,13 @@ const CreateOrgDrawer = ({ createOrgDrawer, onClose }: CreateOrgDrawerProps) => 
             paddingBlock: '0.75rem',
           },
         }}>
-        <Steps current={current} items={stepsItems} labelPlacement="vertical" />
-        <div>{currentStepContent}</div>
+        <Steps
+          current={current}
+          items={stepsItems}
+          labelPlacement="vertical"
+          onChange={(value) => setCurrent(value)}
+        />
+        <div>{allStepsContent}</div>
         <div className="flex items-center justify-end gap-2">
           {current > 0 && (
             <Button
@@ -157,5 +170,4 @@ const CreateOrgDrawer = ({ createOrgDrawer, onClose }: CreateOrgDrawerProps) => 
     </ConfigProvider>
   );
 };
-
 export default CreateOrgDrawer;
