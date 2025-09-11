@@ -194,6 +194,22 @@ html {
 .ant-table-row.ant-table-row-selected > td {
   background-color: color-mix(in srgb, var(--c-primary) 15%, transparent) !important;
 }
+/* Support Table */
+.support-table .ant-table-thead > tr > th {
+  padding: 16px 8px !important;
+}
+.support-table .ant-table-tbody > tr > td {
+  white-space: nowrap !important;
+}
+.support-table .even-row > td {
+  background-color: color-mix(in srgb, var(--c-background) 40%, transparent) !important;
+  padding: 10px 24px !important;
+}
+
+.support-table .odd-row > td {
+  background-color: color-mix(in srgb, var(--c-card) 40%, transparent) !important;
+  padding: 10px 24px !important;
+}
 
 .ant-menu-item-selected {
   background-color: var(--c-elevated) !important;

@@ -16,3 +16,13 @@ export interface UserRecord {
   lastLogin: string;
   creationDate: string;
 }
+
+export interface TicketRecord {
+  key: string;
+  ticketTitle: string;
+  description: string;
+  priority: 'Low' | 'Medium' | 'High';
+  status: 'pending' | 'in progress' | 'completed';
+  creationDate: string;
+  updated: string;
+}

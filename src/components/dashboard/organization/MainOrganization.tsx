@@ -9,8 +9,8 @@ import InviteOwnerDrawer from './inviteOwnerDrawer/InviteOwnerDrawer';
 import ProductsTable from './Table';
 
 const MainOrganization = () => {
-  const [isFiltersOpen, setIsFiltersOpen] = useState(true);
-  const [isFiltersOpenAnimate, setIsFiltersOpenAnimate] = useState(true);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+  const [isFiltersOpenAnimate, setIsFiltersOpenAnimate] = useState(false);
   const [createOrgDrawer, setCreateOrgDrawer] = useState(false);
   const [openOwnerDrawer, setOpenOwnerDrawer] = useState(false);
   const [selectedRows, setSelectedRows] = useState(false);
