@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import { CreateOrgDrawer } from './createOrgDrawer';
 import Filters from './filters/Filters';
+import FiltersDetails from './filters/FiltersDetails';
 import InviteOwnerDrawer from './inviteOwnerDrawer/InviteOwnerDrawer';
 import ProductsTable from './Table';
 
@@ -114,7 +115,11 @@ const MainOrganization = () => {
           </div>
         </div>
         <div className="flex">
-          <ProductsTable setSelectedRows={setSelectedRows} />
+          <div className="w-full">
+            {isFiltersOpen && <FiltersDetails />}
+            <ProductsTable setSelectedRows={setSelectedRows} />
+          </div>
+
           {isFiltersOpen && (
             <div
               className={`grid transition-all duration-500 ease-in-out ${
