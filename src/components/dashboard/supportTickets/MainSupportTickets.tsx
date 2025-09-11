@@ -1,10 +1,11 @@
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
-import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
-import { useState } from 'react';
-import { TickSquare, Forbidden2, Setting5 } from 'iconsax-reactjs';
 import { Button, Pagination } from 'antd';
+import { Forbidden2, Setting5, TickSquare } from 'iconsax-reactjs';
+import { useState } from 'react';
 import Filters from '../organization/filters/Filters';
+import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import SupportTable from './SupportTable';
+import TicketsShower from './cardView/TicketsShower';
 
 const MainSupportTickets = () => {
   const { setOpenConfirm, setContent, setSuccess, setModalType } = useConfirmPopup();
@@ -77,21 +78,22 @@ const MainSupportTickets = () => {
           )}
         </button>
       </div>
-      {viewType === 'table' && (
-        <div className="flex">
-          <SupportTable setSelectedRows={setSelectedRows} />
-          {isFiltersOpen && (
-            <div
-              className={`grid transition-all duration-300 ease-in-out ${
-                isFiltersOpenAnimate ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-              }`}>
-              <div className="overflow-hidden">
-                <Filters />
-              </div>
-            </div>
-          )}
-        </div>
-      )}
+      <div className="flex">
+        {viewType === 'table' && (
+          <div className="flex flex-1">
+            <SupportTable setSelectedRows={setSelectedRows} />
+          </div>
+        )}
+        {viewType === 'card' && <TicketsShower />}
+        {isFiltersOpen && (
+          <div
+            className={`grid transition-all duration-300 ease-in-out ${
+              isFiltersOpenAnimate ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+            }`}>
+            {<Filters />}
+          </div>
+        )}
+      </div>
       <div className="w-full mt-4 flex items-center flex-col">
         <Pagination total={120} showSizeChanger={false} />
       </div>

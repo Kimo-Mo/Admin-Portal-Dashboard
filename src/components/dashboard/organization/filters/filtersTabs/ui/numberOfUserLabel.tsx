@@ -9,7 +9,7 @@ function NumberOfUserLabel({ title }: { title: string }) {
       type="text"
       size="small"
       className="flex justify-center items-center w-full rounded-sm bg-card placeholder:text-center"
-      id="number"
+      id={title.toLocaleLowerCase()}
       placeholder={number ? String(number) : title}
       onChange={(e: ChangeEvent<HTMLInputElement>) => setNumber(+e.target.value)}
     />
