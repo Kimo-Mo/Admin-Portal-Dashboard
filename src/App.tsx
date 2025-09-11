@@ -1,8 +1,7 @@
 import { DashLayout } from './components/layouts';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/auth/login/LoginPage';
-import { OrganizationPage, OrgDetailsPage, UsersPage } from './pages/dashboard';
-
+import { OrganizationPage, OrgDetailsPage, UsersPage, SupportTickets } from './pages/dashboard';
 
 function App() {
   return (
@@ -17,6 +16,7 @@ function App() {
             <Route index element={<OrganizationPage />} />
             <Route path=":key" element={<OrgDetailsPage />} />
           </Route>
+          <Route path="support" element={<SupportTickets />} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<Navigate to="/dashboard" />} />

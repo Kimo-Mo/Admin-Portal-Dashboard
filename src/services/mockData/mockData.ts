@@ -1,4 +1,4 @@
-import type { DataRecord, UserRecord } from "@/types";
+import type { DataRecord, TicketRecord, UserRecord } from '@/types';
 
 export const orgData: DataRecord[] = [
   {
@@ -183,5 +183,98 @@ export const usersData: UserRecord[] = [
     status: true,
     lastLogin: 'Aug 24, 2025',
     creationDate: 'Jul 14, 2024',
+  },
+];
+
+export const ticketsData: TicketRecord[] = [
+  {
+    key: '1',
+    ticketTitle: 'Ticket Title',
+    description: 'Ticket Description',
+    priority: 'High',
+    status: 'pending',
+    creationDate: 'Jan 15, 2024',
+    updated: 'Aug 25, 2025',
+  },
+  {
+    key: '2',
+    ticketTitle: 'Ticket Title',
+    description: 'Ticket Description',
+    priority: 'Medium',
+    status: 'pending',
+    creationDate: 'Jan 15, 2024',
+    updated: 'Aug 25, 2025',
+  },
+  {
+    key: '3',
+    ticketTitle: 'Ticket Title',
+    description: 'Ticket Description',
+    priority: 'Medium',
+    status: 'pending',
+    creationDate: 'Jan 15, 2024',
+    updated: 'Aug 25, 2025',
+  },
+  {
+    key: '4',
+    ticketTitle: 'Ticket Title',
+    description: 'Ticket Description',
+    priority: 'Medium',
+    status: 'pending',
+    creationDate: 'Jan 15, 2024',
+    updated: 'Aug 25, 2025',
+  },
+  {
+    key: '5',
+    ticketTitle: 'Ticket Title',
+    description: 'Ticket Description',
+    priority: 'Low',
+    status: 'pending',
+    creationDate: 'Jan 15, 2024',
+    updated: 'Aug 25, 2025',
+  },
+  {
+    key: '6',
+    ticketTitle: 'Ticket Title',
+    description: 'Ticket Description',
+    priority: 'Medium',
+    status: 'pending',
+    creationDate: 'Jan 15, 2024',
+    updated: 'Aug 25, 2025',
+  },
+  {
+    key: '7',
+    ticketTitle: 'Ticket Title',
+    description: 'Ticket Description',
+    priority: 'High',
+    status: 'pending',
+    creationDate: 'Jan 15, 2024',
+    updated: 'Aug 25, 2025',
+  },
+  {
+    key: '8',
+    ticketTitle: 'Ticket Title',
+    description: 'Ticket Description',
+    priority: 'High',
+    status: 'pending',
+    creationDate: 'Jan 15, 2024',
+    updated: 'Aug 25, 2025',
+  },
+  {
+    key: '9',
+    ticketTitle: 'Ticket Title',
+    description: 'Ticket Description',
+    priority: 'High',
+    status: 'pending',
+    creationDate: 'Jan 15, 2024',
+    updated: 'Aug 25, 2025',
+  },
+  {
+    key: '10',
+    ticketTitle: 'Ticket Title',
+    description: 'Ticket Description',
+    priority: 'High',
+    status: 'pending',
+    creationDate: 'Jan 15, 2024',
+    updated: 'Aug 25, 2025',
   },
 ];
