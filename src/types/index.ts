@@ -22,7 +22,7 @@ export interface TicketRecord {
   ticketTitle: string;
   description: string;
   priority: 'Low' | 'Medium' | 'High';
-  status: 'pending' | 'in progress' | 'completed';
+  status: 'Pending' | 'In Progress' | 'Ignored' | 'Closed';
   creationDate: string;
   updated: string;
 }
