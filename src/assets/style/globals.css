@@ -518,3 +518,4 @@ html {
 .ant-steps-item-finish * {
   color: color-mix(in srgb, var(--color-primary) 70%, transparent) !important;
 }
+
