@@ -8,6 +8,7 @@ import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
 import type { DataRecord } from '@/types';
 import { orgData } from '@/services/mockData';
 import { Link } from 'react-router-dom';
+import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 
 const ProductsTable = ({
   setSelectedRows,
@@ -16,6 +17,18 @@ const ProductsTable = ({
 }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const { renderOrSkeleton } = useSkeletonLoader();
+  const { setOpenConfirm, setContent, setSuccess, setModalType } = useConfirmPopup();
+  const { setSuccessContent } = useSuccessPopup();
+  const handleDeleteOrg = () => {
+    setContent({
+      icon: <Trash size={36} color="var(--c-danger)" />,
+      text: 'Are You Sure You Want To Delete This Organization?',
+    });
+    setSuccessContent('Organization Deleted Successfully');
+    setSuccess(true);
+    setOpenConfirm(true);
+    setModalType('error');
+  };
   const actionItems: MenuProps['items'] = [
     {
       key: '1',
@@ -25,7 +38,8 @@ const ProductsTable = ({
     {
       key: '2',
       icon: <Trash size={24} />,
-      label: 'Refresh',
+      label: 'Delete',
+      onClick: handleDeleteOrg,
     },
   ];
 

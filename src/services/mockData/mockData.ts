@@ -190,7 +190,8 @@ export const ticketsData: TicketRecord[] = [
   {
     key: '1',
     ticketTitle: 'Ticket Title',
-    description: 'Ticket Description',
+    description:
+      "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'High',
     status: 'pending',
     creationDate: 'Jan 15, 2024',
@@ -199,7 +200,8 @@ export const ticketsData: TicketRecord[] = [
   {
     key: '2',
     ticketTitle: 'Ticket Title',
-    description: 'Ticket Description',
+    description:
+      "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'Medium',
     status: 'pending',
     creationDate: 'Jan 15, 2024',
@@ -208,7 +210,8 @@ export const ticketsData: TicketRecord[] = [
   {
     key: '3',
     ticketTitle: 'Ticket Title',
-    description: 'Ticket Description',
+    description:
+      "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'Medium',
     status: 'pending',
     creationDate: 'Jan 15, 2024',
@@ -217,7 +220,8 @@ export const ticketsData: TicketRecord[] = [
   {
     key: '4',
     ticketTitle: 'Ticket Title',
-    description: 'Ticket Description',
+    description:
+      "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'Medium',
     status: 'pending',
     creationDate: 'Jan 15, 2024',
@@ -226,7 +230,8 @@ export const ticketsData: TicketRecord[] = [
   {
     key: '5',
     ticketTitle: 'Ticket Title',
-    description: 'Ticket Description',
+    description:
+      "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'Low',
     status: 'pending',
     creationDate: 'Jan 15, 2024',
@@ -235,7 +240,8 @@ export const ticketsData: TicketRecord[] = [
   {
     key: '6',
     ticketTitle: 'Ticket Title',
-    description: 'Ticket Description',
+    description:
+      "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'Medium',
     status: 'pending',
     creationDate: 'Jan 15, 2024',
@@ -244,7 +250,8 @@ export const ticketsData: TicketRecord[] = [
   {
     key: '7',
     ticketTitle: 'Ticket Title',
-    description: 'Ticket Description',
+    description:
+      "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'High',
     status: 'pending',
     creationDate: 'Jan 15, 2024',
@@ -253,7 +260,8 @@ export const ticketsData: TicketRecord[] = [
   {
     key: '8',
     ticketTitle: 'Ticket Title',
-    description: 'Ticket Description',
+    description:
+      "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'High',
     status: 'pending',
     creationDate: 'Jan 15, 2024',
@@ -262,7 +270,8 @@ export const ticketsData: TicketRecord[] = [
   {
     key: '9',
     ticketTitle: 'Ticket Title',
-    description: 'Ticket Description',
+    description:
+      "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'High',
     status: 'pending',
     creationDate: 'Jan 15, 2024',
@@ -271,7 +280,8 @@ export const ticketsData: TicketRecord[] = [
   {
     key: '10',
     ticketTitle: 'Ticket Title',
-    description: 'Ticket Description',
+    description:
+      "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'High',
     status: 'pending',
     creationDate: 'Jan 15, 2024',
