@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import { CreateOrgDrawer } from './createOrgDrawer';
 import Filters from './filters/Filters';
+import FiltersDetails from './filters/FiltersDetails';
 import InviteOwnerDrawer from './inviteOwnerDrawer/InviteOwnerDrawer';
 import ProductsTable from './Table';
 
@@ -93,11 +94,11 @@ const MainOrganization = () => {
               size="large"
               onClick={() => {
                 if (isFiltersOpen) {
-                  setTimeout(() => setIsFiltersOpen(!isFiltersOpen), 300);
+                  setTimeout(() => setIsFiltersOpen(!isFiltersOpen), 500);
                   setIsFiltersOpenAnimate(!isFiltersOpenAnimate);
                 } else {
                   setIsFiltersOpen(!isFiltersOpen);
-                  setTimeout(() => setIsFiltersOpenAnimate(!isFiltersOpenAnimate), 300);
+                  setTimeout(() => setIsFiltersOpenAnimate(!isFiltersOpenAnimate), 500);
                 }
               }}
               style={{
@@ -114,10 +115,14 @@ const MainOrganization = () => {
           </div>
         </div>
         <div className="flex">
-          <ProductsTable setSelectedRows={setSelectedRows} />
+          <div className="w-full">
+            {isFiltersOpen && <FiltersDetails />}
+            <ProductsTable setSelectedRows={setSelectedRows} />
+          </div>
+
           {isFiltersOpen && (
             <div
-              className={`grid transition-all duration-300 ease-in-out ${
+              className={`grid transition-all duration-500 ease-in-out ${
                 isFiltersOpenAnimate ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
               }`}>
               <div className="overflow-hidden">

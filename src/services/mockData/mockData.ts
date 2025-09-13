@@ -193,7 +193,7 @@ export const ticketsData: TicketRecord[] = [
     description:
       "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'High',
-    status: 'pending',
+    status: 'Pending',
     creationDate: 'Jan 15, 2024',
     updated: 'Aug 25, 2025',
   },
@@ -203,7 +203,7 @@ export const ticketsData: TicketRecord[] = [
     description:
       "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'Medium',
-    status: 'pending',
+    status: 'Pending',
     creationDate: 'Jan 15, 2024',
     updated: 'Aug 25, 2025',
   },
@@ -213,7 +213,7 @@ export const ticketsData: TicketRecord[] = [
     description:
       "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'Medium',
-    status: 'pending',
+    status: 'Pending',
     creationDate: 'Jan 15, 2024',
     updated: 'Aug 25, 2025',
   },
@@ -223,7 +223,7 @@ export const ticketsData: TicketRecord[] = [
     description:
       "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'Medium',
-    status: 'pending',
+    status: 'Pending',
     creationDate: 'Jan 15, 2024',
     updated: 'Aug 25, 2025',
   },
@@ -233,7 +233,7 @@ export const ticketsData: TicketRecord[] = [
     description:
       "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'Low',
-    status: 'pending',
+    status: 'Pending',
     creationDate: 'Jan 15, 2024',
     updated: 'Aug 25, 2025',
   },
@@ -243,7 +243,7 @@ export const ticketsData: TicketRecord[] = [
     description:
       "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'Medium',
-    status: 'pending',
+    status: 'Pending',
     creationDate: 'Jan 15, 2024',
     updated: 'Aug 25, 2025',
   },
@@ -253,7 +253,7 @@ export const ticketsData: TicketRecord[] = [
     description:
       "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'High',
-    status: 'pending',
+    status: 'Pending',
     creationDate: 'Jan 15, 2024',
     updated: 'Aug 25, 2025',
   },
@@ -263,7 +263,7 @@ export const ticketsData: TicketRecord[] = [
     description:
       "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'High',
-    status: 'pending',
+    status: 'Pending',
     creationDate: 'Jan 15, 2024',
     updated: 'Aug 25, 2025',
   },
@@ -273,7 +273,7 @@ export const ticketsData: TicketRecord[] = [
     description:
       "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'High',
-    status: 'pending',
+    status: 'Pending',
     creationDate: 'Jan 15, 2024',
     updated: 'Aug 25, 2025',
   },
@@ -283,7 +283,7 @@ export const ticketsData: TicketRecord[] = [
     description:
       "Description written describes the ticket issue, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
     priority: 'High',
-    status: 'pending',
+    status: 'Pending',
     creationDate: 'Jan 15, 2024',
     updated: 'Aug 25, 2025',
   },
