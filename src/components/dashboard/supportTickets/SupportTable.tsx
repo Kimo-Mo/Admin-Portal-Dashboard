@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { Table, Select } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
-import StatusTag from '../organization/Tags/StatusTag';
 import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
-import type { DataRecord, TicketRecord } from '@/types';
 import { ticketsData } from '@/services/mockData';
-
+import type { TicketRecord } from '@/types';
+import { Table } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import React, { useState } from 'react';
+import TicketsTagSelector from './cardView/TicketsTagSelector';
 
 const SupportTable = ({
   setSelectedRows,
@@ -22,14 +21,17 @@ const SupportTable = ({
       key: 'ticketTitle',
       sorter: true,
       render: (text: string, record: TicketRecord) =>
-        renderOrSkeleton(() => (
-          <span
-            onClick={() => console.log(record)}
-            className="text-sm opacity-60 cursor-pointer hover:text-primary transition-colors duration-200"
-            style={{ color: 'var(--c-text)' }}>
-            {text}
-          </span>
-        ), 80),
+        renderOrSkeleton(
+          () => (
+            <span
+              onClick={() => console.log(record)}
+              className="text-sm opacity-60 cursor-pointer hover:text-primary transition-colors duration-200"
+              style={{ color: 'var(--c-text)' }}>
+              {text}
+            </span>
+          ),
+          80
+        ),
     },
     {
       title: 'Description',
@@ -37,39 +39,40 @@ const SupportTable = ({
       key: 'description',
       sorter: true,
       render: (text: string) =>
-        renderOrSkeleton(() => (
-          <span
-            className="text-sm opacity-60 flex items-center justify-baseline"
-            style={{ color: 'var(--c-text)' }}>
-            {text}
-          </span>
-        ), 80),
+        renderOrSkeleton(
+          () => (
+            <span
+              className="text-sm opacity-60 flex items-center justify-baseline"
+              style={{ color: 'var(--c-text)' }}>
+              {text}
+            </span>
+          ),
+          80
+        ),
     },
     {
       title: 'Priority',
       dataIndex: 'priority',
       key: 'priority',
       sorter: true,
-      render: (priority: string) =>
-        renderOrSkeleton(() => (
-          <Select
-            value={priority}
-            style={{ width: 120 }}
-            options={[
-              { value: 'low', label: 'Low' },
-              { value: 'medium', label: 'Medium' },
-              { value: 'high', label: 'High' },
-            ]}
-          />
-        ), 80),
+      render: (priority: 'High' | 'Medium' | 'Low') =>
+        renderOrSkeleton(
+          () => <TicketsTagSelector values={['High', 'Medium', 'Low']} defaultValue={priority} />,
+          80
+        ),
     },
     {
       title: 'Statuses',
       dataIndex: 'status',
       key: 'status',
       sorter: true,
-      render: (status: string) =>
-        renderOrSkeleton(() => <StatusTag status={status as DataRecord['status']} />, 80)
+      render: (status: TicketRecord['status']) =>
+        renderOrSkeleton(() => (
+          <TicketsTagSelector
+            values={['Pending', 'In Progress', 'Ignored', 'Closed']}
+            defaultValue={status}
+          />
+        )),
     },
     {
       title: 'Creation Date',
@@ -77,11 +80,14 @@ const SupportTable = ({
       key: 'creationDate',
       sorter: true,
       render: (text: string) =>
-        renderOrSkeleton(() => (
-          <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
-            {text}
-          </span>
-        ), 80),
+        renderOrSkeleton(
+          () => (
+            <span className="text-sm opacity-60" style={{ color: 'var(--c-text)' }}>
+              {text}
+            </span>
+          ),
+          80
+        ),
     },
     {
       title: 'Updated',
