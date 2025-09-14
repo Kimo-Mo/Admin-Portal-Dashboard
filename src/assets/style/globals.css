@@ -195,6 +195,29 @@ html {
   background-color: color-mix(in srgb, var(--c-primary) 15%, transparent) !important;
 }
 /* Support Table */
+.support-table .ant-table-thead > tr > th,
+.support-table .ant-table-tbody > tr > td {
+  border-left: none !important;
+  text-align: left !important;
+}
+.support-table .ant-table-thead > tr > th {
+  border-left: 1rem solid transparent !important;
+}
+.support-table .ant-table-thead > tr > th:nth-child(2) {
+  border-left: 1rem solid transparent !important;
+}
+
+.support-table .ant-table-thead > tr > th .ant-table-column-sorters {
+  justify-content: flex-start !important;
+}
+
+.support-table .ant-table-row > .ant-table-cell {
+  text-align: left !important;
+  padding: 10px 24px !important;
+}
+
+/* Remove the transparent border spacing for support table */
+
 .support-table .ant-table-thead > tr > th {
   padding: 16px 8px !important;
 }
@@ -518,4 +541,3 @@ html {
 .ant-steps-item-finish * {
   color: color-mix(in srgb, var(--color-primary) 70%, transparent) !important;
 }
-
