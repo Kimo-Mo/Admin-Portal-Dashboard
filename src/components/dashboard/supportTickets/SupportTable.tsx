@@ -1,9 +1,11 @@
 import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
-import { ticketsData } from '@/services/mockData';
-import type { TicketRecord } from '@/types';
 import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import React, { useState } from 'react';
+
+import { ticketsData } from '@/services/mockData';
+import type { TicketRecord } from '@/types';
+import SupportDrawer from './SupportDrawer';
 import TicketsTagSelector from './cardView/TicketsTagSelector';
 
 const SupportTable = ({
@@ -13,6 +15,13 @@ const SupportTable = ({
 }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const { renderOrSkeleton } = useSkeletonLoader();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [ticket, setTicket] = useState<TicketRecord | null>(null);
+
+  const handleTicketClick = (record: TicketRecord) => {
+    setTicket(record);
+    setDrawerOpen(true);
+  };
 
   const columns: ColumnsType<TicketRecord> = [
     {
@@ -24,7 +33,7 @@ const SupportTable = ({
         renderOrSkeleton(
           () => (
             <span
-              onClick={() => console.log(record)}
+              onClick={() => handleTicketClick(record)}
               className="text-sm opacity-60 cursor-pointer hover:text-primary transition-colors duration-200"
               style={{ color: 'var(--c-text)' }}>
               {text}
@@ -42,7 +51,7 @@ const SupportTable = ({
         renderOrSkeleton(
           () => (
             <span
-              className="text-sm opacity-60 flex items-center justify-baseline"
+              className="text-sm opacity-60 flex items-center justify-baseline max-w-20 text-ellipsis overflow-hidden"
               style={{ color: 'var(--c-text)' }}>
               {text}
             </span>
@@ -55,6 +64,7 @@ const SupportTable = ({
       dataIndex: 'priority',
       key: 'priority',
       sorter: true,
+
       render: (priority: 'High' | 'Medium' | 'Low') =>
         renderOrSkeleton(
           () => <TicketsTagSelector values={['High', 'Medium', 'Low']} defaultValue={priority} />,
@@ -130,6 +140,7 @@ const SupportTable = ({
         scroll={{ x: 'max-content' }}
         size="small"
       />
+      <SupportDrawer ticket={ticket} open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </div>
   );
 };
