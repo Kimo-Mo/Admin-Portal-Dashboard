@@ -4,6 +4,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@plugin "@tailwindcss/line-clamp"
+
 @theme inline {
   --font-inter: 'Inter', sans-serif;
   --color-primary: var(--c-primary);

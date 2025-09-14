@@ -63,6 +63,7 @@ function TicketsTagSelector({
           border: 'none',
         }}
         // where is it coming from? -- the border when active
+        // box-shadow
         className={`${
           selectStatusClasses[`${value}`]
         } [&_.ant-select-open]:!border-none [&_.ant-select-open]:!ring-0 [&_.ant-select-open]:!outline-none`}

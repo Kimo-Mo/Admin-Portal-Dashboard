@@ -1,14 +1,14 @@
+import { orgData } from '@/services/mockData';
+import type { DataRecord, UserRecord } from '@/types';
 import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import type { DataRecord, UserRecord } from '@/types';
-import { orgData } from '@/services/mockData';
 import { ExportButton, IBreadCrumb } from '../shared';
 
+import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 import { Button, Pagination, Tabs, type TabsProps } from 'antd';
 import { AddSquare, Forbidden2, TickSquare } from 'iconsax-reactjs';
-import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
-import { OrgInfoTab, ProductsTab, UsersTab } from './orgProfileTabs';
 import { UserDrawer } from '../usersComponents';
+import { OrgInfoTab, ProductsTab, UsersTab } from './orgProfileTabs';
 
 const OrganizationDetails = () => {
   const { key } = useParams();

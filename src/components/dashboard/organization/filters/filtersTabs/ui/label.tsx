@@ -10,7 +10,7 @@ function FilterLabel({ title }: { title: string }) {
         className="flex items-center space-x-1.5 rounded-sm font-light text-[0.8125rem] bg-card min-h-5 py-0.5 px-2"
         // onChange={onChange}
       >
-        <Checkbox id={title.toLocaleLowerCase()}>{title}</Checkbox>
+        <Checkbox name={title.toLocaleLowerCase()}>{title}</Checkbox>
       </div>
     </div>
   );

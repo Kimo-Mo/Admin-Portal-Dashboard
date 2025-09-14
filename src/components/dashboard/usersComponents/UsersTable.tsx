@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Table, Dropdown, Space, type MenuProps, Switch } from 'antd';
+import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
+import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
+import { usersData } from '@/services/mockData';
+import type { UserRecord } from '@/types';
+import { Dropdown, Space, Switch, Table, type MenuProps } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { CloseSquare, Edit, More, TickSquare, Trash } from 'iconsax-reactjs';
-import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
-import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
-import type { UserRecord } from '@/types';
-import { usersData } from '@/services/mockData';
+import React, { useEffect, useState } from 'react';
 
 interface UsersTableProps {
   setSelectedRows: React.Dispatch<React.SetStateAction<boolean>>;
@@ -146,7 +146,7 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTa
       title: 'Actions',
       dataIndex: 'actions',
       sorter: true,
-      fixed:"right",
+      fixed: 'right',
       key: 'actions',
       width: 100,
       render: (_, record) =>
@@ -192,6 +192,7 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTa
       <Table
         columns={columns}
         dataSource={data}
+        rowKey={(record) => record.key}
         rowSelection={rowSelection}
         pagination={false}
         className="rounded-none w-full users-table"
