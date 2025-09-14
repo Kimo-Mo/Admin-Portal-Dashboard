@@ -28,8 +28,8 @@ function Ticket() {
           <p className="text-text font-semibold">Ticket Title 0X</p>
         </div>
         <div className="flex items-center gap-4">
-          <TicketsTagSelector values={['High', 'Low']} />
-          <TicketsTagSelector values={['Pending', 'Cancelled']} />
+          <TicketsTagSelector values={['High', 'Medium', 'Low']} />
+          <TicketsTagSelector values={['Pending', 'In Progress', 'Ignored', 'Closed']} />
           <TicketDate type="Created" date="Oct 10, 2023" />
           <TicketDate type="Updated" date="Oct 15, 2023" />
         </div>

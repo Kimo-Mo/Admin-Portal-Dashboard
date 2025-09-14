@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { Table, Select } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
 import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
-import type { TicketRecord } from '@/types';
+import { Table } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import React, { useState } from 'react';
+
 import { ticketsData } from '@/services/mockData';
+import type { TicketRecord } from '@/types';
 import SupportDrawer from './SupportDrawer';
+import TicketsTagSelector from './cardView/TicketsTagSelector';
 
 const SupportTable = ({
   setSelectedRows,
@@ -62,19 +64,10 @@ const SupportTable = ({
       dataIndex: 'priority',
       key: 'priority',
       sorter: true,
-      render: (priority: string) =>
+
+      render: (priority: 'High' | 'Medium' | 'Low') =>
         renderOrSkeleton(
-          () => (
-            <Select
-              value={priority}
-              style={{ width: 120 }}
-              options={[
-                { value: 'low', label: 'Low' },
-                { value: 'medium', label: 'Medium' },
-                { value: 'high', label: 'High' },
-              ]}
-            />
-          ),
+          () => <TicketsTagSelector values={['High', 'Medium', 'Low']} defaultValue={priority} />,
           80
         ),
     },
@@ -83,21 +76,13 @@ const SupportTable = ({
       dataIndex: 'status',
       key: 'status',
       sorter: true,
-      render: (status: string) =>
-        renderOrSkeleton(
-          () => (
-            <Select
-              value={status}
-              style={{ width: 120 }}
-              options={[
-                { value: 'pending', label: 'Pending' },
-                { value: 'in-progress', label: 'In Progress' },
-                { value: 'completed', label: 'Completed' },
-              ]}
-            />
-          ),
-          80
-        ),
+      render: (status: TicketRecord['status']) =>
+        renderOrSkeleton(() => (
+          <TicketsTagSelector
+            values={['Pending', 'In Progress', 'Ignored', 'Closed']}
+            defaultValue={status}
+          />
+        )),
     },
     {
       title: 'Creation Date',
