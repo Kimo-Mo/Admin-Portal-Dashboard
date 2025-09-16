@@ -1,4 +1,5 @@
 import { Select } from 'antd';
+import { ArrowDown2 } from 'iconsax-reactjs';
 import { useState } from 'react';
 type Status = 'High' | 'Medium' | 'Low' | 'Pending' | 'In Progress' | 'Ignored' | 'Closed';
 const selectStatusClasses: Record<Status, string> = {
@@ -48,7 +49,11 @@ function TicketsTagSelector({
   const [value, setValue] = useState(defaultValue || values[0]);
   const selectionOptions = values.map((item) => ({
     value: item,
-    label: <span>{item}</span>,
+    label: (
+      <span className="flex items-center justify-center gap-0.5">
+        {item} {<ArrowDown2 size={16} />}
+      </span>
+    ),
   }));
 
   return (
@@ -61,12 +66,11 @@ function TicketsTagSelector({
           height: '2.3rem',
           borderRadius: '0.75rem',
           border: 'none',
+          minWidth: '7rem',
+          maxWidth: '7rem',
         }}
-        // where is it coming from? -- the border when active
-        // box-shadow
-        className={`${
-          selectStatusClasses[`${value}`]
-        } [&_.ant-select-open]:!border-none [&_.ant-select-open]:!ring-0 [&_.ant-select-open]:!outline-none`}
+        suffixIcon={null}
+        className={`${selectStatusClasses[`${value}`]} [&_.ant-select-selector]:!shadow-none`}
       />
     </div>
   );

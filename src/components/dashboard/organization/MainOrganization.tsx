@@ -116,8 +116,15 @@ const MainOrganization = () => {
         </div>
         <div className="flex">
           <div className="w-full">
-            {isFiltersOpen && <FiltersDetails />}
-            <ProductsTable setSelectedRows={setSelectedRows} />
+            <div className="mb-2">{isFiltersOpen && <FiltersDetails />}</div>
+            <div
+              className={
+                isFiltersOpen
+                  ? 'ms-4 mb-4 rounded-xl border border-border transition-all duration-400'
+                  : 'ms-0 mb-0 rounded-none transition-all duration-400'
+              }>
+              <ProductsTable setSelectedRows={setSelectedRows} />
+            </div>
           </div>
 
           {isFiltersOpen && (
