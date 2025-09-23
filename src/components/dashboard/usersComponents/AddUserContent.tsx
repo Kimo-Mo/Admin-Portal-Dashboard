@@ -1,4 +1,6 @@
+import { createUser } from '@/services/api/users.api';
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
+import type { CreateUserDto } from '@/types/users.types';
 import { Button, Form, Input, Select } from 'antd';
 import { ArrowDown2 } from 'iconsax-reactjs';
 import { useMemo, useState } from 'react';
@@ -16,14 +18,15 @@ const AddUserContent = ({ onClose }: { onClose: () => void }) => {
     return async () => {
       try {
         setLoading(true);
-        await form.validateFields();
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        const data: CreateUserDto = await form.validateFields();
+        const user = await createUser(data);
+        console.log(user);
         setSuccessContent('User Added Successfully');
         setOpenSuccess(true);
         setOpenConfirm(false);
         setTimeout(() => {
           setOpenSuccess(false);
-        }, 3000);
+        }, 1000);
         onClose();
       } catch (error) {
         console.log('Validation failed:', error);
@@ -37,13 +40,13 @@ const AddUserContent = ({ onClose }: { onClose: () => void }) => {
     <Form form={form} size="large" layout="vertical" onFinish={onFinish} requiredMark={false}>
       <div className="flex items-center gap-4">
         <Form.Item
-          name="firstName"
+          name="first_name"
           label="First Name"
           rules={[{ required: true, message: 'Please input your name' }]}>
           <Input placeholder="Enter First Name" />
         </Form.Item>
         <Form.Item
-          name="lastName"
+          name="last_name"
           label="Last Name"
           rules={[{ required: true, message: 'Please input your name' }]}>
           <Input placeholder="Enter Last Name" />

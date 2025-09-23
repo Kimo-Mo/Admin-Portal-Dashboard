@@ -3,6 +3,7 @@ import { Button, Divider, Form, Input, Select, Switch } from 'antd';
 import { ArrowDown2, ArrowRight, Trash } from 'iconsax-reactjs';
 import { useEffect, useMemo, useState } from 'react';
 import type { UserRecord } from '@/types';
+import { updateUser } from '@/services/api/users.api';
 
 const { Option } = Select;
 
@@ -12,6 +13,7 @@ interface EditUserContentProps {
 }
 
 const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
+  //update when get is ready
   const { name, role, status, lastLogin } = editUser || {};
 
   const { setSuccessContent } = useSuccessPopup();
@@ -35,14 +37,20 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
     return async () => {
       try {
         setLoading(true);
-        await form.validateFields();
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        const formData = await form.validateFields();
+        const payload = {
+          phone: formData.phoneNumber, // backend expects "phone"
+          role: formData.role.toLowerCase(), // normalize
+        };
+        // change this to use ids from the db
+        const user = await updateUser('1', payload);
+        console.log(user);
         setSuccessContent('User Updated Successfully');
         setOpenSuccess(true);
         setOpenConfirm(false);
         setTimeout(() => {
           setOpenSuccess(false);
-        }, 3000);
+        }, 1000);
         onClose();
       } catch (error) {
         console.log('Validation failed:', error);
