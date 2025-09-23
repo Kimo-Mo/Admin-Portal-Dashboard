@@ -1,1 +1,1 @@
-export * from './clientApi';
+export * from './axiosInstance';
