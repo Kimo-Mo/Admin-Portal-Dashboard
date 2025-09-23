@@ -12,6 +12,8 @@ export const createUser = async (payload: CreateUserDto): Promise<User> => {
     password: '12345678',
     confirm_password: '12345678',
     phone: '+201100200300',
+    role: payload.role?.toLowerCase(),
+    national_id: Math.floor(1e13 + Math.random() * 9e13).toString(),
   });
   return data;
 };

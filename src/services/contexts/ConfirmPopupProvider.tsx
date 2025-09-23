@@ -47,7 +47,7 @@ export const ConfirmPopupProvider = ({ children }: ConfirmPopupProviderProps) =>
       setOpenConfirm(false);
       setTimeout(() => {
         setOpenSuccess(false);
-      }, 3000);
+      }, 1000);
       if (customOnOk) {
         customOnOk();
         setCustomOnOk(undefined);
