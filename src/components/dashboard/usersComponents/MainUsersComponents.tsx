@@ -1,6 +1,6 @@
 import { Button, Pagination } from 'antd';
 import UsersTable from './UsersTable';
-import { AddSquare, TickSquare, Setting5, Sort, Forbidden2 } from 'iconsax-reactjs';
+import { AddSquare, TickSquare, Setting5, Forbidden2 } from 'iconsax-reactjs';
 import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 import { useState } from 'react';
@@ -13,8 +13,7 @@ const MainUsersComponents = () => {
   const [editUser, setEditUser] = useState<User | null>(null);
   const [selectedRows, setSelectedRows] = useState(false);
   const [page, setPage] = useState(1);
-  const { data, isLoading } = useUsers(page, 10);
-
+  const { paginatedData, totalItems, isLoading, handleSort, sortConfig } = useUsers(page, 10);
   const { setOpenConfirm, setContent, setSuccess, setModalType } = useConfirmPopup();
   const { setSuccessContent } = useSuccessPopup();
 
@@ -68,11 +67,7 @@ const MainUsersComponents = () => {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2.5">
               <h2 className="text-lg font-extrabold">Users</h2>
-              <span className="text-text/50">(120)</span>
-            </div>
-            <div className="flex justify-center items-center gap-2 p-2 cursor-pointer">
-              <Sort className="text-primary" />
-              <span className="text-base">Newest First</span>
+              <span className="text-text/50">({totalItems})</span>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -96,7 +91,9 @@ const MainUsersComponents = () => {
           setSelectedRows={setSelectedRows}
           setOpenUserDrawer={setOpenUserDrawer}
           setEditUser={setEditUser}
-          data={data}
+          data={paginatedData}
+          handleSort={handleSort}
+          sortConfig={sortConfig}
         />
       </div>
 
@@ -104,7 +101,7 @@ const MainUsersComponents = () => {
         <Pagination
           current={page}
           pageSize={10}
-          total={100}
+          total={totalItems}
           onChange={(page) => {
             setPage(page);
           }}

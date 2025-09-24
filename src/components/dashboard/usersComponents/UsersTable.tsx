@@ -2,8 +2,8 @@ import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 import { useDeleteUser, useUpdateUser } from '@/services/hooks/users.query';
 import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
 import type { User } from '@/types/users.types';
-import { Dropdown, Space, Switch, Table, type MenuProps } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
+import { Dropdown, Space, Switch, Table, type MenuProps, type TablePaginationConfig } from 'antd';
+import type { ColumnsType, SorterResult } from 'antd/es/table/interface';
 import { CloseSquare, Edit, More, TickSquare, Trash } from 'iconsax-reactjs';
 import React, { useState } from 'react';
 
@@ -12,9 +12,11 @@ interface UsersTableProps {
   setOpenUserDrawer: React.Dispatch<React.SetStateAction<boolean>>;
   setEditUser: React.Dispatch<React.SetStateAction<User | null>>;
   data: User[] | undefined;
+  handleSort: (sorter: SorterResult<User>) => void;
+  sortConfig: SorterResult<User> | null;
 }
 
-const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser, data }: UsersTableProps) => {
+const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser, data, handleSort, sortConfig }: UsersTableProps) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const deleteUser = useDeleteUser();
 
@@ -88,22 +90,20 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser, data }: U
     {
       title: 'ID',
       dataIndex: 'id',
-      width: 250,
       key: 'id',
-      sorter: (a, b) => Number(a.id) - Number(b.id),
+      width: 250,
+      sorter: true,
+      sortOrder: sortConfig?.field === 'id' ? sortConfig.order : null,
       render: (text: string) =>
         renderOrSkeleton(() => <span className="text-sm opacity-60 ps-4 text-text">{text}</span>),
     },
     {
       title: 'Name',
       dataIndex: 'first_name',
-      key: 'name',
+      key: 'first_name',
       width: 250,
-      sorter: (a, b) => {
-        const nameA = `${a.first_name} ${a.last_name}`.toLowerCase();
-        const nameB = `${b.first_name} ${b.last_name}`.toLowerCase();
-        return nameA.localeCompare(nameB);
-      },
+      sorter: true,
+      sortOrder: sortConfig?.field === 'first_name' ? sortConfig.order : null,
       render: (_: string, record: User) =>
         renderOrSkeleton(() => (
           <span className="text-sm opacity-60 flex items-center justify-baseline text-text ps-4">
@@ -116,7 +116,8 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser, data }: U
       dataIndex: 'email',
       key: 'email',
       width: 250,
-      sorter: (a, b) => a.email.localeCompare(b.email), // ✅ lexicographic sort
+      sorter: true,
+      sortOrder: sortConfig?.field === 'email' ? sortConfig.order : null,
       render: (email: string) =>
         renderOrSkeleton(
           () => <div className="flex justify-start text-text opacity-60 ps-4">{email}</div>,
@@ -128,11 +129,8 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser, data }: U
       dataIndex: 'role',
       key: 'role',
       width: 200,
-      sorter: (a, b) => {
-        const roleA = a.role ?? '';
-        const roleB = b.role ?? '';
-        return roleA.localeCompare(roleB);
-      },
+      sorter: true,
+      sortOrder: sortConfig?.field === 'role' ? sortConfig.order : null,
       render: (role: string) =>
         renderOrSkeleton(() => {
           role = role.slice(0, 1).toUpperCase() + role.slice(1);
@@ -144,7 +142,8 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser, data }: U
       dataIndex: 'status',
       key: 'status',
       width: 180,
-      sorter: (a, b) => a.status.localeCompare(b.status), // ✅ sort Active/Inactive
+      sorter: true,
+      sortOrder: sortConfig?.field === 'status' ? sortConfig.order : null,
       render: (status: string, record: User) =>
         renderOrSkeleton(() => (
           <div
@@ -162,7 +161,7 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser, data }: U
     {
       title: 'Actions',
       dataIndex: 'actions',
-      sorter: false, // ✅ disable sorter here (doesn’t make sense to sort by actions)
+      sorter: false,
       fixed: 'right',
       key: 'actions',
       width: 100,
@@ -205,6 +204,17 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser, data }: U
     },
   };
 
+  const handleTableChange = (
+    _: TablePaginationConfig,
+    __: Record<string, (React.Key | boolean)[] | null>,
+    sorter: SorterResult<User> | SorterResult<User>[]
+  ) => {
+    if (Array.isArray(sorter)) {
+      return;
+    }
+    handleSort(sorter);
+  };
+
   return (
     <div className="rounded-b-lg overflow-auto w-full">
       <Table
@@ -217,6 +227,7 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser, data }: U
         rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
         scroll={{ x: 'max-content' }}
         size="small"
+        onChange={handleTableChange}
       />
     </div>
   );

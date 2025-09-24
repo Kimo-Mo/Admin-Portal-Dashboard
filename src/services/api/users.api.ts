@@ -19,11 +19,12 @@ export const createUser = async (payload: CreateUserDto): Promise<User> => {
 };
 
 // List Users
-export const listUsers = async (page: number = 1, pageSize: number = 10): Promise<User[]> => {
+
+// List Users - Modified to fetch all users
+export const listUsers = async (): Promise<User[]> => {
   const { data } = await axiosInstance.get<User[]>('/users', {
     params: {
-      page,
-      size: pageSize,
+      size: 100,
     },
   });
   return data;
