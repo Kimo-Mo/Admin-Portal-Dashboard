@@ -1,31 +1,34 @@
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 import { Button, Divider, Form, Input, Select, Switch } from 'antd';
 import { ArrowDown2, ArrowRight, Trash } from 'iconsax-reactjs';
-import { useEffect, useMemo, useState } from 'react';
-import type { UserRecord } from '@/types';
-import { updateUser } from '@/services/api/users.api';
+import { useEffect, useState } from 'react';
+import { useUpdateUser, useDeleteUser } from '@/services/hooks/users.query';
+import type { UpdateUserDto, User } from '@/types/users.types';
+import { useQueryClient } from '@tanstack/react-query';
 
 const { Option } = Select;
 
 interface EditUserContentProps {
-  editUser: UserRecord | null;
+  editUser: User;
   onClose: () => void;
 }
 
 const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
-  //update when get is ready
-  const { name, role, status, lastLogin } = editUser || {};
+  const { first_name, last_name, role, status, phone } = editUser;
 
-  const { setSuccessContent } = useSuccessPopup();
+  const queryClient = useQueryClient();
+  const { setSuccessContent, setOpenSuccess } = useSuccessPopup();
   const { setOpenConfirm, setContent, setSuccess, setOnOk, setModalType } = useConfirmPopup();
-  const { setOpenSuccess } = useSuccessPopup();
+
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [userStatus, setUserStatus] = useState(status);
 
-  const handleStatusChange = (isActivating: boolean) => {
-    setUserStatus(isActivating);
-  };
+  useEffect(() => {
+    setUserStatus(status);
+  }, [status]);
+  const { mutateAsync: updateUser } = useUpdateUser();
+  const { mutateAsync: deleteUser } = useDeleteUser();
 
   useEffect(() => {
     if (editUser) {
@@ -33,32 +36,34 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
     }
   }, [editUser, form]);
 
-  const onFinish = useMemo(() => {
-    return async () => {
-      try {
-        setLoading(true);
-        const formData = await form.validateFields();
-        const payload = {
-          phone: formData.phoneNumber, // backend expects "phone"
-          role: formData.role.toLowerCase(), // normalize
-        };
-        // change this to use ids from the db
-        const user = await updateUser('1', payload);
-        console.log(user);
-        setSuccessContent('User Updated Successfully');
-        setOpenSuccess(true);
-        setOpenConfirm(false);
-        setTimeout(() => {
-          setOpenSuccess(false);
-        }, 1000);
-        onClose();
-      } catch (error) {
-        console.log('Validation failed:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-  }, [form, onClose, setSuccessContent, setOpenConfirm, setOpenSuccess]);
+  const onFinish = async () => {
+    try {
+      setLoading(true);
+      const formData = await form.validateFields();
+      const payload: UpdateUserDto = {
+        phone: formData.phone,
+        role: formData.role.toLowerCase(),
+      };
+
+      await updateUser(
+        { id: editUser.id, payload },
+        {
+          onSuccess: () => {
+            setSuccessContent('User Updated Successfully');
+            setOpenSuccess(true);
+            setOpenConfirm(false);
+            queryClient.invalidateQueries({ queryKey: ['users'] });
+            setTimeout(() => setOpenSuccess(false), 1000);
+            onClose();
+          },
+        }
+      );
+    } catch (error) {
+      console.log('Validation failed:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleDeleteUser = () => {
     setContent({
@@ -67,31 +72,18 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
     });
     setSuccessContent('User Deleted Successfully');
     setSuccess(true);
-    setOpenConfirm(true);
-    setOnOk(() => onClose);
     setModalType('error');
-  };
+    setOpenConfirm(true);
 
-  const actionButtons = useMemo(
-    () => (
-      <div className="flex items-center justify-end gap-4 mt-8">
-        <Button
-          size="large"
-          disabled={loading}
-          onClick={onClose}
-          style={{
-            background: 'var(--c-text)',
-            color: 'var(--c-background)',
-          }}>
-          Cancel
-        </Button>
-        <Button size="large" type="primary" loading={loading} onClick={onFinish}>
-          Confirm
-        </Button>
-      </div>
-    ),
-    [onClose, onFinish, loading]
-  );
+    setOnOk(() => async () => {
+      await deleteUser(editUser.id, {
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: ['users'] });
+          onClose();
+        },
+      });
+    });
+  };
 
   return (
     <>
@@ -101,7 +93,9 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
             <img src="/images/User Pic.png" alt="User Picture" />
           </div>
           <div>
-            <p>{name}</p>
+            <p>
+              {first_name} {last_name}
+            </p>
             <p>{role}</p>
             <button className="text-primary flex items-center gap-2 cursor-pointer underline">
               Send Reset Password <ArrowRight />
@@ -115,14 +109,33 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
           />
           <div
             className={`users-table-switch ${
-              userStatus ? 'active' : 'inactive'
+              userStatus === 'Active' ? 'active' : 'inactive'
             } flex gap-2 my-2.5 ps-4`}>
-            <Switch checked={userStatus} onChange={handleStatusChange} />{' '}
-            <span>{userStatus ? 'Active' : 'Inactive'}</span>
+            <Switch
+              checked={userStatus === 'Active'}
+              onChange={async (checked) => {
+                const newStatus = checked ? 'Active' : 'Inactive';
+                setUserStatus(newStatus);
+
+                await updateUser(
+                  {
+                    id: editUser.id,
+                    payload: { status: newStatus },
+                  },
+                  {
+                    onSuccess: () => {
+                      queryClient.invalidateQueries({ queryKey: ['users'] });
+                    },
+                  }
+                );
+              }}
+            />
+            <span>{userStatus === 'Active' ? 'Active' : 'Inactive'}</span>
           </div>
         </div>
       </div>
-      <Form size="large" form={form} layout="vertical" requiredMark={false}>
+
+      <Form size="large" form={form} layout="vertical" requiredMark={false} onFinish={onFinish}>
         <Form.Item
           style={{ fontSize: 14 }}
           name="email"
@@ -131,9 +144,9 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
           <Input size="large" placeholder="Enter Your Email" />
         </Form.Item>
         <Form.Item
-          name="phoneNumber"
+          name="phone"
           label="Phone"
-          initialValue={'01234567890'}
+          initialValue={phone || ''}
           rules={[{ required: true, message: 'Please input your phone!' }]}>
           <Input size="large" placeholder="Enter Your Phone" />
         </Form.Item>
@@ -149,6 +162,7 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
           </Select>
         </Form.Item>
       </Form>
+
       <div className="flex flex-col gap-4">
         <Divider className="!border-border" />
         <h2 className="text-base text-text font-semibold">Details</h2>
@@ -164,14 +178,29 @@ const EditUserContent = ({ editUser, onClose }: EditUserContentProps) => {
             <div className="text-text/70 bg-card p-4 rounded-lg">
               <p>
                 <span>Date:</span>
-                <span>{lastLogin}</span>
+                <span>{}</span>
               </p>
               <p>Content describes what is the last thing he did.</p>
             </div>
           </div>
         </div>
       </div>
-      {actionButtons}
+
+      <div className="flex items-center justify-end gap-4 mt-8">
+        <Button
+          size="large"
+          disabled={loading}
+          onClick={onClose}
+          style={{
+            background: 'var(--c-text)',
+            color: 'var(--c-background)',
+          }}>
+          Cancel
+        </Button>
+        <Button size="large" type="primary" loading={loading} onClick={onFinish}>
+          Confirm
+        </Button>
+      </div>
     </>
   );
 };

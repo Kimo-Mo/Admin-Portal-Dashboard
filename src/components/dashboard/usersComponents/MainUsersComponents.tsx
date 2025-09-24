@@ -5,14 +5,21 @@ import { ExportButton, IBreadCrumb, SearchInput } from '../shared';
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 import { useState } from 'react';
 import UserDrawer from './UserDrawer';
-import type { UserRecord } from '@/types';
+import type { User } from '@/types/users.types';
+import { useUsers } from '@/services/hooks/users.query';
 
 const MainUsersComponents = () => {
   const [openUserDrawer, setOpenUserDrawer] = useState(false);
-  const [editUser, setEditUser] = useState<UserRecord | null>(null);
+  const [editUser, setEditUser] = useState<User | null>(null);
   const [selectedRows, setSelectedRows] = useState(false);
+  const [page, setPage] = useState(1);
+  const { data, isLoading } = useUsers(page, 10);
+
   const { setOpenConfirm, setContent, setSuccess, setModalType } = useConfirmPopup();
   const { setSuccessContent } = useSuccessPopup();
+
+  if (isLoading) return <div>... loading</div>;
+
   const onExportClick = () => {
     if (selectedRows) {
       setContent({
@@ -36,7 +43,7 @@ const MainUsersComponents = () => {
 
   const onAddUserClick = () => {
     setOpenUserDrawer(true);
-    setEditUser(null);
+    setEditUser(null); // Add mode
   };
 
   return (
@@ -55,6 +62,7 @@ const MainUsersComponents = () => {
           </Button>
         </div>
       </div>
+
       <div className="bg-card rounded-xl border border-border">
         <div className="p-4">
           <div className="flex items-center justify-between mb-3">
@@ -88,15 +96,28 @@ const MainUsersComponents = () => {
           setSelectedRows={setSelectedRows}
           setOpenUserDrawer={setOpenUserDrawer}
           setEditUser={setEditUser}
+          data={data}
         />
       </div>
 
       <div className="w-full my-4 flex items-center flex-col">
-        <Pagination total={120} showSizeChanger={false} />
+        <Pagination
+          current={page}
+          pageSize={10}
+          total={100}
+          onChange={(page) => {
+            setPage(page);
+          }}
+          showSizeChanger={false}
+        />
       </div>
+
       <UserDrawer
         open={openUserDrawer}
-        onClose={() => setOpenUserDrawer(false)}
+        onClose={() => {
+          setOpenUserDrawer(false);
+          setEditUser(null); // reset when closing
+        }}
         editUser={editUser}
       />
     </section>

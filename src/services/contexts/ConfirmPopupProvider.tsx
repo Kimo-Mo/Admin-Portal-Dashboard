@@ -42,7 +42,7 @@ export const ConfirmPopupProvider = ({ children }: ConfirmPopupProviderProps) =>
   const onOk = async () => {
     try {
       setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 500));
       setOpenSuccess(true);
       setOpenConfirm(false);
       setTimeout(() => {

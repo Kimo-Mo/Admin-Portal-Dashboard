@@ -2,12 +2,12 @@ import { ConfigProvider, Drawer } from 'antd';
 import { CloseCircle, Export } from 'iconsax-reactjs';
 import EditUserContent from './EditUserContent';
 import AddUserContent from './AddUserContent';
-import type { UserRecord } from '@/types';
+import type { User } from '@/types/users.types';
 
 interface EditUserDrawerProps {
   open: boolean;
   onClose: () => void;
-  editUser: UserRecord | null;
+  editUser: User | null;
 }
 
 const UserDrawer = ({ open, onClose, editUser }: EditUserDrawerProps) => {
@@ -37,14 +37,13 @@ const UserDrawer = ({ open, onClose, editUser }: EditUserDrawerProps) => {
       }}>
       <Drawer
         width={543}
-        destroyOnHidden
+        destroyOnClose
         title={
           <h1 className="text-base font-semibold flex items-center justify-between">
             {editUser ? 'User Profile' : 'Add New User'} <Export className="text-text/50" />
           </h1>
         }
         closeIcon={<CloseCircle />}
-        closable={{ 'aria-label': 'Close Button' }}
         onClose={onClose}
         open={open}
         classNames={{
@@ -57,8 +56,11 @@ const UserDrawer = ({ open, onClose, editUser }: EditUserDrawerProps) => {
             paddingInline: '2rem',
           },
         }}>
-        {editUser && <EditUserContent editUser={editUser} onClose={onClose} />}
-        {!editUser && <AddUserContent onClose={onClose} />}
+        {editUser ? (
+          <EditUserContent editUser={editUser} onClose={onClose} />
+        ) : (
+          <AddUserContent onClose={onClose} />
+        )}
       </Drawer>
     </ConfigProvider>
   );

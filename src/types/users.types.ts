@@ -5,7 +5,7 @@ export interface User {
   last_name: string;
   email: string;
   phone: string;
-  status: string;
+  status: 'Active' | 'Inactive';
   role?: string;
   is_owner?: boolean;
   organization?: string;
@@ -29,7 +29,7 @@ export interface UpdateUserDto {
   first_name?: string;
   last_name?: string;
   email?: string;
-  status?: string;
+  status?: 'Active' | 'Inactive';
   phone?: string;
   role?: string;
   is_owner?: boolean;

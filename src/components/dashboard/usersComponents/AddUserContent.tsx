@@ -1,5 +1,5 @@
-import { createUser } from '@/services/api/users.api';
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
+import { useCreateUser } from '@/services/hooks/users.query';
 import type { CreateUserDto } from '@/types/users.types';
 import { Button, Form, Input, Select } from 'antd';
 import { ArrowDown2 } from 'iconsax-reactjs';
@@ -13,14 +13,14 @@ const AddUserContent = ({ onClose }: { onClose: () => void }) => {
   const { setOpenConfirm } = useConfirmPopup();
   const { setOpenSuccess } = useSuccessPopup();
   const [form] = Form.useForm();
-
+  const createUser = useCreateUser();
   const onFinish = useMemo(() => {
     return async () => {
       try {
         setLoading(true);
         const data: CreateUserDto = await form.validateFields();
-        const user = await createUser(data);
-        console.log(user);
+        await createUser.mutateAsync(data);
+
         setSuccessContent('User Added Successfully');
         setOpenSuccess(true);
         setOpenConfirm(false);
@@ -34,7 +34,7 @@ const AddUserContent = ({ onClose }: { onClose: () => void }) => {
         setLoading(false);
       }
     };
-  }, [form, onClose, setOpenConfirm, setOpenSuccess, setSuccessContent]);
+  }, [form, onClose, setOpenConfirm, setOpenSuccess, setSuccessContent, createUser]);
 
   return (
     <Form form={form} size="large" layout="vertical" onFinish={onFinish} requiredMark={false}>
