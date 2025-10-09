@@ -1,5 +1,5 @@
 import { orgData } from '@/services/mockData';
-import type { DataRecord, UserRecord } from '@/types';
+import type { DataRecord } from '@/types';
 import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ExportButton, IBreadCrumb } from '../shared';
@@ -17,7 +17,7 @@ const OrganizationDetails = () => {
   const { setSuccessContent } = useSuccessPopup();
   const [selectedRows, setSelectedRows] = useState(false);
   const [openUserDrawer, setOpenUserDrawer] = useState(false);
-  const [editUser, setEditUser] = useState<UserRecord | null>(null);
+  const [editUser, setEditUser] = useState<User | null>(null);
   const [selectedTab, setSelectedTab] = useState<string>('generalInfo');
 
   const onChange = (key: string) => {
@@ -39,6 +39,7 @@ const OrganizationDetails = () => {
             setSelectedRows={setSelectedRows}
             setOpenUserDrawer={setOpenUserDrawer}
             setEditUser={setEditUser}
+            orgId={key as string}
           />
         ),
       },
@@ -48,7 +49,7 @@ const OrganizationDetails = () => {
         children: <ProductsTab OrgInfo={OrgInfo} />,
       },
     ],
-    [OrgInfo]
+    [OrgInfo, key]
   );
 
   useEffect(() => {

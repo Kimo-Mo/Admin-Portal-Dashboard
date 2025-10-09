@@ -1,7 +1,7 @@
 import { useConfirmPopup, useSuccessPopup } from '@/services/contexts';
 import { useSkeletonLoader } from '@/services/libs/useSkeletonLoader';
 import { usersData } from '@/services/mockData';
-import type { UserRecord } from '@/types';
+import type { User } from '@/types/users.types';
 import { Dropdown, Space, Switch, Table, type MenuProps } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { CloseSquare, Edit, More, TickSquare, Trash } from 'iconsax-reactjs';
@@ -10,15 +10,28 @@ import React, { useEffect, useState } from 'react';
 interface UsersTableProps {
   setSelectedRows: React.Dispatch<React.SetStateAction<boolean>>;
   setOpenUserDrawer: React.Dispatch<React.SetStateAction<boolean>>;
-  setEditUser: React.Dispatch<React.SetStateAction<UserRecord | null>>;
+  setEditUser: React.Dispatch<React.SetStateAction<User | null>>;
+  data?: User[];
+  handleSort?: (sorter: any) => void;
+  sortConfig?: any;
 }
 
-const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTableProps) => {
+const UsersTable = ({
+  setSelectedRows,
+  setOpenUserDrawer,
+  setEditUser,
+  data: externalData,
+  handleSort,
+}: UsersTableProps) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-  const [data, setData] = useState<UserRecord[]>([]);
+  const [data, setData] = useState<User[]>([]);
   useEffect(() => {
-    setData(usersData);
-  }, []);
+    if (externalData) {
+      setData(externalData);
+    } else {
+      setData(usersData as User[]);
+    }
+  }, [externalData]);
 
   const { setOpenConfirm, setContent, setSuccess, setModalType, setOnOk } = useConfirmPopup();
   const { setSuccessContent } = useSuccessPopup();
@@ -44,7 +57,7 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTa
     },
   ];
 
-  const handleStatusChange = (isActivating: boolean, record: UserRecord) => {
+  const handleStatusChange = (isActivating: boolean, record: User) => {
     setTimeout(() => {
       if (!isActivating) {
         setContent({
@@ -68,7 +81,7 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTa
     }, 0);
   };
 
-  const handleOkConfirm = async (record: UserRecord) => {
+  const handleOkConfirm = async (record: User) => {
     const newData = data.map((item) => {
       if (item.key === record.key) {
         return { ...item, status: !item.status };
@@ -79,7 +92,7 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTa
     setData(newData);
   };
 
-  const columns: ColumnsType<UserRecord> = [
+  const columns: ColumnsType<User> = [
     {
       title: 'ID',
       dataIndex: 'id',
@@ -131,7 +144,7 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTa
       key: 'status',
       width: 180,
       sorter: true,
-      render: (status: boolean, record: UserRecord) =>
+      render: (status: boolean, record: User) =>
         renderOrSkeleton(() => (
           <div
             className={`users-table-switch ${
@@ -170,7 +183,7 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTa
         ),
     },
   ];
-  const handleEditUser = (record: UserRecord) => {
+  const handleEditUser = (record: User) => {
     setEditUser(record);
     setOpenUserDrawer(true);
   };
@@ -199,6 +212,11 @@ const UsersTable = ({ setSelectedRows, setOpenUserDrawer, setEditUser }: UsersTa
         rowClassName={(_, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
         scroll={{ x: 'max-content' }}
         size="small"
+        onChange={(_, __, sorter) => {
+          if (handleSort) {
+            handleSort(sorter);
+          }
+        }}
       />
     </div>
   );
